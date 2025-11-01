@@ -2712,9 +2712,9 @@ ESTRUCTURA DE UN CASO DE USO:
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | CU-001 |
-| **Nombre** | Realizar Préstamo de Material |
-| **Actores** | Bibliotecario (primario), Usuario de biblioteca (secundario), Sistema de gestión BiblioTech |
-| **Descripción** | Permite al bibliotecario registrar el préstamo de uno o más materiales bibliográficos a un usuario de la biblioteca. |
+| **Nombre** | Sistema Fitcampus |
+| **Actores** | Sistema Automático (primario), Recepcionista (secundario), Coordinador (secundario) |
+| **Descripción** | Sistema monitorea y controla automáticamente el número de personas en el gimnasio para garantizar el cumplimiento del aforo máximo de 180 personas, incluyendo registro de entradas/salidas, notificaciones y gestión de filas virtuales. |
 | **Precondiciones** | 1. El bibliotecario ha iniciado sesión en el sistema<br>2. El usuario está registrado en el sistema<br>3. El usuario NO está suspendido ni tiene multas vencidas<br>4. Los materiales están disponibles para préstamo |
 | **Postcondiciones** | 1. El préstamo queda registrado en el sistema<br>2. Los materiales cambian a estado "Prestado"<br>3. Se genera comprobante de préstamo<br>4. El usuario recibe notificación por correo (opcional) |
 | **Flujo Principal** | 1. El bibliotecario selecciona la opción "Nuevo Préstamo"<br>2. El sistema solicita identificación del usuario<br>3. El bibliotecario escanea el carnet del usuario o ingresa número de carnet manualmente<br>4. El sistema valida el carnet y muestra información del usuario<br>5. El sistema muestra si el usuario tiene préstamos activos, multas pendientes, o está suspendido<br>6. El bibliotecario escanea código de barras del material a prestar<br>7. El sistema valida que el material está disponible y lo agrega a la lista de préstamos<br>8. El bibliotecario repite paso 6-7 para cada material adicional (hasta el límite permitido)<br>9. El bibliotecario confirma el préstamo<br>10. El sistema calcula fecha de devolución según política de préstamo<br>11. El sistema registra el préstamo en la base de datos<br>12. El sistema muestra resumen del préstamo y opción de imprimir comprobante<br>13. El bibliotecario imprime comprobante y lo entrega al usuario<br>14. Fin del caso de uso |
