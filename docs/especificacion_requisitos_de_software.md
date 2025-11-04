@@ -82,1088 +82,151 @@
 
 ---
 
-## 1 INTRODUCCIÓN
-
-<!-- 
-═══════════════════════════════════════════════════════════════════════════════
-SECCIÓN 1: INTRODUCCIÓN
-═══════════════════════════════════════════════════════════════════════════════
-
-PROPÓSITO DE ESTA SECCIÓN:
-Proporcionar una visión general del documento de especificación de requisitos.
-Esta sección debe ser comprensible para TODOS los lectores, incluyendo aquellos
-sin conocimientos técnicos profundos (stakeholders, gerentes, clientes).
-
-IMPORTANCIA ACADÉMICA:
-La introducción establece el contexto del proyecto y facilita la comprensión
-del documento. Una buena introducción permite que diferentes stakeholders 
-comprendan rápidamente el propósito y alcance del sistema sin necesidad de 
-leer todo el documento.
-
-AUDIENCIA:
-- Equipo de desarrollo
-- Analistas de negocio
-- Gerentes de proyecto
-- Clientes/Stakeholders
-- Equipo de QA y testing
-- Futuros mantenedores del sistema
--->
-
-### 1.1 Propósito
-
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Explicar claramente POR QUÉ existe este documento y QUIÉN lo utilizará.
-
-QUÉ DEBE INCLUIR (2-4 párrafos):
-✓ Objetivo principal del documento SRS
-✓ Público objetivo específico (desarrolladores, testers, cliente, etc.)
-✓ Cómo se utilizará el documento en el ciclo de vida del proyecto
-✓ Alcance de versión o fase del proyecto (si aplica)
-
-PREGUNTAS GUÍA:
-1. ¿Para qué se crea este documento?
-2. ¿Quiénes lo van a leer y usar?
-3. ¿Qué decisiones se tomarán basándose en este documento?
-4. ¿Este documento cubre todo el sistema o solo una versión/módulo?
-
-ERRORES COMUNES A EVITAR:
-✗ Ser demasiado vago: "Este documento describe un sistema"
-✗ Confundir propósito del documento con propósito del sistema
-✗ No especificar la audiencia
-✗ Ser excesivamente técnico en esta sección
-
-EJEMPLO ACADÉMICO:
-"Este documento de Especificación de Requisitos de Software (SRS) describe los 
-requisitos funcionales y no funcionales para el Sistema de Gestión Bibliotecaria 
-'BiblioTech', versión 1.0. El propósito de este documento es establecer una base 
-común de entendimiento entre el cliente (Biblioteca Municipal Central) y el equipo 
-de desarrollo sobre lo que el sistema debe hacer y cómo debe comportarse.
-
-Este documento será utilizado por:
-- El equipo de desarrollo como guía para la implementación del sistema
-- Los analistas de QA para diseñar casos de prueba
-- El cliente para validar que sus necesidades están correctamente reflejadas
-- Los gerentes de proyecto para planificar recursos y cronogramas
-
-Las especificaciones aquí contenidas servirán como base contractual para la 
-aceptación del sistema y como referencia durante todo el ciclo de vida del 
-desarrollo."
--->
-
-[Escriba aquí el propósito de este documento. Use los párrafos necesarios para explicar claramente por qué existe este SRS y quiénes lo utilizarán.]
-
-<br>
-
-### 1.2 Alcance
-
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Definir claramente QUÉ está incluido y QUÉ NO está incluido en este sistema.
-
-QUÉ DEBE INCLUIR:
-✓ Nombre oficial del sistema/software
-✓ Descripción breve de lo que hace el sistema (2-3 párrafos)
-✓ Beneficios principales que aportará
-✓ Objetivos específicos y medibles
-✓ Límites del sistema (qué NO incluye)
-✓ Relación con otros sistemas (si aplica)
-
-ESTRUCTURA SUGERIDA:
-
-**Nombre del Sistema:**
-[Nombre oficial completo]
-
-**Descripción:**
-[Explicar en 2-3 párrafos qué hace el sistema, cuál es su dominio de aplicación,
-y qué problema resuelve]
-
-**Beneficios Principales:**
-- [Beneficio 1: ahorro de tiempo, reducción de errores, etc.]
-- [Beneficio 2]
-- [Beneficio 3]
-
-**Objetivos del Sistema:**
-1. [Objetivo medible 1: Ej. "Reducir el tiempo de préstamo de libros de 5 a 2 minutos"]
-2. [Objetivo medible 2]
-3. [Objetivo medible 3]
-
-**Límites del Sistema (Fuera de Alcance):**
-- [Lo que NO hará el sistema: Ej. "El sistema NO manejará la contabilidad interna de la biblioteca"]
-- [Funcionalidad excluida explícitamente]
-
-EJEMPLO ACADÉMICO:
-
-**Nombre del Sistema:** Sistema de Gestión Bibliotecaria BiblioTech
-
-**Descripción:**
-BiblioTech es un sistema integral de gestión bibliotecaria diseñado para automatizar 
-las operaciones diarias de bibliotecas públicas de tamaño mediano (10,000 a 50,000 
-volúmenes). El sistema gestiona el catálogo de materiales, préstamos, devoluciones, 
-reservas, y el registro de usuarios.
-
-El sistema reemplazará el actual proceso manual de registro en tarjetas físicas y 
-planillas Excel, proporcionando una plataforma centralizada, confiable y de fácil 
-acceso para bibliotecarios y usuarios. BiblioTech también incluirá un módulo de 
-consulta en línea para que los usuarios puedan buscar materiales y verificar 
-disponibilidad desde sus hogares.
-
-**Beneficios Principales:**
-- Reducción del tiempo promedio de atención por usuario de 5 a 2 minutos
-- Eliminación del 100% de los registros en papel
-- Disponibilidad de información en tiempo real sobre el inventario
-- Reducción de pérdidas de material mediante sistema automatizado de seguimiento
-- Acceso remoto al catálogo 24/7 para los usuarios
-
-**Objetivos del Sistema:**
-1. Digitalizar el 100% del catálogo existente en los primeros 3 meses
-2. Reducir en un 60% el tiempo de procesamiento de préstamos y devoluciones
-3. Implementar sistema de notificaciones automáticas para devoluciones vencidas
-4. Proveer reportes estadísticos mensuales sobre uso de la biblioteca
-5. Garantizar disponibilidad del sistema del 99.5% durante horario de operación
-
-**Límites del Sistema (Fuera de Alcance):**
-- Gestión contable y presupuestaria de la biblioteca
-- Sistema de punto de venta para librería anexa
-- Gestión de recursos humanos y nómina del personal
-- Sistema de seguridad física del edificio (cámaras, alarmas)
-- Plataforma de e-books o biblioteca digital de contenidos
--->
-
-[Complete esta sección siguiendo la estructura sugerida arriba]
-
-<br>
-
-### 1.3 Personal involucrado
-
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Identificar a todas las personas clave que participan en la definición, desarrollo,
-y validación del sistema.
-
-IMPORTANCIA:
-Esta sección es crucial para:
-- Establecer responsabilidades claras
-- Facilitar la comunicación entre stakeholders
-- Documentar la cadena de toma de decisiones
-- Permitir contacto directo cuando surjan dudas
-
-TABLA REQUERIDA:
-Complete la siguiente tabla para cada persona involucrada en el proyecto.
-Incluya mínimo: Cliente/Patrocinador, Jefe de Proyecto, Analista Principal,
-y Líder de Desarrollo.
--->
-
-| Nombre | Rol | Responsabilidades | Información de Contacto |
-|--------|-----|-------------------|-------------------------|
-| [Nombre completo] | Cliente/Patrocinador del Proyecto | - Aprobar requisitos<br>- Proporcionar retroalimentación<br>- Validar entregas<br>- Decisiones finales sobre alcance | Email: [correo]<br>Tel: [teléfono]<br>Organización: [nombre] |
-| [Nombre completo] | Gerente/Jefe de Proyecto | - Coordinar equipo de desarrollo<br>- Gestionar recursos y cronograma<br>- Punto de contacto principal con cliente<br>- Resolución de conflictos | Email: [correo]<br>Tel: [teléfono] |
-| [Nombre completo] | Analista de Requisitos | - Elicitación de requisitos<br>- Documentación de SRS<br>- Validación con stakeholders<br>- Gestión de cambios en requisitos | Email: [correo]<br>Tel: [teléfono] |
-| [Nombre completo] | Arquitecto de Software / Líder Técnico | - Diseño de arquitectura del sistema<br>- Decisiones técnicas<br>- Revisión de código<br>- Establecer estándares de desarrollo | Email: [correo]<br>Tel: [teléfono] |
-| [Nombre completo] | Líder de QA/Testing | - Diseño de estrategia de pruebas<br>- Validación de requisitos<br>- Asegurar calidad del producto<br>- Reportes de defectos | Email: [correo]<br>Tel: [teléfono] |
-
-<!-- 
-NOTA PARA PROYECTOS ACADÉMICOS:
-En contextos académicos, pueden incluir roles como:
-- Docente/Asesor del proyecto
-- Estudiantes por rol (analista, desarrollador, tester)
-- "Cliente simulado" o stakeholder de práctica
--->
-
-<br>
-
-### 1.4 Definiciones, acrónimos y abreviaturas
-
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Proporcionar un glosario de términos técnicos, acrónimos y abreviaturas utilizados
-en el documento para garantizar comprensión común.
-
-IMPORTANCIA:
-Evita ambigüedades y malentendidos. Un mismo término puede significar cosas diferentes
-en distintos contextos (ej: "usuario" puede ser usuario final o usuario del sistema).
+# 1. INTRODUCCIÓN
 
-ORGANIZACIÓN:
-Liste los términos en orden alfabético para facilitar la consulta.
+## 1.1 Propósito
 
-TIPOS DE ENTRADAS:
-1. Términos del dominio del negocio
-2. Términos técnicos de software
-3. Acrónimos del proyecto
-4. Abreviaturas utilizadas en el documento
-
-FORMATO SUGERIDO:
--->
+Este documento tiene como objetivo definir los requisitos del **Sistema de Gestión de Gimnasio “FitControl”**, una aplicación que busca optimizar la administración del gimnasio universitario.  
+Aquí se explica qué hará el sistema, quiénes lo usarán y qué se espera lograr.  
 
-| Término | Definición |
-|---------|------------|
-| **API** | Application Programming Interface (Interfaz de Programación de Aplicaciones). Conjunto de definiciones y protocolos para integrar y comunicar aplicaciones de software. |
-| **CRUD** | Create, Read, Update, Delete. Operaciones básicas de gestión de datos en una base de datos. |
-| **Framework** | Estructura conceptual y tecnológica de soporte definida, normalmente con artefactos o módulos de software concretos, que puede servir de base para la organización y desarrollo de software. |
-| **IEEE 830** | Estándar del Instituto de Ingenieros Eléctricos y Electrónicos para especificaciones de requisitos de software. |
-| **RF** | Requisito Funcional. Especifica una función que debe realizar el sistema. |
-| **RNF** | Requisito No Funcional. Especifica criterios de calidad, restricciones o atributos del sistema. |
-| **SRS** | Software Requirements Specification (Especificación de Requisitos de Software). |
-| **Stakeholder** | Cualquier persona, grupo u organización que puede afectar o ser afectado por el proyecto. |
-| **UI** | User Interface (Interfaz de Usuario). Medio con que el usuario puede comunicarse con el sistema. |
-| **UX** | User Experience (Experiencia de Usuario). Percepción y respuesta del usuario resultante del uso o anticipación del uso de un producto. |
+El propósito es que tanto los desarrolladores, el cliente y el equipo de pruebas tengan una guía clara para trabajar con los mismos objetivos.  
+Este documento también servirá como referencia para verificar, validar y dar mantenimiento al software durante todo su ciclo de vida.
 
-<!-- 
-INSTRUCCIONES:
-1. Agregue TODOS los términos técnicos o del dominio que use en el documento
-2. Agregue los acrónimos de su organización o proyecto específico
-3. Defina términos ambiguos de manera precisa para su contexto
-4. Si usa términos en inglés, incluya la traducción al español
+| **Actor** | **Uso del Documento** |
+|------------|----------------------|
+| Desarrolladores | Usar los requisitos para crear las funcionalidades del sistema. |
+| Analistas | Validar que el sistema cumpla lo solicitado por el cliente. |
+| Cliente | Confirmar que el producto final cumple sus necesidades. |
+| Equipo QA | Generar casos de prueba a partir de los requisitos definidos. |
 
-EJEMPLO DE TÉRMINOS ESPECÍFICOS DE DOMINIO (Biblioteca):
+---
 
-| Término | Definición |
-|---------|------------|
-| **Ejemplar** | Copia física específica de un material bibliográfico. Un libro puede tener múltiples ejemplares. |
-| **Material bibliográfico** | Cualquier recurso disponible en la biblioteca: libros, revistas, DVDs, etc. |
-| **Préstamo a domicilio** | Tipo de préstamo que permite al usuario llevar material fuera de la biblioteca por un período determinado. |
-| **Préstamo en sala** | Tipo de préstamo que solo permite consultar el material dentro de las instalaciones de la biblioteca. |
-| **Usuario activo** | Usuario registrado que ha realizado al menos un préstamo en los últimos 12 meses. |
--->
+## 1.2 Alcance
 
-[Complete la tabla con los términos específicos de su proyecto]
+El sistema **FitControl** controlará el aforo en tiempo real dentro del gimnasio universitario, registrando entradas y salidas de usuarios mediante un sistema automático conectado a sensores.  
+También permitirá gestionar membresías, enviar notificaciones cuando se alcance el límite de aforo, y administrar una fila virtual para nuevos accesos.  
 
-<br>
+El sistema estará disponible para tres tipos de usuarios:  
+- **Administrador:** supervisa el funcionamiento y los reportes.  
+- **Sistema Automático:** controla el ingreso y salida.  
+- **Usuario General:** accede al gimnasio y consulta su membresía.
 
-### 1.5 Referencias
+### Objetivos principales
+| **Objetivo** | **Descripción** |
+|---------------|-----------------|
+| Control de Aforo | Evitar sobreocupación del gimnasio y garantizar seguridad. |
+| Automatización | Reducir procesos manuales y errores en el registro. |
+| Gestión de Membresías | Facilitar la administración de usuarios activos y vencidos. |
+| Monitoreo en Tiempo Real | Proveer información actualizada al instante. |
 
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Listar todos los documentos, estándares, normas y recursos externos referenciados
-en este SRS o que proporcionan contexto adicional.
+---
 
-IMPORTANCIA:
-Permite a los lectores:
-- Profundizar en temas específicos
-- Validar el cumplimiento de estándares
-- Acceder a documentación complementaria
-- Verificar la trazabilidad con otros documentos del proyecto
+## 1.3 Definiciones, Acrónimos y Abreviaturas
 
-TIPOS DE REFERENCIAS COMUNES:
-1. Estándares y normas (IEEE, ISO, etc.)
-2. Documentos del proyecto (plan de proyecto, visión, arquitectura)
-3. Documentación técnica de frameworks o tecnologías
-4. Bibliografía de referencia
-5. Sitios web y recursos en línea
+| **Término / Acrónimo** | **Definición** |
+|--------------------------|----------------|
+| **SRS** | Software Requirements Specification (Documento de Requisitos de Software). |
+| **RF** | Requisito Funcional. |
+| **RNF** | Requisito No Funcional. |
+| **JWT** | JSON Web Token, usado para autenticación segura. |
+| **HTTPS** | Protocolo de comunicación segura entre el cliente y el servidor. |
+| **FitControl** | Nombre del sistema de control de aforo del gimnasio. |
 
-FORMATO SUGERIDO (estilo académico):
--->
+---
 
-**Estándares y Normas:**
+## 1.4 Referencias
 
-1. IEEE Computer Society. (1998). *IEEE Recommended Practice for Software Requirements Specifications*. IEEE Std 830-1998. Nueva York: IEEE.
+| **Referencia** | **Descripción / Fuente** |
+|-----------------|--------------------------|
+| IEEE Std 830-1998 | *IEEE Recommended Practice for Software Requirements Specifications*. |
+| Universidad Nacional del Valle | Requerimientos funcionales definidos por el gimnasio universitario. |
+| Documento de Requisitos del Cliente | Base para la especificación funcional. |
+| Diagrama de Casos de Uso – FitControl | Diseño visual de las interacciones del sistema. |
 
-2. ISO/IEC/IEEE 29148:2018. *Systems and software engineering — Life cycle processes — Requirements engineering*. Ginebra: International Organization for Standardization.
+---
 
-**Documentos del Proyecto:**
+## 1.5 Visión General del Documento
 
-3. [Nombre del Autor]. ([Año]). *Documento de Visión del Proyecto [Nombre del Proyecto]*. [Organización]. Versión [X.X].
+Este documento está dividido en secciones que describen los diferentes aspectos del sistema:
 
-4. [Nombre del Autor]. ([Año]). *Plan de Gestión del Proyecto [Nombre del Proyecto]*. [Organización].
+| **Sección** | **Contenido** |
+|--------------|----------------|
+| **1. Introducción** | Propósito, alcance y términos clave del sistema. |
+| **2. Descripción General** | Contexto, funciones principales y características de los usuarios. |
+| **3. Requisitos Específicos** | Requisitos funcionales y no funcionales del sistema. |
+| **4. Casos de Uso** | Descripción de cómo interactúan los usuarios con el sistema. |
 
-**Documentación Técnica:**
+El propósito de esta estructura es mantener la documentación organizada, comprensible y fácil de actualizar conforme evolucione el proyecto.
 
-5. [Framework/Tecnología]. ([Año]). *Documentación Oficial*. Recuperado de [URL]
-
-6. [Base de Datos]. ([Año]). *Manual de Referencia*. Recuperado de [URL]
-
-**Bibliografía de Referencia:**
-
-7. Sommerville, I. (2016). *Ingeniería de Software* (10ª ed.). México: Pearson Educación.
-
-8. Pressman, R. S., & Maxim, B. R. (2021). *Ingeniería del Software: Un Enfoque Práctico* (9ª ed.). México: McGraw-Hill Education.
-
-**Recursos en Línea:**
-
-9. Material del curso de Levantamiento de Requerimientos. (2025). [Universidad/Institución]. Disponible en [URL del aula virtual].
-
-<!-- 
-EJEMPLO COMPLETO PARA PROYECTO BIBLIOTECARIO:
-
-**Estándares y Normas:**
-1. IEEE Std 830-1998. Software Requirements Specifications.
-2. ISO 2709:2008. Information and documentation — Format for information exchange.
-
-**Documentos del Proyecto:**
-3. Rodríguez, M. (2024). Documento de Visión - Sistema BiblioTech. Biblioteca Municipal Central.
-4. González, A. (2024). Estudio de Factibilidad - Automatización de Procesos Bibliotecarios.
-
-**Documentación Técnica:**
-5. Django Framework Documentation. (2024). Disponible en: https://docs.djangoproject.com/
-6. PostgreSQL 15 Documentation. (2024). Disponible en: https://www.postgresql.org/docs/15/
-
-**Bibliografía:**
-7. Lippincott, S. (2015). Library Automation in Transitional Societies: Lessons from Eastern Europe. Oxford: Chandos Publishing.
--->
-
-[Complete esta sección con las referencias relevantes para su proyecto]
-
-<br>
-
-### 1.6 Resumen
-
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Proporcionar una sinopsis ejecutiva del contenido y organización del resto del
-documento SRS.
-
-IMPORTANCIA:
-Esta sección orienta al lector sobre:
-- Qué encontrará en cada sección principal
-- Cómo está organizado el documento
-- Dónde buscar información específica
-
-ESTRUCTURA RECOMENDADA:
-Un párrafo descriptivo por cada sección principal (Sección 2 y Sección 3),
-explicando qué tipo de información contiene.
-
-LONGITUD:
-2-4 párrafos máximo. Debe ser conciso pero informativo.
-
-EJEMPLO ACADÉMICO:
--->
-
-Este documento de Especificación de Requisitos de Software está organizado en cuatro secciones principales que siguen el estándar IEEE 830-1998.
-
-**La Sección 2, Descripción General**, presenta una visión global del sistema sin entrar en detalles técnicos. Incluye la perspectiva del producto dentro del contexto organizacional, un resumen de las funciones principales del sistema, las características de los diferentes tipos de usuarios que interactuarán con el sistema, y las restricciones generales bajo las cuales debe operar. También documenta las suposiciones y dependencias que podrían afectar los requisitos, así como las funcionalidades consideradas para versiones futuras.
-
-**La Sección 3, Requisitos Específicos**, constituye el núcleo técnico del documento. Esta sección detalla exhaustivamente todos los requisitos funcionales (lo que el sistema debe hacer) y los requisitos no funcionales (cómo debe comportarse el sistema). Incluye especificaciones detalladas de las interfaces del sistema (usuario, hardware, software y comunicación), criterios de rendimiento, requisitos de seguridad, fiabilidad y disponibilidad, así como restricciones de diseño y otros atributos de calidad que el sistema debe cumplir.
-
-**La Sección 4, Apéndices**, contiene información complementaria que respalda las secciones anteriores, incluyendo diagramas del sistema, modelos de casos de uso, glosario extendido de términos, y matrices de trazabilidad que vinculan requisitos con casos de prueba. Esta sección también puede incluir prototipos de interfaces, esquemas de bases de datos, y otros artefactos que ayudan a clarificar los requisitos especificados.
-
-[Ajuste este resumen según la organización específica de su documento]
 
 <br>
 
 ---
 
-## 2 DESCRIPCIÓN GENERAL
 
-<!-- 
-═══════════════════════════════════════════════════════════════════════════════
-SECCIÓN 2: DESCRIPCIÓN GENERAL
-═══════════════════════════════════════════════════════════════════════════════
+---
 
-PROPÓSITO DE ESTA SECCIÓN:
-Proporcionar contexto y visión general del sistema sin entrar en detalles técnicos
-específicos. Esta sección ayuda a los lectores a comprender el "panorama general"
-antes de sumergirse en los requisitos específicos.
+## 2.2 Funciones del Producto
 
-IMPORTANCIA ACADÉMICA:
-Esta sección establece el contexto de negocio y técnico que justifica los requisitos
-específicos que vendrán en la Sección 3. Es fundamental para que stakeholders no
-técnicos comprendan el propósito y las capacidades del sistema.
+Las funciones principales del sistema están organizadas en los siguientes grupos:
 
-AUDIENCIA PRINCIPAL:
-- Gerentes y ejecutivos
-- Analistas de negocio
-- Arquitectos de sistemas
-- Nuevos miembros del equipo
+| **Módulo** | **Función Principal** | **Descripción Breve** |
+|-------------|----------------------|------------------------|
+| Control de Aforo | Monitoreo en tiempo real | Muestra el número de personas dentro del gimnasio y actualiza los datos automáticamente. |
+| Registro de Accesos | Entrada y salida de usuarios | Registra cuándo entra y sale cada usuario mediante el sistema automático. |
+| Notificaciones | Aforo máximo alcanzado | Envía alertas cuando se llega al límite establecido de personas. |
+| Bloqueo de Acceso | Prevención de ingreso | Impide que nuevos usuarios entren si el gimnasio está lleno. |
+| Fila Virtual | Espera de usuarios | Gestiona el orden de ingreso cuando el aforo está completo. |
+| Membresías | Administración de usuarios | Permite al administrador registrar, actualizar y renovar membresías. |
 
-PRINCIPIO CLAVE:
-Todo lo descrito en la Sección 2 debe ser GENERAL. Los detalles específicos,
-medibles y verificables van en la Sección 3.
--->
+---
 
-### 2.1 Perspectiva del producto
+## 2.3 Características de los Usuarios
 
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Situar el sistema en su contexto más amplio: ¿Es un sistema completamente nuevo?
-¿Reemplaza un sistema existente? ¿Es parte de un sistema mayor? ¿Cómo se relaciona
-con otros sistemas?
+| **Característica** | **Usuario Tipo 1: Administrador** | **Usuario Tipo 2: Sistema Automático** | **Usuario Tipo 3: Usuario General** |
+|----------------------|----------------------------------|----------------------------------------|------------------------------------|
+| **Descripción** | Personal encargado de la supervisión del gimnasio. | Módulo automatizado encargado de detectar y registrar accesos. | Personas que utilizan las instalaciones del gimnasio. |
+| **Responsabilidades** | Gestionar aforo, membresías y alertas. | Registrar entradas/salidas y mantener el conteo. | Acceder al gimnasio, consultar membresías. |
+| **Nivel Técnico** | Medio | Alto | Bajo |
+| **Experiencia en el Dominio** | Intermedio | Experto | Novato |
+| **Frecuencia de Uso** | Diaria | Continua | Diaria |
+| **Funciones Principales** | Ver reportes, actualizar membresías, recibir alertas. | Enviar datos al sistema, actualizar aforo. | Entrar, salir y ver su estado de membresía. |
+| **Necesidades Especiales** | Panel de control claro y rápido. | Conexión constante a la red. | Interfaz sencilla y accesible desde móvil. |
 
-QUÉ DEBE INCLUIR:
+---
 
-1. CONTEXTO DEL SISTEMA:
-  - Si es un nuevo producto independiente, reemplazo de sistema legacy, o 
-    componente de un sistema mayor
-  - Relación con otros sistemas existentes en la organización
+## 2.4 Restricciones
 
-2. INTERFACES DEL SISTEMA (Vista general):
-  - Interfaces con sistemas externos (NO detalles, solo mención)
-  - Interfaces con hardware específico
-  - Interfaces con otros componentes de software
+| **Tipo de Restricción** | **Descripción** |
+|--------------------------|-----------------|
+| Técnica | El sistema requiere conexión a Internet y servidor disponible las 24 horas. |
+| Seguridad | Todas las contraseñas deben almacenarse cifradas (bcrypt o SHA-256). |
+| Integración | Debe conectarse con sensores automáticos de acceso. |
+| Legal | Cumplimiento con las normas de protección de datos personales. |
+| Comunicación | Uso obligatorio del protocolo HTTPS para transmisión segura. |
 
-3. DIAGRAMA DE CONTEXTO (Altamente recomendado):
-  Un diagrama simple que muestre:
-  - El sistema como caja central
-  - Actores externos (usuarios, otros sistemas)
-  - Flujos de información principales
+---
 
-EJEMPLO ACADÉMICO:
+## 2.5 Suposiciones y Dependencias
 
-**Contexto del Sistema:**
+| **Suposición / Dependencia** | **Descripción** |
+|-------------------------------|-----------------|
+| Infraestructura | El gimnasio cuenta con red Wi-Fi estable y sensores instalados. |
+| Base de Datos | Se usará un motor relacional (MySQL o PostgreSQL). |
+| Autenticación | El sistema depende del módulo de inicio de sesión (RF-001). |
+| Hardware | Los sensores deben enviar información precisa al servidor. |
+| Personal | El administrador debe estar capacitado para usar el sistema. |
 
-BiblioTech es un sistema de información nuevo que reemplazará completamente el 
-actual sistema manual de gestión bibliotecaria basado en tarjetas físicas y hojas 
-de cálculo Excel. El sistema operará como una aplicación independiente pero 
-compartirá cierta información con sistemas externos de la biblioteca.
+---
 
-BiblioTech NO es un subsistema de un sistema mayor, sino una aplicación completa 
-y autónoma diseñada específicamente para las necesidades de la Biblioteca Municipal 
-Central. Sin embargo, el sistema deberá integrarse con:
+## 2.6 Requisitos Futuros
 
-- Sistema de identificación de usuarios de la municipalidad (para validar datos 
-  de ciudadanos)
-- Sistema de correo electrónico institucional (para envío de notificaciones)
-- Sistema de respaldo centralizado de la municipalidad (para backup automático)
-
-**Relación con Sistemas Existentes:**
-
-El sistema actual que BiblioTech reemplazará consiste en:
-- Tarjetas físicas de catálogo ordenadas alfabéticamente
-- Planillas Excel para control de préstamos
-- Registro manual en libros de visitas
-- Archivo físico de fichas de usuarios
-
-BiblioTech digitalizará completamente estos procesos, manteniendo la misma 
-lógica de negocio pero eliminando el manejo de papel.
-
-**Interfaces del Sistema (Visión General):**
-
-BiblioTech interactuará con:
-1. **Usuarios del Sistema**: Bibliotecarios, administradores, y usuarios finales 
-  (vía interfaz web)
-2. **Sistemas Externos**: 
-  - API del Sistema de Identificación Municipal
-  - Servidor SMTP para envío de correos
-  - Servidor de respaldo institucional
-3. **Hardware**: 
-  - Lectores de código de barras (para escaneo de libros y carnets)
-  - Impresoras térmicas (para comprobantes de préstamo)
-  - Servidor de base de datos
-
-[Incluya aquí un diagrama de contexto del sistema]
-
-ESTRUCTURA DEL DIAGRAMA DE CONTEXTO:
-Puede usar notación simple con cajas y flechas. Ejemplo en texto:
-
-┌─────────────────┐
-│    Usuarios     │────┐
-│   de Internet   │    │
-└─────────────────┘    │
-                       ▼
-┌────────────────┐   ┌──────────────────────┐   ┌──────────────────┐
-│ Bibliotecarios │─▶│   Sistema BiblioTech │─▶│  Sistema Email   │
-└────────────────┘   └──────────────────────┘   └──────────────────┘
-                              │
-                              ▼
-                     ┌──────────────────┐
-                     │  Base de Datos   │
-                     └──────────────────┘
-
-NOTA: En su documento final, reemplace esto con un diagrama formal usando herramientas
-como Draw.io, notación mermaid, Lucidchart, o similar.
--->
-
-[Complete esta subsección describiendo la perspectiva de su producto e incluya un diagrama de contexto]
-
-<br>
-
-### 2.2 Funciones del producto
-
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Proporcionar un resumen de las funciones PRINCIPALES del sistema. NO se trata de
-listar todos los requisitos funcionales (eso va en la Sección 3.1), sino de dar
-una visión general de las capacidades del sistema.
-
-IMPORTANCIA:
-Esta subsección permite a los lectores no técnicos comprender rápidamente qué
-hará el sistema sin perderse en detalles técnicos.
-
-NIVEL DE DETALLE:
-- ALTO NIVEL: "El sistema gestionará préstamos de libros"
-- NO: "El sistema validará que el ISBN tenga formato correcto usando expresión regular"
-
-ORGANIZACIÓN SUGERIDA:
-Agrupe las funciones por módulos o áreas funcionales del sistema.
-
-FORMATO RECOMENDADO:
-Use viñetas con descripciones de 1-2 líneas por función principal.
-
-EJEMPLO ACADÉMICO:
-
-El Sistema BiblioTech proporcionará las siguientes funciones principales:
-
-**Gestión de Catálogo:**
-- Registro y mantenimiento de materiales bibliográficos (libros, revistas, DVDs, etc.)
-- Catalogación según estándares bibliotecarios
-- Búsqueda avanzada de materiales por múltiples criterios
-- Gestión de múltiples ejemplares de un mismo título
-
-**Gestión de Usuarios:**
-- Registro de nuevos usuarios de la biblioteca
-- Mantenimiento de información de usuarios (actualización de datos, foto, etc.)
-- Gestión de diferentes tipos de membresía (estudiante, adulto, infantil)
-- Control de estado de usuarios (activo, suspendido, moroso)
-
-**Gestión de Préstamos:**
-- Procesamiento de préstamos y devoluciones de material
-- Renovación de préstamos
-- Sistema de reservas de materiales no disponibles
-- Cálculo automático de multas por retraso
-- Generación de comprobantes de préstamo
-
-**Gestión de Notificaciones:**
-- Notificaciones automáticas de vencimiento de préstamos
-- Alertas de disponibilidad de material reservado
-- Recordatorios de multas pendientes
-- Comunicados generales a usuarios
-
-**Reportes y Estadísticas:**
-- Reportes de materiales más prestados
-- Estadísticas de uso de la biblioteca
-- Reportes de inventario
-- Estado de cuenta de usuarios (préstamos activos, multas, etc.)
-
-**Administración del Sistema:**
-- Gestión de usuarios del sistema (bibliotecarios, administradores)
-- Configuración de parámetros del sistema (días de préstamo, multas, etc.)
-- Respaldo y restauración de datos
-- Auditoría de operaciones del sistema
-
-OPCIONAL: Puede incluir un diagrama de alto nivel mostrando los módulos principales
-y cómo se relacionan.
-
-NOTA IMPORTANTE:
-Esta NO es la especificación detallada de requisitos funcionales. Cada función
-aquí mencionada se expandirá con requisitos específicos, medibles y verificables
-en la Sección 3.1.
--->
-
-[Complete esta subsección describiendo las funciones principales de su sistema, agrupadas lógicamente]
-
-<br>
-
-### 2.3 Características de los usuarios
-
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Identificar y describir los diferentes tipos de usuarios que interactuarán con
-el sistema, incluyendo sus características relevantes que puedan afectar el diseño.
-
-IMPORTANCIA:
-Comprender a los usuarios es fundamental para:
-- Diseñar interfaces apropiadas para cada perfil
-- Establecer niveles adecuados de seguridad y permisos
-- Determinar requisitos de capacitación
-- Identificar necesidades de usabilidad y accesibilidad
-
-QUÉ INCLUIR PARA CADA TIPO DE USUARIO:
-
-1. Tipo de usuario (nombre del rol)
-2. Descripción general del rol
-3. Responsabilidades en el sistema
-4. Nivel de experiencia técnica
-5. Nivel de experiencia con el dominio del negocio
-6. Frecuencia de uso del sistema
-7. Funciones principales que utilizará
-8. Necesidades especiales (accesibilidad, idioma, etc.)
-
-FORMATO SUGERIDO:
-Use una tabla o subsecciones para cada tipo de usuario.
-
-TABLA RECOMENDADA:
--->
-
-| Característica | Usuario Tipo 1: [Nombre del Rol] | Usuario Tipo 2: [Nombre del Rol] | Usuario Tipo 3: [Nombre del Rol] |
-|----------------|-----------------------------------|-----------------------------------|-----------------------------------|
-| **Descripción** | [Breve descripción del rol] | [Breve descripción del rol] | [Breve descripción del rol] |
-| **Responsabilidades** | [Qué hace en el sistema] | [Qué hace en el sistema] | [Qué hace en el sistema] |
-| **Nivel Técnico** | Alto/Medio/Bajo | Alto/Medio/Bajo | Alto/Medio/Bajo |
-| **Experiencia en el Dominio** | Experto/Intermedio/Novato | Experto/Intermedio/Novato | Experto/Intermedio/Novato |
-| **Frecuencia de Uso** | Diaria/Semanal/Ocasional | Diaria/Semanal/Ocasional | Diaria/Semanal/Ocasional |
-| **Funciones Principales** | [Listar 3-5 funciones] | [Listar 3-5 funciones] | [Listar 3-5 funciones] |
-| **Necesidades Especiales** | [Si aplica] | [Si aplica] | [Si aplica] |
-
-<!-- 
-EJEMPLO ACADÉMICO DETALLADO:
-
-**TIPO DE USUARIO 1: Bibliotecario**
-
-- **Descripción**: Personal de la biblioteca encargado de las operaciones diarias 
-  de préstamos, devoluciones, y atención al público.
-
-- **Responsabilidades en el Sistema**:
-  - Registrar préstamos y devoluciones de materiales
-  - Registrar nuevos usuarios
-  - Procesar pagos de multas
-  - Atender consultas sobre disponibilidad de materiales
-  - Generar reportes básicos de operaciones diarias
-
-- **Nivel de Experiencia Técnica**: Medio. Tienen conocimientos básicos de informática 
-  pero no son expertos técnicos. Pueden manejar aplicaciones de oficina estándar.
-
-- **Experiencia en el Dominio**: Alta. Conocen perfectamente los procesos bibliotecarios 
-  y la organización de materiales. Promedio de 5+ años trabajando en bibliotecas.
-
-- **Frecuencia de Uso**: Diaria, durante toda su jornada laboral (8 horas al día).
-
-- **Funciones Principales que Utilizará**:
-  - Módulo de préstamos y devoluciones
-  - Módulo de gestión de usuarios
-  - Búsqueda de materiales en catálogo
-  - Gestión de reservas
-  - Procesamiento de multas
-
-- **Necesidades Especiales**: 
-  - Interfaz intuitiva que permita realizar operaciones rápidamente
-  - Capacidad de trabajo con interrupciones frecuentes (atención al público)
-  - Acceso rápido a ayuda contextual
-
-**TIPO DE USUARIO 2: Administrador del Sistema**
-
-- **Descripción**: Personal técnico o jefe de biblioteca responsable de la configuración 
-  y administración del sistema BiblioTech.
-
-- **Responsabilidades en el Sistema**:
-  - Configurar parámetros operativos del sistema
-  - Gestionar cuentas de bibliotecarios
-  - Mantener el catálogo (altas, bajas, modificaciones masivas)
-  - Generar reportes estadísticos y ejecutivos
-  - Realizar respaldos del sistema
-  - Auditar operaciones del sistema
-
-- **Nivel de Experiencia Técnica**: Alto. Tiene conocimientos avanzados de sistemas 
-  informáticos y administración de aplicaciones.
-
-- **Experiencia en el Dominio**: Alta. Comprende todos los procesos bibliotecarios 
-  desde una perspectiva gerencial.
-
-- **Frecuencia de Uso**: Semanal para tareas de configuración y mantenimiento, 
-  diaria para consulta de reportes y auditoría.
-
-- **Funciones Principales que Utilizará**:
-  - Panel de administración completo
-  - Configuración de parámetros del sistema
-  - Gestión de usuarios del sistema
-  - Generación de reportes avanzados
-  - Herramientas de respaldo y restauración
-  - Visualización de logs de auditoría
-
-- **Necesidades Especiales**: 
-  - Acceso a funciones avanzadas no disponibles para usuarios regulares
-  - Herramientas de diagnóstico y monitoreo del sistema
-  - Capacidad de realizar operaciones masivas sobre datos
-
-**TIPO DE USUARIO 3: Usuario/Cliente de la Biblioteca**
-
-- **Descripción**: Ciudadanos registrados en la biblioteca que consultan el catálogo 
-  y su información personal desde Internet.
-
-- **Responsabilidades en el Sistema**:
-  - Buscar materiales disponibles en la biblioteca
-  - Consultar sus préstamos activos
-  - Renovar préstamos (si es posible)
-  - Hacer reservas de materiales
-  - Consultar su historial de préstamos
-
-- **Nivel de Experiencia Técnica**: Bajo a Medio. Varían desde personas con 
-  conocimientos básicos hasta usuarios experimentados de Internet.
-
-- **Experiencia en el Dominio**: Baja a Media. Algunos son usuarios frecuentes 
-  de bibliotecas, otros son nuevos usuarios.
-
-- **Frecuencia de Uso**: Variable. Desde uso semanal hasta esporádico (mensual 
-  o menos frecuente).
-
-- **Funciones Principales que Utilizará**:
-  - Búsqueda de materiales en catálogo
-  - Consulta de cuenta personal
-  - Sistema de reservas
-  - Renovación de préstamos
-
-- **Necesidades Especiales**: 
-  - Interfaz muy intuitiva, sin necesidad de capacitación
-  - Accesibilidad (cumplimiento WCAG 2.1 nivel AA)
-  - Disponible 24/7 desde cualquier dispositivo (responsive)
-  - Multiidioma (si aplica)
-  - Protección de datos personales
--->
-
-[Complete esta subsección describiendo todos los tipos de usuarios de su sistema]
-
-<br>
-
-### 2.4 Restricciones
-
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Documentar todas las limitaciones o restricciones que afectarán el diseño e 
-implementación del sistema. Estas restricciones pueden ser técnicas, de negocio,
-regulatorias, o de cualquier otra naturaleza.
-
-IMPORTANCIA:
-Las restricciones son CRÍTICAS porque:
-- Limitan las opciones de diseño e implementación
-- Pueden afectar costos y cronogramas
-- Deben ser conocidas desde el inicio del proyecto
-- Son generalmente NO NEGOCIABLES
-
-TIPOS COMUNES DE RESTRICCIONES:
-
-1. Restricciones Regulatorias/Legales
-2. Restricciones de Hardware
-3. Restricciones de Software
-4. Restricciones de Interfaces con Aplicaciones
-5. Restricciones Paralelas (procesos concurrentes)
-6. Restricciones de Auditoría
-7. Restricciones de Lenguaje de Programación
-8. Restricciones de Bases de Datos
-9. Restricciones de Estándares
-10. Restricciones de Presupuesto y Recursos
-
-FORMATO SUGERIDO:
-Organice por categorías para mejor comprensión.
-
-EJEMPLO ACADÉMICO:
-
-**Restricciones Regulatorias y Legales:**
-
-- El sistema DEBE cumplir con la Ley de Protección de Datos Personales vigente 
-  en el país, garantizando la confidencialidad de información de usuarios.
-  
-- Toda eliminación de datos personales debe ser irreversible y cumplir con el 
-  "derecho al olvido" establecido en la legislación.
-
-- El sistema debe mantener registros de auditoría de acceso a datos personales 
-  por un período mínimo de 2 años.
-
-**Restricciones Tecnológicas:**
-
-- El sistema DEBE ejecutarse en los servidores existentes de la municipalidad 
-  (Linux Ubuntu Server 22.04 LTS, 8GB RAM, 500GB disco).
-
-- El sistema DEBE ser compatible con los navegadores web utilizados en la biblioteca: 
-  Chrome 90+, Firefox 88+, Edge 90+.
-
-- El sistema DEBE integrarse con el lector de código de barras marca Zebra modelo 
-  DS2208 ya adquirido por la biblioteca.
-
-**Restricciones de Implementación:**
-
-- El desarrollo DEBE realizarse utilizando tecnologías open source para evitar 
-  costos de licenciamiento.
-
-- El sistema DEBE estar implementado y en producción en un plazo máximo de 6 meses.
-
-- El equipo de desarrollo está limitado a 4 personas (2 desarrolladores, 1 analista, 
-  1 tester).
-
-**Restricciones de Interfaz:**
-
-- El sistema DEBE integrarse con la API REST del Sistema Municipal de Identificación 
-  de Ciudadanos (versión 2.1) para validación de datos de usuarios.
-
-- El sistema DEBE utilizar el servidor SMTP institucional (mail.municipalidad.gob) 
-  para envío de correos electrónicos.
-
-**Restricciones Operacionales:**
-
-- El sistema DEBE funcionar con la conexión a Internet existente (10 Mbps simétrica), 
-  la cual NO se puede mejorar.
-
-- La base de datos DEBE ser PostgreSQL versión 13 o superior, ya que es el estándar 
-  de la municipalidad.
-
-- El sistema NO PUEDE requerir instalación de software adicional en las computadoras 
-  de los bibliotecarios (debe ser 100% web).
-
-**Restricciones de Migración de Datos:**
-
-- El sistema DEBE permitir importar datos del sistema Excel actual, incluyendo 
-  un mínimo de 15,000 registros de usuarios y 25,000 materiales bibliográficos.
-
-- La migración de datos NO puede causar interrupción del servicio de la biblioteca 
-  por más de 4 horas.
-
-**Restricciones de Capacitación:**
-
-- La capacitación del personal DEBE completarse en máximo 16 horas totales 
-  (2 días de 8 horas).
-
-- Los materiales de capacitación DEBEN estar en español.
-
-**Restricciones Presupuestarias:**
-
-- El presupuesto total del proyecto NO puede exceder $25,000 USD.
-
-- NO se puede contratar más personal; el trabajo debe realizarse con el equipo 
-  disponible.
-
-NOTA IMPORTANTE:
-Sea específico. NO escriba "el sistema debe ser rápido" (eso es un requisito de 
-rendimiento). Escriba restricciones concretas como "el sistema debe ejecutarse 
-en servidores con máximo 8GB de RAM".
--->
-
-[Complete esta subsección documentando todas las restricciones aplicables a su proyecto]
-
-<br>
-
-### 2.5 Suposiciones y dependencias
-
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Documentar todas las suposiciones (assumptions) hechas durante la especificación
-de requisitos y las dependencias externas que podrían afectar el desarrollo o
-funcionamiento del sistema.
-
-IMPORTANCIA CRÍTICA:
-- Las suposiciones son premisas que SE ASUMEN CIERTAS pero que podrían cambiar
-- Si una suposición resulta incorrecta, los requisitos pueden necesitar revisión
-- Las dependencias son factores externos fuera del control del equipo
-- Identificarlas permite gestión de riesgos proactiva
-
-DIFERENCIA CLAVE:
-- SUPOSICIÓN: "Se asume que el usuario tiene conexión a Internet"
-- DEPENDENCIA: "El sistema depende de la disponibilidad de la API externa X"
-
-CATEGORÍAS COMUNES:
-
-1. Suposiciones sobre Usuarios
-2. Suposiciones sobre el Entorno de Operación
-3. Suposiciones sobre Datos
-4. Dependencias de Sistemas Externos
-5. Dependencias de Terceros
-6. Dependencias Tecnológicas
-
-FORMATO SUGERIDO:
-Liste cada suposición/dependencia numerada para fácil referencia.
-
-EJEMPLO ACADÉMICO:
-
-**Suposiciones:**
-
-1. **Conectividad**: Se asume que la biblioteca cuenta con conexión a Internet 
-  estable y continua durante el horario de operación. Si la conexión falla, 
-  algunas funcionalidades no estarán disponibles.
-
-2. **Hardware**: Se asume que las computadoras de las estaciones de trabajo de 
-  bibliotecarios cumplen con los requisitos mínimos: procesador dual-core 2GHz, 
-  4GB RAM, navegador web actualizado.
-
-3. **Conocimientos del Personal**: Se asume que el personal de biblioteca tiene 
-  conocimientos básicos de informática (uso de navegador web, mouse, teclado) 
-  y que recibirá capacitación específica sobre BiblioTech antes del lanzamiento.
-
-4. **Proceso de Negocio**: Se asume que los procesos bibliotecarios actuales 
-  (políticas de préstamo, cálculo de multas, categorización de materiales) 
-  continuarán siendo válidos en el sistema digitalizado.
-
-5. **Volumen de Datos Inicial**: Se asume que el catálogo inicial contiene 
-  aproximadamente 25,000 materiales bibliográficos y 15,000 usuarios registrados, 
-  con un crecimiento anual estimado del 10%.
-
-6. **Usuarios Finales**: Se asume que los usuarios de la biblioteca que accedan 
-  al catálogo en línea tienen conocimientos básicos de navegación web y acceso 
-  a un dispositivo con navegador (computadora, tablet, smartphone).
-
-7. **Datos de Migración**: Se asume que los datos en Excel del sistema actual 
-  están razonablemente limpios y estructurados, y que cualquier inconsistencia 
-  será resuelta antes de la migración.
-
-8. **Apoyo Institucional**: Se asume que la dirección de la biblioteca y la 
-  municipalidad proporcionarán el apoyo necesario para la adopción del sistema, 
-  incluyendo tiempo para capacitación del personal.
-
-9. **Mantenimiento**: Se asume que la municipalidad proporcionará soporte técnico 
-  continuo para el servidor y la infraestructura de red.
-
-**Dependencias:**
-
-1. **Sistema Municipal de Identificación (SMI)**: El módulo de registro de usuarios 
-  DEPENDE de la disponibilidad y correcto funcionamiento de la API del SMI para 
-  validar identidad de ciudadanos. Si la API no está disponible, el registro de 
-  nuevos usuarios se verá afectado.
-
-2. **Servicio de Correo Electrónico**: El módulo de notificaciones DEPENDE del 
-  servidor SMTP institucional (mail.municipalidad.gob). Si el servicio de correo 
-  falla, las notificaciones automáticas no se enviarán.
-
-3. **Proveedor de Hosting**: El sistema DEPENDE de la infraestructura de servidores 
-  de la municipalidad. Cualquier mantenimiento, actualización o problema en esta 
-  infraestructura afectará la disponibilidad de BiblioTech.
-
-4. **Código de Barras**: El sistema DEPENDE del estándar ISBN (International Standard 
-  Book Number) para identificación de libros. Materiales sin ISBN requerirán 
-  códigos alternativos generados internamente.
-
-5. **Navegadores Web**: El sistema DEPENDE de que los navegadores web mantengan 
-  compatibilidad con los estándares HTML5, CSS3 y JavaScript ES6. Cambios 
-  significativos en navegadores podrían requerir actualizaciones del sistema.
-
-6. **Base de Datos PostgreSQL**: El sistema DEPENDE de PostgreSQL y sus 
-  actualizaciones de seguridad. Migraciones a nuevas versiones mayores de 
-  PostgreSQL requerirán pruebas exhaustivas.
-
-7. **Lectores de Código de Barras**: El sistema DEPENDE de los lectores de código 
-  de barras Zebra DS2208. Si se reemplazan por otro modelo, puede requerirse 
-  adaptación del sistema.
-
-8. **Proveedor de Carnes de Biblioteca**: La funcionalidad de escaneado de carnets 
-  DEPENDE de que el proveedor de carnets imprima códigos de barras legibles según 
-  el estándar Code 39 o similar.
-
-9. **Equipo de Desarrollo**: El cronograma del proyecto DEPENDE de la disponibilidad 
-  continua del equipo de desarrollo asignado. Cambios en el equipo podrían afectar 
-  plazos de entrega.
-
-10. **Aprobaciones de la Municipalidad**: Ciertas decisiones de diseño y configuración 
-  DEPENDEN de aprobaciones del departamento de sistemas de la municipalidad, lo 
-  que podría introducir retrasos si las aprobaciones se demoran.
-
-**Impacto de Cambios:**
-
-Si cualquiera de las suposiciones anteriores resulta incorrecta o las dependencias 
-externas fallan, se requerirá:
-- Revisión de requisitos afectados
-- Evaluación de impacto en cronograma y presupuesto
-- Posible renegociación de alcance del proyecto
-
-El equipo de proyecto debe monitorear continuamente la validez de estas suposiciones 
-y el estado de las dependencias, reportando cualquier cambio significativo a los 
-stakeholders.
-
-NOTA PARA ESTUDIANTES:
-En proyectos reales, este análisis es crítico para la gestión de riesgos. Una 
-suposición incorrecta puede hacer que todo un proyecto fracase. Sea honesto y 
-exhaustivo al documentar suposiciones y dependencias.
--->
-
-[Complete esta subsección documentando todas las suposiciones y dependencias de su proyecto]
-
-<br>
-
-### 2.6 Requisitos futuros
-
-<!-- 
-OBJETIVO DE ESTA SUBSECCIÓN:
-Documentar funcionalidades y mejoras que NO estarán en la versión actual del 
-sistema, pero que se han identificado como valiosas para futuras versiones.
-
-IMPORTANCIA:
-- Gestiona expectativas de stakeholders (deja claro qué NO estará en esta versión)
-- Proporciona una hoja de ruta de evolución del producto
-- Ayuda en la planificación arquitectónica (diseñar pensando en extensibilidad)
-- Documenta ideas valiosas que surgieron pero están fuera del alcance actual
-
-CATEGORÍAS SUGERIDAS:
-1. Funcionalidades nuevas
-2. Integraciones adicionales
-3. Mejoras de rendimiento
-4. Mejoras de usabilidad
-5. Soporte de nuevas plataformas
-
-FORMATO:
-Liste de manera concisa. NO desarrolle requisitos completos aquí.
-
-PRINCIPIO IMPORTANTE:
-Estos requisitos fueron deliberadamente EXCLUIDOS del alcance actual por razones
-de tiempo, presupuesto, o prioridad. NO son errores ni omisiones.
-
-EJEMPLO ACADÉMICO:
-
-**Funcionalidades Futuras Planificadas:**
-
-**Versión 2.0 (Estimada para 12 meses después del lanzamiento):**
-
-1. **Aplicación Móvil Nativa**: Desarrollo de aplicaciones nativas para iOS y 
-  Android que permitan a los usuarios acceder al catálogo, renovar préstamos, 
-  y recibir notificaciones push.
-
-2. **Sistema de Recomendaciones**: Implementar un sistema de recomendaciones 
-  inteligente que sugiera materiales basándose en el historial de préstamos 
-  y preferencias del usuario (similar a Amazon o Netflix).
-
-3. **Biblioteca Digital**: Incorporar módulo para gestión y préstamo de libros 
-  electrónicos (e-books) y audiolibros, con integración de DRM (Digital Rights 
-  Management).
-
-4. **Sistema de Comentarios y Reseñas**: Permitir a los usuarios calificar 
-  materiales y escribir reseñas, creando una comunidad alrededor de la biblioteca.
-
-5. **Integración con Redes Sociales**: Permitir a usuarios compartir sus lecturas 
-  y listas de deseos en redes sociales (Facebook, Twitter, Instagram).
-
-**Versión 2.5 (Estimada para 18 meses):**
-
-6. **Préstamo Interbibliotecario**: Integración con otras bibliotecas municipales 
-  para permitir préstamos de materiales entre bibliotecas de la red.
-
-7. **Sistema de Eventos**: Módulo para gestión y difusión de eventos de la 
-  biblioteca (clubs de lectura, presentaciones de libros, talleres).
-
-8. **Analítica Avanzada**: Dashboard ejecutivo con análisis predictivo de demanda, 
-  recomendaciones de adquisiciones basadas en IA, y análisis de tendencias.
-
-9. **Portal del Autor**: Permitir a autores locales publicar información sobre 
-  sus obras, calendario de presentaciones, y conectar con lectores.
-
-10. **Accesibilidad Mejorada**: Soporte completo para lectores de pantalla, modo 
-  alto contraste, tamaños de fuente ajustables, y soporte para materiales en 
-  Braille.
-
-**Integraciones Futuras:**
-
-11. **Sistema de Pago en Línea**: Integración con pasarelas de pago (PayPal, 
-  tarjetas de crédito) para pago de multas y cuotas de membresía en línea.
-
-12. **API Pública**: Exposición de API REST pública (con autenticación) para que 
-  desarrolladores externos puedan crear aplicaciones que consuman datos de la 
-  biblioteca.
-
-13. **Integración con Servicios Editoriales**: Conexión con bases de datos de 
-  editoriales para obtener automáticamente metadatos, portadas, y reseñas de 
-  nuevos libros.
-
-**Mejoras Tecnológicas Consideradas:**
-
-14. **Modo Offline**: Permitir operaciones básicas de préstamo/devolución en modo 
-  offline cuando no hay conexión a Internet, con sincronización automática 
-  posterior.
-
-15. **Reconocimiento por Voz**: Búsqueda de materiales mediante comandos de voz 
-  (integración con Alexa, Google Assistant).
-
-16. **Chatbot de Atención**: Asistente virtual con IA que responda preguntas 
-  frecuentes de usuarios 24/7.
-
-17. **Realidad Aumentada**: Aplicación AR que ayude a usuarios a localizar 
-  físicamente materiales en los estantes de la biblioteca.
-
-**Nota Importante:**
-Estos requisitos futuros son tentativos y están sujetos a disponibilidad de 
-presupuesto, cambios en prioridades del negocio, y evolución tecnológica. No 
-constituyen compromisos contractuales.
-
-CONSIDERACIÓN ARQUITECTÓNICA:
-Aunque estas funcionalidades no se implementarán en la versión 1.0, la arquitectura 
-del sistema debe diseñarse de manera que permita su incorporación futura sin 
-requerir rediseños mayores. Esto implica:
-- Diseño modular
-- API bien definidas entre componentes
-- Base de datos extensible
-- Separación clara de responsabilidades
-
-PROCESO DE PRIORIZACIÓN:
-Los requisitos futuros serán revisados y priorizados en cada ciclo de planificación, 
-basándose en:
-- Feedback de usuarios reales después del lanzamiento
-- Cambios en el contexto de negocio
-- Disponibilidad de recursos
-- ROI (Retorno de Inversión) estimado
-- Dependencias técnicas
--->
-
-[Complete esta subsección con los requisitos futuros identificados para su proyecto]
+| **Código** | **Requisito Futuro** | **Descripción** |
+|-------------|----------------------|-----------------|
+| RF-F01 | Sistema de pagos en línea | Permitir renovar membresías mediante pagos digitales. |
+| RF-F02 | Aplicación móvil | Crear una app para ver el aforo y estado de membresía en tiempo real. |
+| RF-F03 | Reportes estadísticos | Generar informes automáticos del uso del gimnasio. |
+| RF-F04 | Notificaciones push | Enviar alertas al celular del usuario cuando haya cupo disponible. |
 
 <br>
 
@@ -1261,7 +324,8 @@ El sistema mantiene actualizado el número de personas dentro del gimnasio y gar
 
 ### Diagrama del Caso de Uso
 
-```mermaid
+
+
 usecase
     actor "Sistema Automático" as SA
     rectangle "Sistema FitCampus" {
