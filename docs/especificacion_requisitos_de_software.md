@@ -234,14 +234,74 @@ Las funciones principales del sistema están organizadas en los siguientes grupo
 
 ## 3 REQUISITOS ESPECÍFICOS
 
-# 3. REQUISITOS FUNCIONALES
-
 ## 3.1 Requisitos Funcionales
 
-### 3.1.1 Módulo de Control de Aforo
+## 3.1.1 Módulo de Gestión de Membresías
+
+| Campo | Descripción |
+|-------|--------------|
+| **ID** | RF-001 |
+| **Nombre** | Administración de membresías |
+| **Descripción** | El sistema debe permitir al administrador registrar, actualizar, suspender o eliminar las membresías de los usuarios, manteniendo un historial de sus estados y fechas de renovación. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Alta |
+| **Fuente** | Requerimiento del área administrativa del gimnasio |
+| **Criterios de aceptación** | 1. El administrador puede crear, editar y eliminar membresías.<br>2. Se registran fechas de inicio y vencimiento.<br>3. El sistema genera alertas de vencimiento próximas.<br>4. Los cambios se reflejan en tiempo real en la base de datos. |
+| **Dependencias** | RF-001 (Control de aforo), RF-002 (Registro de accesos) |
+| **Comentarios** | Las membresías vencidas deben impedir el acceso al gimnasio automáticamente. |
+
+---
+
+## 3.1.2 Módulo de Autenticación y Control de Acceso
+
+| Campo | Descripción |
+|-------|--------------|
+| **ID** | RF-002 |
+| **Nombre** | Inicio de sesión y autenticación segura |
+| **Descripción** | El sistema debe permitir el acceso mediante credenciales únicas (usuario y contraseña) y usar autenticación JWT para sesiones seguras. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Alta |
+| **Fuente** | Política de seguridad institucional |
+| **Criterios de aceptación** | 1. El usuario debe ingresar credenciales válidas.<br>2. El sistema genera un token JWT válido por sesión.<br>3. Los datos viajan cifrados por HTTPS.<br>4. El acceso no autorizado es bloqueado automáticamente. |
+| **Dependencias** | RNF-Seguridad |
+| **Comentarios** | El sistema debe permitir roles diferenciados (Administrador / Usuario General). |
+
+---
+
+## 3.1.3 Módulo de Notificaciones y Alertas
+
+| Campo | Descripción |
+|-------|--------------|
+| **ID** | RF-003 |
+| **Nombre** | Envío de notificaciones automáticas |
+| **Descripción** | El sistema debe enviar notificaciones automáticas al administrador y a los usuarios cuando se produzcan eventos importantes, como aforo máximo, membresía vencida o turno disponible. |
+| **Prioridad** | Media |
+| **Estabilidad** | Media |
+| **Fuente** | Requerimiento de experiencia de usuario |
+| **Criterios de aceptación** | 1. El sistema envía notificaciones por correo o dentro de la app.<br>2. Se generan alertas al alcanzar el límite de aforo.<br>3. Se notifica al usuario 3 días antes del vencimiento de su membresía. |
+| **Dependencias** | RF-001, RF-003 |
+| **Comentarios** | En una versión futura se integrarán notificaciones push móviles. |
+
+---
+
+## 3.1.4 Módulo de Reportes y Estadísticas
+
+| Campo | Descripción |
+|-------|--------------|
+| **ID** | RF-004 |
+| **Nombre** | Generación de reportes de uso |
+| **Descripción** | El sistema debe permitir al administrador generar reportes sobre el uso del gimnasio, incluyendo aforo diario, membresías activas, ingresos y salidas. |
+| **Prioridad** | Media |
+| **Estabilidad** | Alta |
+| **Fuente** | Solicitud del área de administración |
+| **Criterios de aceptación** | 1. El sistema genera reportes filtrados por fecha o tipo de usuario.<br>2. Los reportes pueden exportarse a PDF o Excel.<br>3. La información se obtiene de los registros en la base de datos. |
+| **Dependencias** | RF-001, RF-002,
+
+
+### 3.1.5 Módulo de Control de Aforo
 | Campo | Descripción |
 |--------|--------------|
-| **ID** | RF-001 |
+| **ID** | RF-005 |
 | **Nombre** | Control de aforo en tiempo real |
 | **Descripción** | El sistema FitCampus debe monitorear automáticamente el número de usuarios dentro del gimnasio, actualizando el aforo en tiempo real. Cuando se alcance el límite máximo permitido, el sistema notificará al administrador, bloqueará nuevos accesos y permitirá la creación de una fila virtual. |
 | **Prioridad** | Alta |
@@ -253,10 +313,10 @@ Las funciones principales del sistema están organizadas en los siguientes grupo
 
 ---
 
-### 3.1.2 Módulo de Registro de Entradas y Salidas
+### 3.1.6 Módulo de Registro de Entradas y Salidas
 | Campo | Descripción |
 |--------|--------------|
-| **ID** | RF-002 |
+| **ID** | RF-006 |
 | **Nombre** | Registro automático de entradas y salidas |
 | **Descripción** | El sistema debe registrar la entrada y salida de cada usuario mediante sensores o lectores de identificación. Estos registros alimentan el conteo de aforo actual y se almacenan en la base de datos para control y reportes. |
 | **Prioridad** | Alta |
@@ -267,6 +327,50 @@ Las funciones principales del sistema están organizadas en los siguientes grupo
 | **Comentarios** | Estos datos pueden usarse para reportes de asistencia y estadísticas de uso. |
 
 ---
+
+### 3.1.7 Módulo de Gestión de Rutinas Personalizadas
+| Campo | Descripción |
+|--------|--------------|
+| **ID** | RF-007 |
+| **Nombre** | Gestión de rutinas personalizadas |
+| **Descripción** | El sistema FitCampus debe permitir a los entrenadores crear, asignar y modificar rutinas personalizadas para los usuarios registrados, de acuerdo con sus objetivos físicos, nivel de experiencia y estado de salud. Estas rutinas deben almacenarse en el perfil del usuario y ser consultables en cualquier momento. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Media |
+| **Fuente** | Solicitud del área de entrenamiento y bienestar universitario |
+| **Criterios de aceptación** | 1. El entrenador puede crear una rutina desde su cuenta.<br>2. El usuario visualiza su rutina personalizada.<br>3. El sistema permite modificar o eliminar rutinas existentes.<br>4. Los datos se almacenan correctamente en la base de datos. |
+| **Dependencias** | RF-003 (Gestión de usuarios) |
+| **Comentarios** | Este módulo fortalece la personalización del entrenamiento y mejora la experiencia del usuario. |
+
+---
+
+### 3.1.8 Módulo de Control de Asistencia Automatizado
+| Campo | Descripción |
+|--------|--------------|
+| **ID** | RF-008 |
+| **Nombre** | Control de asistencia automatizado |
+| **Descripción** | El sistema FitCampus deberá registrar automáticamente la asistencia de los usuarios mediante un código QR o dispositivo biométrico al ingresar al gimnasio, almacenando la hora, fecha y duración de la visita. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Alta |
+| **Fuente** | Requerimiento derivado de la gestión administrativa del gimnasio |
+| **Criterios de aceptación** | 1. El usuario puede registrar su ingreso mediante QR o huella.<br>2. El sistema registra hora y fecha correctamente.<br>3. Se genera un historial de asistencias por usuario.<br>4. La información se actualiza en la base de datos en tiempo real. |
+| **Dependencias** | RF-002 (Registro de entradas y salidas) |
+| **Comentarios** | Facilita el seguimiento de uso de las instalaciones y la gestión de estadísticas de aforo. |
+
+---
+
+### 3.1.9 Módulo de Notificaciones y Recordatorios
+| Campo | Descripción |
+|--------|--------------|
+| **ID** | RF-009 |
+| **Nombre** | Envío automático de notificaciones y recordatorios |
+| **Descripción** | El sistema FitCampus debe enviar notificaciones automáticas a los usuarios sobre vencimiento de membresías, horarios de entrenamiento, actualizaciones de rutinas y eventos especiales del gimnasio, a través del correo electrónico o aplicación móvil. |
+| **Prioridad** | Media |
+| **Estabilidad** | Alta |
+| **Fuente** | Solicitud de los usuarios y administración del gimnasio |
+| **Criterios de aceptación** | 1. Se envían alertas antes del vencimiento de la membresía.<br>2. Los usuarios reciben recordatorios de sus horarios y rutinas.<br>3. El sistema permite configurar la frecuencia de las notificaciones.<br>4. El envío se realiza de forma automática. |
+| **Dependencias** | RF-004 (Gestión de usuarios y membresías) |
+| **Comentarios** | Mejora la comunicación entre el sistema y el usuario, aumentando la retención y participación. |
+
 
 # 4. CASOS DE USO
 
