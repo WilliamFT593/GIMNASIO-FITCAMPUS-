@@ -234,74 +234,14 @@ Las funciones principales del sistema están organizadas en los siguientes grupo
 
 ## 3 REQUISITOS ESPECÍFICOS
 
+# 3. REQUISITOS FUNCIONALES
+
 ## 3.1 Requisitos Funcionales
 
-## 3.1.1 Módulo de Gestión de Membresías
-
-| Campo | Descripción |
-|-------|--------------|
-| **ID** | RF-001 |
-| **Nombre** | Administración de membresías |
-| **Descripción** | El sistema debe permitir al administrador registrar, actualizar, suspender o eliminar las membresías de los usuarios, manteniendo un historial de sus estados y fechas de renovación. |
-| **Prioridad** | Alta |
-| **Estabilidad** | Alta |
-| **Fuente** | Requerimiento del área administrativa del gimnasio |
-| **Criterios de aceptación** | 1. El administrador puede crear, editar y eliminar membresías.<br>2. Se registran fechas de inicio y vencimiento.<br>3. El sistema genera alertas de vencimiento próximas.<br>4. Los cambios se reflejan en tiempo real en la base de datos. |
-| **Dependencias** | RF-001 (Control de aforo), RF-002 (Registro de accesos) |
-| **Comentarios** | Las membresías vencidas deben impedir el acceso al gimnasio automáticamente. |
-
----
-
-## 3.1.2 Módulo de Autenticación y Control de Acceso
-
-| Campo | Descripción |
-|-------|--------------|
-| **ID** | RF-002 |
-| **Nombre** | Inicio de sesión y autenticación segura |
-| **Descripción** | El sistema debe permitir el acceso mediante credenciales únicas (usuario y contraseña) y usar autenticación JWT para sesiones seguras. |
-| **Prioridad** | Alta |
-| **Estabilidad** | Alta |
-| **Fuente** | Política de seguridad institucional |
-| **Criterios de aceptación** | 1. El usuario debe ingresar credenciales válidas.<br>2. El sistema genera un token JWT válido por sesión.<br>3. Los datos viajan cifrados por HTTPS.<br>4. El acceso no autorizado es bloqueado automáticamente. |
-| **Dependencias** | RNF-Seguridad |
-| **Comentarios** | El sistema debe permitir roles diferenciados (Administrador / Usuario General). |
-
----
-
-## 3.1.3 Módulo de Notificaciones y Alertas
-
-| Campo | Descripción |
-|-------|--------------|
-| **ID** | RF-003 |
-| **Nombre** | Envío de notificaciones automáticas |
-| **Descripción** | El sistema debe enviar notificaciones automáticas al administrador y a los usuarios cuando se produzcan eventos importantes, como aforo máximo, membresía vencida o turno disponible. |
-| **Prioridad** | Media |
-| **Estabilidad** | Media |
-| **Fuente** | Requerimiento de experiencia de usuario |
-| **Criterios de aceptación** | 1. El sistema envía notificaciones por correo o dentro de la app.<br>2. Se generan alertas al alcanzar el límite de aforo.<br>3. Se notifica al usuario 3 días antes del vencimiento de su membresía. |
-| **Dependencias** | RF-001, RF-003 |
-| **Comentarios** | En una versión futura se integrarán notificaciones push móviles. |
-
----
-
-## 3.1.4 Módulo de Reportes y Estadísticas
-
-| Campo | Descripción |
-|-------|--------------|
-| **ID** | RF-004 |
-| **Nombre** | Generación de reportes de uso |
-| **Descripción** | El sistema debe permitir al administrador generar reportes sobre el uso del gimnasio, incluyendo aforo diario, membresías activas, ingresos y salidas. |
-| **Prioridad** | Media |
-| **Estabilidad** | Alta |
-| **Fuente** | Solicitud del área de administración |
-| **Criterios de aceptación** | 1. El sistema genera reportes filtrados por fecha o tipo de usuario.<br>2. Los reportes pueden exportarse a PDF o Excel.<br>3. La información se obtiene de los registros en la base de datos. |
-| **Dependencias** | RF-001, RF-002,
-
-
-### 3.1.5 Módulo de Control de Aforo
+### 3.1.1 Módulo de Control de Aforo
 | Campo | Descripción |
 |--------|--------------|
-| **ID** | RF-005 |
+| **ID** | RF-001 |
 | **Nombre** | Control de aforo en tiempo real |
 | **Descripción** | El sistema FitCampus debe monitorear automáticamente el número de usuarios dentro del gimnasio, actualizando el aforo en tiempo real. Cuando se alcance el límite máximo permitido, el sistema notificará al administrador, bloqueará nuevos accesos y permitirá la creación de una fila virtual. |
 | **Prioridad** | Alta |
@@ -313,10 +253,10 @@ Las funciones principales del sistema están organizadas en los siguientes grupo
 
 ---
 
-### 3.1.6 Módulo de Registro de Entradas y Salidas
+### 3.1.2 Módulo de Registro de Entradas y Salidas
 | Campo | Descripción |
 |--------|--------------|
-| **ID** | RF-006 |
+| **ID** | RF-002 |
 | **Nombre** | Registro automático de entradas y salidas |
 | **Descripción** | El sistema debe registrar la entrada y salida de cada usuario mediante sensores o lectores de identificación. Estos registros alimentan el conteo de aforo actual y se almacenan en la base de datos para control y reportes. |
 | **Prioridad** | Alta |
@@ -327,50 +267,6 @@ Las funciones principales del sistema están organizadas en los siguientes grupo
 | **Comentarios** | Estos datos pueden usarse para reportes de asistencia y estadísticas de uso. |
 
 ---
-
-### 3.1.7 Módulo de Gestión de Rutinas Personalizadas
-| Campo | Descripción |
-|--------|--------------|
-| **ID** | RF-007 |
-| **Nombre** | Gestión de rutinas personalizadas |
-| **Descripción** | El sistema FitCampus debe permitir a los entrenadores crear, asignar y modificar rutinas personalizadas para los usuarios registrados, de acuerdo con sus objetivos físicos, nivel de experiencia y estado de salud. Estas rutinas deben almacenarse en el perfil del usuario y ser consultables en cualquier momento. |
-| **Prioridad** | Alta |
-| **Estabilidad** | Media |
-| **Fuente** | Solicitud del área de entrenamiento y bienestar universitario |
-| **Criterios de aceptación** | 1. El entrenador puede crear una rutina desde su cuenta.<br>2. El usuario visualiza su rutina personalizada.<br>3. El sistema permite modificar o eliminar rutinas existentes.<br>4. Los datos se almacenan correctamente en la base de datos. |
-| **Dependencias** | RF-003 (Gestión de usuarios) |
-| **Comentarios** | Este módulo fortalece la personalización del entrenamiento y mejora la experiencia del usuario. |
-
----
-
-### 3.1.8 Módulo de Control de Asistencia Automatizado
-| Campo | Descripción |
-|--------|--------------|
-| **ID** | RF-008 |
-| **Nombre** | Control de asistencia automatizado |
-| **Descripción** | El sistema FitCampus deberá registrar automáticamente la asistencia de los usuarios mediante un código QR o dispositivo biométrico al ingresar al gimnasio, almacenando la hora, fecha y duración de la visita. |
-| **Prioridad** | Alta |
-| **Estabilidad** | Alta |
-| **Fuente** | Requerimiento derivado de la gestión administrativa del gimnasio |
-| **Criterios de aceptación** | 1. El usuario puede registrar su ingreso mediante QR o huella.<br>2. El sistema registra hora y fecha correctamente.<br>3. Se genera un historial de asistencias por usuario.<br>4. La información se actualiza en la base de datos en tiempo real. |
-| **Dependencias** | RF-002 (Registro de entradas y salidas) |
-| **Comentarios** | Facilita el seguimiento de uso de las instalaciones y la gestión de estadísticas de aforo. |
-
----
-
-### 3.1.9 Módulo de Notificaciones y Recordatorios
-| Campo | Descripción |
-|--------|--------------|
-| **ID** | RF-009 |
-| **Nombre** | Envío automático de notificaciones y recordatorios |
-| **Descripción** | El sistema FitCampus debe enviar notificaciones automáticas a los usuarios sobre vencimiento de membresías, horarios de entrenamiento, actualizaciones de rutinas y eventos especiales del gimnasio, a través del correo electrónico o aplicación móvil. |
-| **Prioridad** | Media |
-| **Estabilidad** | Alta |
-| **Fuente** | Solicitud de los usuarios y administración del gimnasio |
-| **Criterios de aceptación** | 1. Se envían alertas antes del vencimiento de la membresía.<br>2. Los usuarios reciben recordatorios de sus horarios y rutinas.<br>3. El sistema permite configurar la frecuencia de las notificaciones.<br>4. El envío se realiza de forma automática. |
-| **Dependencias** | RF-004 (Gestión de usuarios y membresías) |
-| **Comentarios** | Mejora la comunicación entre el sistema y el usuario, aumentando la retención y participación. |
-
 
 # 4. CASOS DE USO
 
@@ -451,7 +347,238 @@ usecase
 -->
 
 
-**Diagrama de Casos de Uso:**
+---
+
+
+## Caso de Uso: Gestionar Membresias de Usuario
+
+### Identificación
+| Campo | Descripción |
+|--------|--------------|
+| **ID** | UC-07 |
+| **Nombre** | Gestionar Membresias de Usuario |
+| **Actor principal** | Administrador |
+| **Actores secundarios** | Sistema automatico |
+| **Tipo** | Secundario/De Soporte |
+| **Prioridad** | Alta |
+
+---
+
+### Descripción
+Este caso de uso describe el proceso mediante el cual el Administrador (o personal autorizado) puede realizar las operaciones de mantenimiento esenciales sobre las membresías de los usuarios. Esto incluye crear nuevas membresías, modificar planes existentes, extender la fecha de caducidad, suspender o reactivar cuentas y registrar pagos.
+
+---
+
+### Flujo principal
+1. El Administrador inicia sesión en el portal de gestión del sistema FitCampus.
+2. El Administrador selecciona la opción "Gestionar Membresías" y busca al usuario por nombre, ID o correo electrónico.
+3. El Sistema muestra el perfil del usuario y el estado actual de su membresía (plan, fecha de inicio/fin, estado de pago).
+4. El Administrador selecciona la acción deseada (Crear/Renovar/Modificar/Suspender/Registrar Pago).
+5. El Administrador ingresa los datos necesarios para la acción:
+ -Crear/Renovar: Selecciona el plan (Ej: Básico, Premium), duración y registra el pago (si aplica).
+ -Modificar: Cambia el tipo de plan (Ej: de Básico a Premium).
+ -Suspender/Reactivar: Cambia el estado de la membresía.
+6. El Sistema valida los datos ingresados ​​y realiza la actualización en la base de datos.
+7. El Sistema confirma al Administrador que la gestión ha sido completada exitosamente.
+8. El Sistema automático (opcionalmente) envía una notificación al usuario sobre el cambio en su membresía.
+
+---
+
+### Flujo alternativo
+FA-1: Pago Rechazado o Pendiente :
+Si el Administrador intenta renovar la membresía y no se registra un pago exitoso, el sistema bloquea la activación de la nueva fecha de fin y notifica al Administrador. La membresía puede quedar en estado "Pendiente de Pago" .
+
+FA-2: Intento de Uso de Membresía Vencida :
+Si el sistema detecta una solicitud de ingreso (UC-2) o de reserva (UC-08) con una membresía cuya fecha de fin ya pasó, el sistema notifica automáticamente al usuario y al Administrador que se requiere una renovación (relación con UC-2 y UC-08). 
+
+---
+
+### Postcondición
+La información de la membresía del usuario se encuentra actualizada en el sistema (plan, fecha de caducidad, estado activo/suspendido), lo cual afecta directamente su acceso al gimnasio y los servicios (clases, etc.).
+
+---
+
+### Relaciones con otros casos de uso
+| Caso relacionado | Relación | Descripción |
+|------------------|-----------|--------------|
+| **UC-2** | <<depends>> | El registro de entrada debe validar el estado activo de la membresía antes de permitir el ingreso. |
+| **UC-8** | <<depends>> | La reserva de clases debe validar el estado y tipo de membresía para permitir el acceso a la clase. |
+| **UC-10** | <<extends>> | Puede ser necesario modificar la membresía si el usuario requiere acceso a horarios específicos de máquinas o zonas. |
+
+
+##  Caso de Uso: Reservar Clases Grupales
+
+### Identificación
+| Campo | Descripción |
+|--------|--------------|
+| **ID** | UC-08 |
+| **Nombre** | Reservar Clases Grupales |
+| **Actor principal** | Usuario |
+| **Actores secundarios** | Sistema Automatico, Administrador(gestor de clases ) |
+| **Tipo** | Primario |
+| **Prioridad** | Alta |
+
+---
+
+### Descripción
+Este caso de uso describe el proceso mediante el cual un usuario del gimnasio FitCampus puede consultar el horario de clases grupales, verificar su disponibilidad (cupo) y asegurar su plaza mediante una reserva. El sistema debe gestionar el límite de cupo y, si es necesario, una lista de espera.
+
+---
+
+### Flujo principal
+1. El Usuario inicia sesión en la aplicación o portal web de FitCampus.
+2. El Usuario selecciona la opción para Consultar Horario de Clases .
+3. El Sistema verifica la membresía del usuario (UC-07) para asegurar que esté activa y con acceso a la clase deseada.
+4. El Sistema muestra el listado de clases disponibles, indicando el Cupo Actual/Máximo y el horario.
+5. El Usuario selecciona la clase que desea reservar.
+6. El Sistema realiza una verificación final del cupo disponible.
+7. Si hay cupo, el sistema registra la reserva del usuario para esa clase y reduce el cupo disponible en uno.
+8. El Sistema notifica al usuario la confirmación de la reserva (correo, notificación).
+9. La reserva se registra como una Entrada Pendiente que se validará automáticamente al ingresar al gimnasio a la hora de la clase (relación con UC-2).
+
+---
+
+### Flujo alternativo
+FA-1: Clase sin Cupo (Lista de Espera) :
+Si el sistema detecta que el cupo está en su límite máximo, pregunte al usuario si desea inscribirse en la lista de espera .
+Si el usuario acepta, el sistema lo agrega a la fila virtual (relación con UC-6).
+Si otro usuario cancela su reserva, el sistema asigna automáticamente la plaza al primer usuario en la lista de espera y ejecuta el Director de Flujo desde el paso 7.
+
+FA-2: Membresía Inválida :
+Si la verificación en el paso 3 indica que la membresía está caducada o no incluye acceso a clases, el sistema bloquea la reserva y notifica al usuario la razón.
+
+---
+
+### Postcondición
+El usuario tiene una plaza reservada y confirmada para la clase grupal seleccionada, o ha sido agregado a la lista de espera correspondiente. El cupo disponible para la clase se mantiene actualizado en tiempo real.
+
+---
+
+### Relaciones con otros casos de uso
+| Caso relacionado | Relación | Descripción |
+|------------------|-----------|--------------|
+| **UC-07** | <<depends>> | El sistema depende de la gestión de membresías para validar el acceso a la reserva. |
+| **UC-06** | <<extends>> | Se utiliza la lógica de gestión de fila virtual para la lista de espera de las clases. |
+| **UC-2** | <<depends>> | La reserva es un requisito para que el UC-2 (Registrar entrada) valide el ingreso del usuario a la zona de clases a la hora reservada. |
+
+---
+
+## Caso de Uso: Generar Reportes 
+
+### Identificación
+| Campo | Descripción |
+|--------|--------------|
+| **ID** | UC-09 |
+| **Nombre** | Generar Reportes de Uso y Aforo |
+| **Actor principal** | Administrador |
+| **Actores secundarios** | Sistema automatico |
+| **Tipo** | De soporte/Secundario |
+| **Prioridad** | Medios de comunicacion |
+
+---
+
+### Descripción
+Este caso de uso describe cómo el sistema FitCampus procesa los datos históricos recopilados de los ingresos (UC-2), salidas (UC-3) y el control de aforo (UC-1) para generar informes analíticos. Estos informes son esenciales para que el Administrador pueda identificar patrones de máxima concurrencia, horas valle, y la asistencia a clases, lo cual es crucial para la optimización de recursos y la toma de decisiones operativas.
+
+---
+
+### Flujo principal
+1. El Administrador inicia sesión en el portal de gestión.
+2. El Administrador selecciona la opción "Generar Informes" .
+3. El Administrador especifica los parámetros del reporte (rango de fechas, tipo de reporte —ej: Aforo, Asistencia a Clases, Movimiento de Membresías—, y formato de salida —ej: PDF, CSV—).
+4. El Sistema accede a los registros históricos (UC-1, UC-2, UC-3, UC-8).
+5. El Sistema automático procesa los datos para calcular las métricas clave (ej: aforo promedio por hora, pico de afluencia, tasa de ocupación de clases).
+6. El Sistema genera el informe en el formato solicitado, incluyendo gráficos y tablas.
+7. El Sistema presenta el informe en pantalla o lo envía al correo electrónico del Administrador.
+
+---
+
+### Flujo alternativo
+FA-1: Datos Insuficientes :
+Si el Administrador selecciona un rango de fechas para el cual no existen registros completos (ej: el sistema no estaba operativo), el sistema emite una advertencia e informa que el reporte se generará solo con los datos disponibles, o solicitar un nuevo rango.
+
+FA-2: Informe de Generación Lenta :
+Si el rango de datos es muy extenso (ej: un año completo), el sistema notifica al Administrador que el reporte se generará en el segundo plano y le enviará una notificación o correo cuando esté listo para su descarga.
+
+---
+
+### Postcondición
+El Administrador tiene en su poder un informe analítico que refleja el uso y el aforo del gimnasio durante el período especificado, lo cual le permite tomar decisiones informadas sobre horarios y recursos.
+
+---
+
+### Relaciones con otros casos de uso
+| Caso relacionado | Relación | Descripción |
+|------------------|-----------|--------------|
+| **UC-1** | <<depends>> | Utilice los registros de aforo en tiempo real para generar informes históricos de concurrencia. |
+| **UC-2** | <<depends>> | Utilice los registros de entrada y salida para calcular la afluencia total y los picos de uso por hora. |
+| **UC-3** | <<depends>> | Utilice los registros de entrada y salida para calcular la afluencia total y los picos de uso por hora. |
+| **UC-8** | <<depends>> | Utiliza los datos de reservas para reportar la tasa de ocupación y la popularidad de las clases grupales. |
+| **UC-7** | <<depends>> | Puede generar informes de nuevas altas, bajas y renovaciones de membresías. |
+
+---
+
+## Caso de Uso: Sincronizar Horario de Disponibilidad de Maquinas
+
+### Identificación
+| Campo | Descripción |
+|--------|--------------|
+| **ID** | UC-10 |
+| **Nombre** | Sincronizar Horario de Disponibilidad de Maquinas |
+| **Actor principal** | Sistema automatico |
+| **Actores secundarios** | Personal de Mantenimiento, Usuario |
+| **Tipo** | De soporte/Secundario |
+| **Prioridad** | Medios de comunicacion |
+
+---
+
+### Descripción
+Este caso de uso describe el proceso mediante el cual el sistema FitCampus mantiene actualizado el estado de disponibilidad de las máquinas de ejercicio clave. El objetivo es informar a los usuarios y al personal sobre qué máquinas están operativas, en uso, o fuera de servicio por mantenimiento, limpieza o avería, evitando frustraciones y optimizando el flujo de trabajo.
+
+---
+
+### Flujo principal
+1. El Sistema automático o un Personal de Mantenimiento inicia el proceso de actualización del estado de una máquina específica.
+2. El Sistema identifica la máquina (Ej: Cinta 3, Elíptica 1).
+3. El Personal de Mantenimiento (si es manual) o el Sistema Automático (si hay sensores) ingresa/detecta el nuevo estado de la máquina:
+-Operativa (Disponible)
+-En Uso (se puede ligar con UC-2/UC-3 o balizas de proximidad).
+-Fuera de Servicio (Mantenimiento/Avería) .
+4. El Sistema actualiza el registro de disponibilidad para la máquina con el nuevo estado y la hora de la actualización.
+5. El Sistema genera una notificación interna al Administrador sobre cualquier máquina marcada como "Fuera de Servicio" .
+6. El Sistema actualiza la interfaz de usuario para que la información se refleje en tiempo real para los Usuarios (ej: en la aplicación de FitCampus).
+
+---
+
+### Flujo alternativo
+FA-1: Mantenimiento Planificado :
+El Personal de Mantenimiento puede registrar un horario de inactividad futuro para la máquina (Ej: "Fuera de Servicio por Limpieza, Martes de 10:00 a 11:00").
+El Sistema muestra un mensaje de "Mantenimiento Programado" y el horario a los usuarios.
+Al llegar la hora, el sistema cambia el estado automáticamente y lo revierte al finalizar el horario.
+
+FA-2: Avería Reportada por Usuario :
+El Usuario tiene la opción en la aplicación de reportar un problema con una máquina.
+El Sistema registra la incidencia y cambia temporalmente el estado de la máquina a "Inspección Pendiente" hasta que el personal la verifique.
+
+---
+
+### Postcondición
+El sistema mantiene un registro preciso y en tiempo real del estado de disponibilidad de cada máquina clave del gimnasio, permitiendo al Administrador la gestión del mantenimiento y ofreciendo información clara a los Usuarios.
+
+---
+
+### Relaciones con otros casos de uso
+| Caso relacionado | Relación | Descripción |
+|------------------|-----------|--------------|
+| **UC-2** | <<depends>> | El estado "En Uso" puede depender de los registros de entrada y salida del usuario en la zona de máquinas, si se implementa un control de presencia granular. |
+| **UC-3** | <<depends>> | El estado "En Uso" puede depender de los registros de entrada y salida del usuario en la zona de máquinas, si se implementa un control de presencia granular.|
+| **UC-9** | <<depends>> | El sistema utiliza los registros de inactividad de las máquinas para generar informes de "Tiempo Fuera de Servicio" y evaluar la eficiencia del mantenimiento. |
+| **UC-01** | <<extends>> | Podría extenderse para controlar el "aforo por zona" (Ej: Zona de Cardio vs. Zona de Pesas), usando la disponibilidad de máquinas como métrica. |
+
+
+---
+
+
 
 
 
