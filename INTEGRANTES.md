@@ -10,4 +10,6 @@ FitCampus es un sistema de gestión para el gimnasio universitario de la Univers
 | William Fernando Torres Barrera| Ingeniero en sistemas |wfernandotorres@cumpensar.edu.co |
 | Harold Andres Pava Perez | Ingeniero en sistemas | hapava@ucompensar.edu.co |
 | Santiago Mendoza Villanueva | Ingeniero en sistemas | smendozav@ucompensar.edu.co |
+| Julian Santiago Roa Garzon  | Ingeniero en Sistemas | jsantiagoroa@ucompensar.edu.co |
+
 
