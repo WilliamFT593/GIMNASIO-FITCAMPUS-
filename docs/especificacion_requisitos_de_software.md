@@ -429,6 +429,72 @@ Las funciones principales del sistema están organizadas en los siguientes grupo
 | **Criterios de aceptación** | 1. Actualizar datos.<br>2. Validación.<br>3. Guardado correcto.<br>4. Entrenadores pueden consultar. |
 | **Dependencias** | RF-002 |
 | **Comentarios** | Mejora personalización del servicio. |
+
+---
+
+## 3.1.13 Módulo de Inventario de Equipos
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-013 |
+| **Nombre** | Gestión de inventario |
+| **Descripción** | Registra, actualiza y consulta el inventario de máquinas, equipos y accesorios del gimnasio. |
+| **Prioridad** | Media |
+| **Estabilidad** | Media |
+| **Fuente** | Administración y mantenimiento |
+| **Criterios de aceptación** | 1. Registro de equipos.<br>2. Actualización de estado.<br>3. Consulta por categoría.<br>4. Almacenamiento correcto. |
+| **Dependencias** | RF-011 (Reservas) |
+| **Comentarios** | Control del estado físico del gimnasio. |
+
+---
+
+## 3.1.14 Módulo de Mantenimiento Preventivo
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-014 |
+| **Nombre** | Mantenimiento preventivo |
+| **Descripción** | Programa y registra mantenimientos preventivos, generando alertas previas a la fecha de intervención. |
+| **Prioridad** | Media |
+| **Estabilidad** | Media |
+| **Fuente** | Área de mantenimiento |
+| **Criterios de aceptación** | 1. Programación por equipo.<br>2. Alertas previas.<br>3. Historial de mantenimientos.<br>4. Registro en base de datos. |
+| **Dependencias** | RF-014 |
+| **Comentarios** | Aumenta la vida útil de los equipos. |
+
+---
+
+## 3.1.15 Módulo de Roles y Permisos
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-015 |
+| **Nombre** | Gestión de roles |
+| **Descripción** | Permite crear roles personalizados y asignar permisos específicos a cada tipo de usuario. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Alta |
+| **Fuente** | Política institucional |
+| **Criterios de aceptación** | 1. Creación de roles.<br>2. Asignación de permisos.<br>3. Acceso restringido según rol.<br>4. Actualización en tiempo real. |
+| **Dependencias** | RF-002 |
+| **Comentarios** | Mejora la seguridad general del sistema. |
+
+---
+
+## 3.1.16 Módulo de Pagos en Línea
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-016 |
+| **Nombre** | Pagos en línea |
+| **Descripción** | Permite realizar pagos online para membresías, reservas o servicios adicionales mediante pasarelas seguras. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Media |
+| **Fuente** | Área financiera |
+| **Criterios de aceptación** | 1. Pago con tarjeta o billetera digital.<br>2. Confirmación en tiempo real.<br>3. Comprobante automático.<br>4. Actualización de servicios tras el pago. |
+| **Dependencias** | RF-001 (Membresías), RF-009 (Notificaciones) |
+| **Comentarios** | Facilita la autogestión del usuario. |
+
+
 # 4. CASOS DE USO
 
 ## 4.1 Caso de Uso: Controlar Aforo en Tiempo Real
