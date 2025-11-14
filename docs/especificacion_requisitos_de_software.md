@@ -240,36 +240,195 @@ Las funciones principales del sistema están organizadas en los siguientes grupo
 
 ## 3.1 Requisitos Funcionales
 
-### 3.1.1 Módulo de Control de Aforo
+## 3.1.1 Módulo de Gestión de Membresías
+
 | Campo | Descripción |
-|--------|--------------|
+|-------|-------------|
 | **ID** | RF-001 |
+| **Nombre** | Administración de membresías |
+| **Descripción** | El sistema debe permitir al administrador registrar, actualizar, suspender o eliminar las membresías de los usuarios, manteniendo un historial de sus estados y fechas de renovación. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Alta |
+| **Fuente** | Requerimiento del área administrativa del gimnasio |
+| **Criterios de aceptación** | 1. El administrador puede crear, editar y eliminar membresías.<br>2. Se registran fechas de inicio y vencimiento.<br>3. El sistema genera alertas de vencimiento próximas.<br>4. Los cambios se reflejan en tiempo real en la base de datos. |
+| **Dependencias** | RF-005 (Control de aforo), RF-006 (Registro de accesos) |
+| **Comentarios** | Las membresías vencidas deben impedir el acceso al gimnasio automáticamente. |
+
+---
+
+## 3.1.2 Módulo de Autenticación y Control de Acceso
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-002 |
+| **Nombre** | Inicio de sesión y autenticación segura |
+| **Descripción** | El sistema debe permitir el acceso mediante credenciales únicas (usuario y contraseña) y usar autenticación JWT para sesiones seguras. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Alta |
+| **Fuente** | Requerimiento de seguridad del sistema |
+| **Criterios de aceptación** | 1. Login con usuario/contraseña.<br>2. Emisión y validación de tokens JWT.<br>3. Manejo seguro de contraseñas (hashing). |
+| **Dependencias** | — |
+| **Comentarios** | Soporta autenticación de usuarios y administración de sesiones. |
+
+---
+
+## 3.1.3 Módulo de Notificaciones y Alertas
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-003 |
+| **Nombre** | Envío de notificaciones automáticas |
+| **Descripción** | El sistema debe enviar notificaciones automáticas al administrador y a los usuarios cuando se produzcan eventos importantes, como aforo máximo, membresía vencida o turno disponible. |
+| **Prioridad** | Media |
+| **Estabilidad** | Media |
+| **Fuente** | Requerimiento de experiencia de usuario |
+| **Criterios de aceptación** | 1. El sistema envía notificaciones por correo o dentro de la app.<br>2. Se generan alertas al alcanzar el límite de aforo.<br>3. Se notifica al usuario 3 días antes del vencimiento de su membresía. |
+| **Dependencias** | RF-001, RF-005 |
+| **Comentarios** | En una versión futura se integrarán notificaciones push móviles. |
+
+---
+
+## 3.1.4 Módulo de Reportes y Estadísticas
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-004 |
+| **Nombre** | Generación de reportes de uso |
+| **Descripción** | El sistema debe permitir al administrador generar reportes sobre el uso del gimnasio, incluyendo aforo diario, membresías activas, ingresos y salidas. |
+| **Prioridad** | Media |
+| **Estabilidad** | Alta |
+| **Fuente** | Solicitud del área de administración |
+| **Criterios de aceptación** | 1. El sistema genera reportes filtrados por fecha o tipo de usuario.<br>2. Los reportes pueden exportarse a PDF o Excel.<br>3. La información se obtiene de los registros en la base de datos. |
+| **Dependencias** | RF-001, RF-005, RF-006 |
+| **Comentarios** | Los reportes deben incluir métricas de uso y asistencia. |
+
+---
+
+## 3.1.5 Módulo de Control de Aforo
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-005 |
 | **Nombre** | Control de aforo en tiempo real |
-| **Descripción** | El sistema FitCampus debe monitorear automáticamente el número de usuarios dentro del gimnasio, actualizando el aforo en tiempo real. Cuando se alcance el límite máximo permitido, el sistema notificará al administrador, bloqueará nuevos accesos y permitirá la creación de una fila virtual. |
+| **Descripción** | El sistema debe monitorear automáticamente el número de usuarios dentro del gimnasio, actualizando el aforo en tiempo real y bloqueando el acceso al alcanzar el límite. |
 | **Prioridad** | Alta |
 | **Estabilidad** | Alta |
 | **Fuente** | Requerimiento funcional derivado del sistema automático FitCampus |
-| **Criterios de aceptación** | 1. El sistema registra entrada y salida de usuarios.<br>2. Se actualiza el contador de aforo en tiempo real.<br>3. Se bloquean nuevos accesos al alcanzar el límite.<br>4. Se envía una notificación al administrador.<br>5. Se gestiona una fila virtual de espera. |
-| **Dependencias** | RF-002 (Registro de entradas y salidas) |
-| **Comentarios** | Este módulo funciona de manera automática y debe integrarse con los sensores de acceso del gimnasio. |
+| **Criterios de aceptación** | 1. El sistema registra entrada y salida de usuarios.<br>2. Actualiza aforo en tiempo real.<br>3. Bloquea accesos al alcanzar el límite.<br>4. Notifica al administrador.<br>5. Gestiona una fila virtual. |
+| **Dependencias** | RF-006 |
+| **Comentarios** | Se integra con sensores del gimnasio. |
 
 ---
 
-### 3.1.2 Módulo de Registro de Entradas y Salidas
+## 3.1.6 Módulo de Registro de Entradas y Salidas
+
 | Campo | Descripción |
-|--------|--------------|
-| **ID** | RF-002 |
+|-------|-------------|
+| **ID** | RF-006 |
 | **Nombre** | Registro automático de entradas y salidas |
-| **Descripción** | El sistema debe registrar la entrada y salida de cada usuario mediante sensores o lectores de identificación. Estos registros alimentan el conteo de aforo actual y se almacenan en la base de datos para control y reportes. |
+| **Descripción** | Registra la entrada y salida de cada usuario mediante sensores o lectores de identificación. |
 | **Prioridad** | Alta |
 | **Estabilidad** | Media |
-| **Fuente** | Requerimiento del área de control y acceso del gimnasio |
-| **Criterios de aceptación** | 1. Se registra la entrada del usuario al acceder.<br>2. Se registra la salida al abandonar el recinto.<br>3. Los datos se actualizan automáticamente en el módulo de aforo.<br>4. Los registros se almacenan en la base de datos.<br>5. Se garantiza la integridad de la información capturada. |
-| **Dependencias** | RF-001 (Control de aforo) |
-| **Comentarios** | Estos datos pueden usarse para reportes de asistencia y estadísticas de uso. |
+| **Fuente** | Área de control y acceso del gimnasio |
+| **Criterios de aceptación** | 1. Registra entrada.<br>2. Registra salida.<br>3. Actualiza aforo.<br>4. Guarda datos en BD.<br>5. Garantiza integridad. |
+| **Dependencias** | RF-005 |
+| **Comentarios** | Sirve para estadísticas y reportes. |
 
 ---
 
+## 3.1.7 Módulo de Gestión de Rutinas Personalizadas
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-007 |
+| **Nombre** | Gestión de rutinas personalizadas |
+| **Descripción** | Permite a los entrenadores crear, asignar y modificar rutinas según objetivos del usuario. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Media |
+| **Fuente** | Área de entrenamiento y bienestar |
+| **Criterios de aceptación** | 1. Crear rutina.<br>2. Usuario visualiza rutina.<br>3. Modificar o eliminar.<br>4. Guardar en BD. |
+| **Dependencias** | RF-012 |
+| **Comentarios** | Mejora la personalización del entrenamiento. |
+
+---
+
+## 3.1.8 Módulo de Control de Asistencia Automatizado
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-008 |
+| **Nombre** | Control de asistencia automatizado |
+| **Descripción** | El sistema registra asistencia mediante código QR o biometría. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Alta |
+| **Fuente** | Gestión administrativa |
+| **Criterios de aceptación** | 1. Registrar con QR/huella.<br>2. Registrar hora/fecha.<br>3. Historial de asistencias.<br>4. Actualización en tiempo real. |
+| **Dependencias** | RF-006 |
+| **Comentarios** | Facilita control de aforo y estadísticas. |
+
+---
+
+## 3.1.9 Módulo de Gestión de Fila Virtual
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-009 |
+| **Nombre** | Gestión de fila virtual |
+| **Descripción** | Crea una fila virtual cuando el aforo está completo y notifica turnos. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Media |
+| **Fuente** | Sistema automático de aforo |
+| **Criterios de aceptación** | 1. Crea fila.<br>2. Usuario ve posición.<br>3. Notificaciones automáticas.<br>4. Actualización en tiempo real. |
+| **Dependencias** | RF-005, RF-008 |
+| **Comentarios** | Reduce aglomeraciones. |
+
+---
+
+## 3.1.10 Módulo de Gestión de Reservas de Equipos
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-010 |
+| **Nombre** | Reservas de máquinas y áreas |
+| **Descripción** | Permite reservar máquinas, equipos o zonas con horarios específicos. |
+| **Prioridad** | Media |
+| **Estabilidad** | Media |
+| **Fuente** | Solicitud de usuarios y administración |
+| **Criterios de aceptación** | 1. Selección de equipo.<br>2. Ver disponibilidad.<br>3. Registrar reserva.<br>4. Evitar duplicación. |
+| **Dependencias** | RF-012, RF-003 |
+| **Comentarios** | Mejora gestión del espacio. |
+
+---
+
+## 3.1.11 Módulo de Reportes de Aforo y Asistencia
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-011 |
+| **Nombre** | Reportes de aforo y asistencia |
+| **Descripción** | Genera reportes diarios, semanales y mensuales exportables. |
+| **Prioridad** | Alta |
+| **Estabilidad** | Alta |
+| **Fuente** | Requerimiento institucional |
+| **Criterios de aceptación** | 1. Filtrar por fecha.<br>2. Incluir métricas.<br>3. Descargar PDF/Excel.<br>4. Información precisa. |
+| **Dependencias** | RF-006, RF-008 |
+| **Comentarios** | Apoya toma de decisiones. |
+
+---
+
+## 3.1.12 Módulo de Gestión de Perfil del Usuario
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | RF-012 |
+| **Nombre** | Gestión del perfil del usuario |
+| **Descripción** | Permite actualizar datos personales, objetivos y preferencias. |
+| **Prioridad** | Media |
+| **Estabilidad** | Alta |
+| **Fuente** | Bienestar estudiantil |
+| **Criterios de aceptación** | 1. Actualizar datos.<br>2. Validación.<br>3. Guardado correcto.<br>4. Entrenadores pueden consultar. |
+| **Dependencias** | RF-002 |
+| **Comentarios** | Mejora personalización del servicio. |
 # 4. CASOS DE USO
 
 ## 4.1 Caso de Uso: Controlar Aforo en Tiempo Real
