@@ -86,7 +86,7 @@
 
 ## 1.1 Propósito
 
-El propósito de este documento es definir de manera clara, completa y verificable los requisitos del Sistema de Gestión de Gimnasio “FitCampus”, una solución tecnológica.
+El propósito de este documento es definir de manera clara, completa y verificable los requisitos del Sistema de Gestión de Gimnasio “FitControl”, una solución tecnológica.
 
 Este documento establece qué debe hacer el sistema, cómo se espera que funcione, quiénes serán sus usuarios y cuáles son los objetivos operativos y estratégicos que debe cumplir. Su finalidad es garantizar que todas las partes involucradas —desde el cliente hasta el equipo de desarrollo— trabajen bajo un entendimiento común del alcance del proyecto.
 
@@ -94,7 +94,7 @@ Este documento establece qué debe hacer el sistema, cómo se espera que funcion
 |------------|----------------------|
 | Desarrolladores | Implementan las funcionalidades de las fases posteriores siguiendo los requisitos funcionales y no funcionales establecidos. |
 | Analistas | Validan que los requisitos respondan a los problemas detectados en el gimnasio y cumplan las necesidades del cliente |
-| Cliente (Dirección de Bienestar y Deportes) | Verifica que el sistema FitCampus cubrirá los problemas críticos actuales: aforo, reservas, mantenimiento, reportes, valorización física y experiencia del usuario. |
+| Cliente (Dirección de Bienestar y Deportes) | Verifica que el sistema FitControl cubrirá los problemas críticos actuales: aforo, reservas, mantenimiento, reportes, valorización física y experiencia del usuario. |
 | Equipo QA | Crea casos de prueba basados en los requisitos y verifica que el sistema desarrollado cumpla los criterios de aceptación definidos. |
 
 ---
@@ -154,9 +154,9 @@ Este documento está dividido en secciones que describen los diferentes aspectos
 | **Sección** | **Contenido** |
 |--------------|----------------|
 | **1. Introducción** | Propósito, alcance y términos clave del sistema. |
-| **2. Descripción General** | Contexto, funciones principales y características de los usuarios. |
+| **2. Descripción General** |Contexto del gimnasio, usuarios involucrados, funciones globales y restricciones. |
 | **3. Requisitos Específicos** | Requisitos funcionales y no funcionales del sistema. |
-| **4. Casos de Uso** | Descripción de cómo interactúan los usuarios con el sistema. |
+| **4. Casos de Uso** | Descripciones formales de las interacciones entre actores y el sistema. |
 
 El propósito de esta estructura es mantener la documentación organizada, comprensible y fácil de actualizar conforme evolucione el proyecto.
 
