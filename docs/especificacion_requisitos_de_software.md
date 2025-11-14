@@ -101,21 +101,25 @@ Este documento establece qué debe hacer el sistema, cómo se espera que funcion
 
 ## 1.2 Alcance
 
-El sistema **FitControl** controlará el aforo en tiempo real dentro del gimnasio universitario, registrando entradas y salidas de usuarios mediante un sistema automático conectado a sensores.  
-También permitirá gestionar membresías, enviar notificaciones cuando se alcance el límite de aforo, y administrar una fila virtual para nuevos accesos.  
+El sistema FitCampus gestionará de forma integral el aforo en tiempo real del gimnasio universitario, registrando automáticamente la entrada y salida de los usuarios mediante sensores instalados en los accesos.
+Además de controlar la ocupación, el sistema permitirá administrar membresías, monitorear el estado del gimnasio, generar alertas, gestionar una fila virtual y ofrecer información al instante para mejorar la experiencia del usuario y la seguridad del campus.
 
-El sistema estará disponible para tres tipos de usuarios:  
-- **Administrador:** supervisa el funcionamiento y los reportes.  
-- **Sistema Automático:** controla el ingreso y salida.  
-- **Usuario General:** accede al gimnasio y consulta su membresía.
+El sistema ofrecerá funcionalidades diferenciadas para los siguientes actores:
+
+Administrador: supervisa el estado del gimnasio, gestiona membresías, consulta reportes, y configura límites de aforo.
+
+Sistema Automático: procesa los eventos de entrada/salida, actualiza el conteo de aforo y genera alertas.
+
+Usuario General: consulta su membresía, verifica el aforo en tiempo real y accede a la fila virtual cuando el gimnasio está lleno.
 
 ### Objetivos principales
 | **Objetivo** | **Descripción** |
 |---------------|-----------------|
 | Control de Aforo | Evitar sobreocupación del gimnasio y garantizar seguridad. |
-| Automatización | Reducir procesos manuales y errores en el registro. |
-| Gestión de Membresías | Facilitar la administración de usuarios activos y vencidos. |
-| Monitoreo en Tiempo Real | Proveer información actualizada al instante. |
+| Automatización |Eliminar procesos manuales de registro y reducir errores por ingreso humano. |
+| Gestión de Membresías | Llevar control automático de usuarios activos, vencidos y bloqueados. |
+| Monitoreo en Tiempo Real | Proveer información instantánea sobre aforo, estado del acceso y alertas. |
+| Fila Virtual Inteligente | Permitir que los usuarios esperen su turno sin aglomeraciones físicas en la entrada. |
 
 ---
 
