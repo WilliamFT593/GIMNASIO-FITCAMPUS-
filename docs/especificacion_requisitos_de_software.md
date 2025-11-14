@@ -86,18 +86,16 @@
 
 ## 1.1 Propósito
 
-Este documento tiene como objetivo definir los requisitos del **Sistema de Gestión de Gimnasio “FitControl”**, una aplicación que busca optimizar la administración del gimnasio universitario.  
-Aquí se explica qué hará el sistema, quiénes lo usarán y qué se espera lograr.  
+El propósito de este documento es definir de manera clara, completa y verificable los requisitos del Sistema de Gestión de Gimnasio “FitCampus”, una solución tecnológica.
 
-El propósito es que tanto los desarrolladores, el cliente y el equipo de pruebas tengan una guía clara para trabajar con los mismos objetivos.  
-Este documento también servirá como referencia para verificar, validar y dar mantenimiento al software durante todo su ciclo de vida.
+Este documento establece qué debe hacer el sistema, cómo se espera que funcione, quiénes serán sus usuarios y cuáles son los objetivos operativos y estratégicos que debe cumplir. Su finalidad es garantizar que todas las partes involucradas —desde el cliente hasta el equipo de desarrollo— trabajen bajo un entendimiento común del alcance del proyecto.
 
 | **Actor** | **Uso del Documento** |
 |------------|----------------------|
-| Desarrolladores | Usar los requisitos para crear las funcionalidades del sistema. |
-| Analistas | Validar que el sistema cumpla lo solicitado por el cliente. |
-| Cliente | Confirmar que el producto final cumple sus necesidades. |
-| Equipo QA | Generar casos de prueba a partir de los requisitos definidos. |
+| Desarrolladores | Implementan las funcionalidades de las fases posteriores siguiendo los requisitos funcionales y no funcionales establecidos. |
+| Analistas | Validan que los requisitos respondan a los problemas detectados en el gimnasio y cumplan las necesidades del cliente |
+| Cliente (Dirección de Bienestar y Deportes) | Verifica que el sistema FitCampus cubrirá los problemas críticos actuales: aforo, reservas, mantenimiento, reportes, valorización física y experiencia del usuario. |
+| Equipo QA | Crea casos de prueba basados en los requisitos y verifica que el sistema desarrollado cumpla los criterios de aceptación definidos. |
 
 ---
 
