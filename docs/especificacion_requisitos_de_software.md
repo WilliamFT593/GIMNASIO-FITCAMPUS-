@@ -989,6 +989,392 @@ Reservas de clases	   200,000/año    	Retención: 1 año
 Logs del sistema	      10 GB/mes    	Retención: 90 días
 
 
+RNFR-004: Utilización de Recursos
+
+CPU: < 70% durante horas pico (5:00 PM - 8:00 PM)
+
+RAM: < 8 GB con 500 usuarios concurrentes
+
+Almacenamiento: < 500 GB año 1, plan de escalabilidad a 2 TB
+
+Ancho de banda: < 50 Mbps con uso máximo
+
+RNFR-005: Optimización de Base de Datos
+
+Índices críticos: usuarios(código_barras), accesos(fecha), reservas(clase_fecha)
+
+Consultas frecuentes: < 50 ms (percentil 95)
+
+Backups: Automáticos cada 6 horas, retención 30 días
+
+3.3.2 Fiabilidad
+RNFF-001: Tasa de Fallos Aceptable
+
+Fallos críticos: < 1 por trimestre (control acceso, aforo, reservas)
+
+Disponibilidad: 99.5% en horario operativo (6:00 AM - 9:00 PM)
+
+Tiempo medio entre fallos (MTBF): > 720 horas (30 días)
+
+RNFF-002: Manejo de Errores Específicos
+
+Escenario                         	Comportamiento Esperado
+Torniquete offline	           Modo manual en tablets, sincronización posterior
+API carnets caída	             Modo caché (24 horas), validación manual
+Base de datos lenta	           Timeout 5 segundos, reintento automático
+Aforo inconsistente           	Recalibración automática, alerta a coordinador
+
+RNFF-003: Validación de Datos Críticos
+
+Códigos de barras: Formato institucional validado
+
+Fechas de reserva: No permitir reservas en pasado
+
+Capacidades: No exceder límites físicos (180 personas, 40 por clase)
+
+Datos biométricos: Rangos válidos (peso: 30-200 kg, altura: 1.20-2.20 m)
+
+RNFF-004: Integridad de Transacciones
+
+Operaciones atómicas críticas:
+
+Registro entrada → Incremento aforo + Historial acceso
+
+Reserva clase → Validación cupo + Bloqueo temporal + Notificación
+
+Valoración física → Cálculos automáticos + Historial + Gráficos
+
+RNFF-005: Tolerancia a Fallos de Hardware
+
+Tablets: Funcionamiento offline 4 horas para operaciones básicas
+
+Torniquetes: Registro manual temporal con sincronización
+
+Báscula: Entrada manual si falla Bluetooth
+
+Red: Cache local para consultas de aforo y horarios
+
+3.3.3 Disponibilidad
+RNFD-001: Disponibilidad Horario Operativo
+
+Objetivo: 99.5% disponibilidad (6:00 AM - 9:00 PM, lunes-sábado)
+
+Tolerancia: Máximo 2.5 horas de downtime no planificado por mes
+
+Horario extendido: 95% disponibilidad (fuera de horario operativo)
+
+RNFD-002: Ventanas de Mantenimiento
+
+Mantenimiento regular: Domingos 12:00 AM - 6:00 AM
+
+Actualizaciones críticas: 1 vez/mes, máximo 2 horas
+
+Backups: Diarios 2:00 AM - 4:00 AM, sin impacto operativo
+
+RNFD-003: Monitoreo de Salud
+
+Endpoints de health check:
+
+/health/api - Estado de APIs principales
+
+/health/database - Conexión y rendimiento BD
+
+/health/torniquetes - Estado hardware crítico
+
+/health/aforo - Precisión sistema de conteo
+
+Alertas automáticas:
+
+Respuesta > 2 segundos: Warning
+
+Servicio no disponible: Critical (SMS + email)
+
+Aforo inconsistente: High (notificación inmediata)
+
+RNFD-005: Estrategia de Resiliencia
+
+Capas de redundancia:
+
+DNS: Múltiples servidores de aplicación
+
+Base de datos: Réplica sincrónica en tiempo real
+
+Almacenamiento: RAID 10 para datos críticos
+
+Red: Conexiones redundantes a torniquetes
+
+Degradación controlada:
+
+API carnets offline: Validación contra caché de 24 horas
+
+Sistema de notificaciones offline: Encolamiento local
+
+Tablets offline: Operación básica con sincronización posterior
+
+3.3.2 Fiabilidad
+RNFF-001: Tasa de Fallos Aceptable
+
+El sistema DEBE tener una tasa de fallos no superior a:
+
+Fallos críticos: < 1 por mes (control acceso, aforo, reservas)
+
+Fallos mayores: < 3 por mes (valoraciones, reportes, notificaciones)
+
+MTBF (Tiempo Medio Entre Fallos): > 500 horas
+
+Definición de fallo crítico: Error que impide completamente funcionalidades esenciales:
+
+Control de acceso en torniquetes
+
+Monitoreo de aforo en tiempo real
+
+Sistema de reservas de clases
+
+Gestión de membresías
+
+RNFF-003: Validación de Datos Críticos
+
+Códigos de barras: Formato institucional UDS (10-12 dígitos)
+
+Fechas de reserva: No permitir reservas en pasado o fuera de horario
+
+Capacidades: Validar límites físicos (180 personas máximo, 40 por clase)
+
+Datos biométricos: Rangos válidos (peso: 30-200kg, altura: 1.20-2.20m)
+
+Horarios: Coherencia con horario operativo del gimnasio
+
+RNFF-004: Integridad de Transacciones Críticas
+
+Operaciones atómicas:
+
+Registro entrada → Validación membresía + Incremento aforo + Historial acceso
+
+Reserva clase → Validación cupo + Bloqueo temporal + Notificación confirmación
+
+Valoración física → Cálculos automáticos + Historial + Actualización progreso
+
+RNFF-005: Tolerancia a Fallos de Hardware
+
+Tablets: Funcionamiento offline 4 horas para operaciones básicas
+
+Torniquetes: Registro manual temporal con sincronización automática
+
+Báscula: Entrada manual si falla Bluetooth, sincronización posterior
+
+Red: Cache local para consultas de aforo, horarios, información estática
+
+RNFF-006: Logs Detallados para Diagnóstico
+
+El sistema DEBE registrar:
+
+Eventos de acceso (entrada/salida) con timestamp exacto
+
+Cambios en aforo con justificación (entrada, salida, corrección)
+
+Errores de integración con APIs externas
+
+Intentos de acceso no autorizado o fallidos
+
+Operaciones administrativas críticas
+
+Retención: Logs comprimidos después de 7 días, retenidos por 90 días
+
+3.3.3 Disponibilidad
+RNFD-001: Disponibilidad Horario Operativo
+
+Objetivo: 99.5% durante horario gimnasio (Lunes-Sábado 6:00 AM - 9:00 PM)
+
+Cálculo: Máximo 2.5 horas de downtime no planificado por mes
+
+Horario extendido: 95% disponibilidad (fuera de horario operativo)
+
+RNFD-002: Ventanas de Mantenimiento
+
+Mantenimiento regular: Domingos 12:00 AM - 6:00 AM
+
+Actualizaciones críticas: 1 vez/mes, máximo 2 horas con notificación previa
+
+Backups: Diarios 2:00 AM - 4:00 AM, sin impacto operativo
+
+RNFD-003: Monitoreo de Salud en Tiempo Real
+
+Endpoints de health check:
+
+/health/api - Estado de APIs principales
+
+/health/database - Conexión y rendimiento BD
+
+/health/torniquetes - Estado hardware crítico
+
+/health/aforo - Precisión sistema de conteo
+
+Alertas automáticas:
+
+Respuesta > 2 segundos: Warning
+
+Servicio no disponible: Critical (SMS + email coordinador)
+
+Aforo inconsistente: High (notificación inmediata)
+
+RNFD-005: Estrategia de Resiliencia
+
+Capas de redundancia:
+
+DNS: Múltiples servidores de aplicación
+
+Base de datos: Réplica sincrónica en tiempo real
+
+Almacenamiento: RAID 10 para datos críticos
+
+Red: Conexiones redundantes a torniquetes
+
+Degradación controlada:
+
+API carnets offline: Validación contra caché de 24 horas
+
+Sistema notificaciones offline: Encolamiento local
+
+Tablets offline: Operación básica con sincronización posterior
+
+3.3.4 Seguridad
+RNFS-001: Protección de Datos Sensibles
+
+Contraseñas: bcrypt con cost 12, salt único
+
+Datos biométricos: Cifrado AES-256 en reposo
+
+Tokens de sesión: JWT con expiración 1 hora, refresh tokens 7 días
+
+RNFS-003: Cifrado de Comunicaciones
+
+HTTPS/TLS 1.3 para todas las comunicaciones
+
+Certificado válido para *.uds.edu.co
+
+Cipher suites modernos y seguros
+
+HSTS habilitado
+
+RNFS-004: Protección Contra Ataques Comunes
+
+SQL Injection: Prepared statements, ORM con parámetros
+
+XSS: Sanitización de entradas, CSP headers
+
+CSRF: Tokens en todos los formularios
+
+Brute Force: Bloqueo después de 5 intentos fallidos
+
+RNFS-005: Auditoría de Seguridad
+
+Registrar eventos críticos:
+
+Logins exitosos/fallidos con IP y timestamp
+
+Cambios de permisos y configuraciones
+
+Accesos a datos sensibles de salud
+
+Modificaciones en límites de aforo y capacidades
+
+RNFS-006: Cumplimiento Normativo
+
+Ley 1581 de 2012: Protección datos personales
+
+Consentimiento explícito para datos de salud
+
+Derecho al olvido: Eliminación datos upon request
+
+Notificación de brechas dentro de 72 horas
+
+3.3.5 Mantenibilidad
+RNFM-001: Documentación del Código
+
+Docstrings en todas las funciones públicas
+
+README con setup desarrollo y deployment
+
+API documentation con OpenAPI/Swagger
+
+Architecture decision records (ADRs)
+
+RNFM-002: Estándares de Código
+
+ESLint/Prettier para JavaScript/TypeScript
+
+PEP8 para Python (si aplica)
+
+Conventional commits para mensajes de commit
+
+Code reviews obligatorios antes de merge
+
+RNFM-003: Modularidad del Sistema
+
+Módulos independientes:
+
+access-control - Control acceso y aforo
+
+booking-system - Reservas clases y canchas
+
+fitness-tracking - Valoraciones y progreso
+
+maintenance - Reporte y gestión equipos
+
+notifications - Sistema de alertas
+
+RNFM-004: Configuración Externalizada
+
+Variables de entorno para credenciales
+
+Archivos YAML/JSON para configuraciones
+
+Base de datos para parámetros modificables via UI
+
+No hardcode de URLs o valores configurables
+
+RNFM-005: Logs Estructurados
+
+Formato JSON para fácil parsing
+
+Niveles: DEBUG, INFO, WARN, ERROR
+
+Contexto: user_id, operation, duration
+
+Rotación diaria, compresión después de 7 días
+
+3.3.6 Portabilidad
+RNFP-001: Compatibilidad con Infraestructura UDS
+
+AWS EC2 con Amazon Linux 2
+
+PostgreSQL 14+ en RDS
+
+Node.js 18+ para runtime
+
+Docker para containerización
+
+RNFP-002: Independencia de Hardware
+
+Tablets: Android 9.0+ o iOS 14+
+
+Navegadores: Chrome 90+, Firefox 88+, Safari 14+
+
+Resolución: 1024x768 mínimo, 1920x1080 recomendado
+
+RNFP-003: Exportación de Datos
+
+CSV/JSON para reportes personalizados
+
+PDF para documentos oficiales
+
+APIs REST para integraciones futuras
+
+Backups en formato estándar PostgreSQL
+
+
+
+
 ---
 
 
@@ -1005,33 +1391,276 @@ Logs del sistema	      10 GB/mes    	Retención: 90 días
 | **Actores secundarios** | Administrador, Usuarios |
 | **Tipo** | Primario |
 | **Prioridad** | Alta |
+| **Fuente** | Requisito RF-003 |
 
 ---
 
-### Descripción
-Este caso de uso describe el proceso mediante el cual el sistema FitCampus controla de forma automática el número de personas dentro del gimnasio. Cada vez que un usuario entra o sale, el sistema actualiza el contador de aforo. Si se alcanza el límite máximo, el sistema notifica al administrador, bloquea temporalmente nuevos ingresos y permite gestionar una fila virtual.
+##Descripción
+Este caso de uso describe el proceso mediante el cual el sistema FitCampus controla de forma automática el número de personas dentro del gimnasio, actualizando el conteo en tiempo real con cada entrada y salida, generando alertas progresivas y bloqueando el acceso al alcanzar el límite máximo de 180 personas.
 
 ---
 
-### Flujo principal
-1. El sistema detecta el ingreso de un usuario mediante su identificación.  
-2. Registra la entrada en el sistema (*UC-2*).  
-3. Actualiza el contador de aforo actual.  
-4. Si el aforo se encuentra dentro del límite, mantiene el acceso habilitado.  
-5. El sistema detecta cuando un usuario sale y actualiza el registro (*UC-3*).  
-6. Si el límite de capacidad se alcanza, se ejecuta *UC-4 (Notificar aforo máximo)*.  
-7. En caso de que el aforo esté completo, se activa *UC-5 (Bloquear acceso por aforo completo)*.  
-8. Si hay usuarios en espera, el sistema activa *UC-6 (Gestionar fila virtual)*.
+##Flujo Principal
+
+1. Detección de Ingreso de Usuario
+
+El sistema detecta el escaneo del carnet universitario en el torniquete
+
+Valida formato del código de barras según estándar UDS
+
+Verifica conexión con sistema de carnets en tiempo real
+
+2. Registro de Entrada en el Sistema (UC-2)
+
+Registra timestamp exacto de entrada
+
+Valida estado de membresía (activa/vencida/suspendida)
+
+Verifica que usuario no tenga acceso restringido
+
+Almacena registro en base de datos con ubicación "entrada"
+
+3. Actualización del Contador de Aforo
+
+Incrementa contador interno en +1
+
+Actualiza dashboard en tiempo real (< 2 segundos)
+
+Recalcula porcentaje de ocupación (actual/máximo 180)
+
+Registra métrica para análisis histórico
+
+4. Verificación de Límite de Aforo
+
+Si aforo < 144 (80%): Mantiene acceso normal, indicador verde
+
+Si aforo 144-162 (80-90%): Indicador amarillo, notificación preventiva
+
+Si aforo 162-179 (90-99%): Indicador naranja, alerta a coordinador
+
+Si aforo = 180 (100%): Procede al paso 7
+
+5. Detección de Salida de Usuario (UC-3)
+
+Sistema detecta escaneo de salida en torniquete
+
+Registra timestamp exacto de salida
+
+Decrementa contador de aforo en -1
+
+Actualiza dashboard inmediatamente
+
+Calcula tiempo total de permanencia del usuario
+
+6. Gestión de Aforo Máximo (UC-4) - CUANDO SE ALCANZA LÍMITE
+
+Activa alerta visual roja en todos los dashboards
+
+Envía notificación push a administrador y coordinador
+
+Registra evento crítico en log del sistema
+
+Muestra mensaje "Aforo Completo" en pantallas públicas
+
+7. Bloqueo de Acceso (UC-5) - AFORO COMPLETO
+
+Comanda cierre físico de torniquetes
+
+Muestra luz roja en dispositivos de acceso
+
+Presenta mensaje "Gimnasio Lleno - Fila Virtual Disponible"
+
+Impide nuevos escaneos hasta que se liberen cupos
+
+8. Gestión de Fila Virtual (UC-6) - SI HAY USUARIOS EN ESPERA
+
+Ofrece opción "Unirse a Fila Virtual" en app y pantallas
+
+Asigna posición en cola con tiempo estimado
+
+Notifica por SMS/app cuando cupo está disponible
+
+Reserva cupo por 10 minutos para usuario notificado
 
 ---
 
 ### Flujo alternativo
-- Si los sensores no detectan correctamente una entrada o salida, el sistema genera un registro de evento de error para revisión manual.  
+A. Detección de Entrada No Registrada
+
+Sistema detecta inconsistencia entre conteo físico y registros digitales
+
+Verificación automática mediante múltiples fuentes:
+
+Cámaras de seguridad en zona de torniquetes
+
+Sensor de movimiento en área de acceso
+
+Comparación con patrones históricos de uso
+
+Genera alerta de posible entrada no registrada
+
+Notifica a recepcionista para validación manual
+
+B. Salida No Detectada
+
+Sistema identifica usuario con entrada registrada pero sin salida
+
+Período de tolerancia: 15 minutos antes de generar alerta
+
+Verificaciones automáticas:
+
+Última actividad registrada (acceso a locker, uso de máquina)
+
+Consulta a sensores de presencia en vestuarios
+
+Revisión de cámaras en áreas comunes
+
+Escalado de alertas:
+
+Nivel 1 (30 min): Notificación a recepcionista
+
+Nivel 2 (60 min): Alerta a coordinador
+
+Nivel 3 (90 min): Notificación a seguridad
+
+C. Registro de Evento de Error
+{
+  "tipo_error": "entrada_no_registrada|salida_no_detectada",
+  "timestamp": "2025-01-15T18:30:00Z",
+  "ubicacion": "torniquete_entrada_principal",
+  "usuario_afectado": "20220345",
+  "sensores_activos": ["camara_1", "sensor_movimiento"],
+  "acciones_tomadas": ["notificacion_recepcion", "registro_incidencia"],
+  "estado": "pendiente_revision"
+}
+
+D. Proceso de Revisión Manual
+
+Recepcionista recibe notificación en tablet con detalles del evento
+
+Verificación visual mediante sistema de cámaras
+
+Confirmación o descarte del evento:
+
+Si confirma entrada no registrada: Registro manual + ajuste aforo
+
+Si confirma salida no detectada: Registro manual + ajuste aforo
+
+Si es falso positivo: Marcar como resuelto sin acción
+
+Ajuste del contador de aforo si corresponde
+
+Registro de resolución en bitácora del sistema
+
+E. Métricas de Calidad de Detección
+
+Tasa de falsos positivos: < 5% (objetivo)
+
+Tiempo de respuesta a alertas: < 10 minutos
+
+Precisión en correcciones manuales: 100%
+
+Frecuencia de eventos: < 2 por día (meta)
+
+F. Prevención de Recurrencia
+
+Análisis de patrones de eventos de error
+
+Calibración de sensores basada en incidentes
+
+Actualización de algoritmos de detección
+
+Capacitación a usuarios sobre uso correcto de torniquetes
+
+G. Comunicación al Usuario Afectado
+
+Si se confirma error del sistema: Notificación discreta vía app
+
+Si es error del usuario: Educación sobre procedimiento correcto
+
+En casos recurrentes: Revisión de carnet o entrenamiento personalizado
+
+
+
+
 
 ---
 
-### Postcondición
-El sistema mantiene actualizado el número de personas dentro del gimnasio y garantiza que el aforo nunca supere el máximo permitido.
+Postcondiciones
+A. Estado del Sistema
+
+Contador de aforo actualizado con precisión del 100%
+
+Dashboard en tiempo real refleja el número exacto de personas
+
+Historial de accesos completo y auditado
+
+Métricas de ocupación calculadas y almacenadas
+
+B. Control de Capacidad
+
+Aforo máximo garantizado: Nunca supera las 180 personas
+
+Sistema de bloqueo activo cuando se alcanza capacidad máxima
+
+Registro de intentos de acceso denegados por capacidad
+
+Cumplimiento normativo con certificación de bomberos
+
+C. Comunicación y Alertas
+
+Notificaciones enviadas según protocolo establecido:
+
+Recepcionistas: Alertas visuales y sonoras
+
+Coordinador: Notificaciones push en móvil
+
+Administración: Reporte de eventos críticos
+
+Señalización actualizada en pantallas públicas
+
+Estado visible en aplicación móvil para usuarios
+
+D. Gestión de Excepciones
+
+Eventos de error registrados y categorizados
+
+Correcciones aplicadas mediante procesos validados
+
+Auditoría completa de modificaciones manuales
+
+Métricas de calidad del sistema de detección
+
+E. Datos para Análisis
+
+Histórico de ocupación por franjas horarias
+
+Tendencias de uso identificadas y almacenadas
+
+Reportes automáticos generados para dirección
+
+Base para optimización de recursos y horarios
+
+F. Cumplimiento de Objetivos Críticos
+
+✅ Seguridad jurídica: Cero violaciones de aforo máximo
+
+✅ Precisión operativa: Margen de error 0% en conteo
+
+✅ Transparencia: Información accesible en tiempo real
+
+✅ Escalabilidad: Preparado para crecimiento de usuarios
+
+G. Estado de Componentes
+
+Torniquetes en modo operación normal o bloqueado según capacidad
+
+Sistema de notificaciones en estado de espera para próximo evento
+
+Base de datos sincronizada con últimos movimientos
+
+Logs de auditoría actualizados con timestamp preciso
+
 
 ---
 
