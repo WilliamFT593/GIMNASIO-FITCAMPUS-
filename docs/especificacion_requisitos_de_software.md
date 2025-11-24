@@ -504,6 +504,8 @@ CU-009: Programar Horario de Clases
 CU-010: Tomar Asistencia a Clases
 
 
+## CU-001: Controlar Aforo en Tiempo Real
+
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | CU-001 |
@@ -539,6 +541,8 @@ graph TD
 
 ---
 
+## CU-002: Gestionar Reserva de Clases Grupales
+
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | CU-002 |
@@ -567,6 +571,8 @@ graph TD
     H --> I[Enviar recordatorio]
     D --> J[Notificar liberación]
 ```
+
+## CU-003: Registrar Valoración Física
 
 | Campo | Descripción |
 |-------|-------------|
@@ -600,272 +606,255 @@ graph TD
     J --> K[Programar próxima cita]
 ```
 
+## CU-004: Reportar Equipo Dañado
 
----
-
-### Diagrama del Caso de Uso
-
-
-
-usecase
-    actor "Sistema Automático" as SA
-    rectangle "Sistema FitCampus" {
-        (UC-01: Controlar aforo en tiempo real)
-        (UC-2: Registrar entrada de usuario)
-        (UC-3: Registrar salida de usuario)
-        (UC-4: Notificar aforo máximo)
-        (UC-5: Bloquear acceso por aforo completo)
-        (UC-6: Gestionar fila virtual)
-    }
-
-    SA --> (UC-01: Controlar aforo en tiempo real)
-    (UC-01: Controlar aforo en tiempo real) --> (UC-2: Registrar entrada de usuario) : <<extends>>
-    (UC-01: Controlar aforo en tiempo real) --> (UC-3: Registrar salida de usuario) : <<extends>>
-    (UC-01: Controlar aforo en tiempo real) --> (UC-4: Notificar aforo máximo) : <<includes>>
-    (UC-01: Controlar aforo en tiempo real) --> (UC-5: Bloquear acceso por aforo completo) : <<extends>>
-    (UC-01: Controlar aforo en tiempo real) --> (UC-6: Gestionar fila virtual) : <<extends>>
-
--->
-
-
----
-
-
-## Caso de Uso: Gestionar Membresias de Usuario
-
-### Identificación
 | Campo | Descripción |
-|--------|--------------|
-| **ID** | UC-07 |
-| **Nombre** | Gestionar Membresias de Usuario |
-| **Actor principal** | Administrador |
-| **Actores secundarios** | Sistema automatico |
-| **Tipo** | Secundario/De Soporte |
-| **Prioridad** | Alta |
-
----
-
-### Descripción
-Este caso de uso describe el proceso mediante el cual el Administrador (o personal autorizado) puede realizar las operaciones de mantenimiento esenciales sobre las membresías de los usuarios. Esto incluye crear nuevas membresías, modificar planes existentes, extender la fecha de caducidad, suspender o reactivar cuentas y registrar pagos.
-
----
-
-### Flujo principal
-1. El Administrador inicia sesión en el portal de gestión del sistema FitCampus.
-2. El Administrador selecciona la opción "Gestionar Membresías" y busca al usuario por nombre, ID o correo electrónico.
-3. El Sistema muestra el perfil del usuario y el estado actual de su membresía (plan, fecha de inicio/fin, estado de pago).
-4. El Administrador selecciona la acción deseada (Crear/Renovar/Modificar/Suspender/Registrar Pago).
-5. El Administrador ingresa los datos necesarios para la acción:
- -Crear/Renovar: Selecciona el plan (Ej: Básico, Premium), duración y registra el pago (si aplica).
- -Modificar: Cambia el tipo de plan (Ej: de Básico a Premium).
- -Suspender/Reactivar: Cambia el estado de la membresía.
-6. El Sistema valida los datos ingresados ​​y realiza la actualización en la base de datos.
-7. El Sistema confirma al Administrador que la gestión ha sido completada exitosamente.
-8. El Sistema automático (opcionalmente) envía una notificación al usuario sobre el cambio en su membresía.
-
----
-
-### Flujo alternativo
-FA-1: Pago Rechazado o Pendiente :
-Si el Administrador intenta renovar la membresía y no se registra un pago exitoso, el sistema bloquea la activación de la nueva fecha de fin y notifica al Administrador. La membresía puede quedar en estado "Pendiente de Pago" .
-
-FA-2: Intento de Uso de Membresía Vencida :
-Si el sistema detecta una solicitud de ingreso (UC-2) o de reserva (UC-08) con una membresía cuya fecha de fin ya pasó, el sistema notifica automáticamente al usuario y al Administrador que se requiere una renovación (relación con UC-2 y UC-08). 
-
----
-
-### Postcondición
-La información de la membresía del usuario se encuentra actualizada en el sistema (plan, fecha de caducidad, estado activo/suspendido), lo cual afecta directamente su acceso al gimnasio y los servicios (clases, etc.).
-
----
-
-### Relaciones con otros casos de uso
-| Caso relacionado | Relación | Descripción |
-|------------------|-----------|--------------|
-| **UC-2** | <<depends>> | El registro de entrada debe validar el estado activo de la membresía antes de permitir el ingreso. |
-| **UC-8** | <<depends>> | La reserva de clases debe validar el estado y tipo de membresía para permitir el acceso a la clase. |
-| **UC-10** | <<extends>> | Puede ser necesario modificar la membresía si el usuario requiere acceso a horarios específicos de máquinas o zonas. |
+|-------|-------------|
+| **ID** | CU-004 |
+| **Nombre** | Reportar Equipo Dañado |
+| **Actores** | Usuario (primario), Técnico (secundario), Sistema Automático (secundario) |
+| **Descripción** | Sistema digital para reportar equipos dañados con seguimiento hasta su reparación. |
+| **Precondiciones** | 1. Usuario identificado en el sistema 2. Equipo existe en inventario del gimnasio 3. Sistema operativo y conectado |
+| **Postcondiciones** | 1. Equipo marcado como "Fuera de servicio" 2. Ticket de mantenimiento creado y asignado 3. Técnico notificado para acción inmediata |
+| **Flujo Principal** | 1. Usuario selecciona "Reportar equipo" en app o tablet recepción 2. Sistema muestra inventario de equipos con ubicación 3. Usuario selecciona equipo dañado y describe problema 4. Sistema asigna ticket único con prioridad automática 5. Notifica inmediatamente a técnicos disponibles 6. Técnico recibe alerta en tablet con detalles 7. Sistema registra estado: Reportado → En reparación → Reparado 8. Notifica a usuario cuando equipo está disponible |
+| **Flujos Alternativos** | 3a. Equipo no encontrado en inventario: 3a1. Sistema permite reporte manual con descripción 3a2. Recepcionista asigna ubicación y categoría 3a3. Sistema genera ticket con verificación pendiente|
+| **Flujos de Excepción** |5a. Ningún técnico disponible: 5a1. Sistema asigna ticket a "Cola de mantenimiento" 5a2. Notifica a coordinador para asignación manual 5a3. Establece fecha estimada de revisión |
+| **Requisitos Relacionados** | RF-008 (Reporte Digital de Equipos) RNFF-002 (Manejo robusto de errores) RNFD-005 (Degradación controlada) |
 
 
-##  Caso de Uso: Reservar Clases Grupales
+## CU-004: Reportar Equipo Dañado
 
-### Identificación
+```mermaid
+graph TD
+    A[Usuario reporta equipo] --> B[Seleccionar equipo inventario]
+    B --> C[Describir problema]
+    C --> D[Generar ticket único]
+    D --> E{Asignar prioridad}
+    E -->|Alta| F[Notificación inmediata]
+    E -->|Media| G[Notificación prioritaria]
+    E -->|Baja| H[Cola normal]
+    F --> I[Técnico recibe alerta]
+    G --> I
+    H --> I
+    I --> J[Actualizar estado equipo]
+```
+
+
+## CU-005: Gestionar Fila Virtual
+
 | Campo | Descripción |
-|--------|--------------|
-| **ID** | UC-08 |
-| **Nombre** | Reservar Clases Grupales |
-| **Actor principal** | Usuario |
-| **Actores secundarios** | Sistema Automatico, Administrador(gestor de clases ) |
-| **Tipo** | Primario |
-| **Prioridad** | Alta |
+|-------|-------------|
+| **ID** | CU-005 |
+| **Nombre** | Gestionar Fila Virtual |
+| **Actores** | Sistema Automático (primario), Usuario (secundario), Recepcionista (secundario)|
+| **Descripción** | Gestiona lista de espera cuando el gimnasio alcanza capacidad máxima. |
+| **Precondiciones** | 1. Aforo al 100% (180 personas) 2. Sistema de notificaciones operativo 3. Usuarios solicitando acceso |
+| **Postcondiciones** | 1. Fila virtual activa y gestionada 2. Usuarios en espera notificados adecuadamente 3. Ingreso ordenado cuando se liberan cupos |
+| **Flujo Principal** |1. Sistema detecta aforo completo (180 personas) 2. Ofrece opción "Unirse a fila virtual" en app y pantallas 3. Usuario ingresa a fila con posición y tiempo estimado 4. Sistema notifica cada 15 minutos sobre posición 5. Cuando se libera cupo, notifica al siguiente usuario 6. Reserva cupo por 10 minutos para ingreso 7. Si no ingresa en tiempo, pasa al siguiente |
+| **Flujos Alternativos** | 3a. Usuario abandona fila: 3a1. Sistema elimina usuario de la fila 3a2. Reorganiza posiciones de los demás 3a3. Notifica siguiente usuario si corresponde |
+| **Flujos de Excepción** | 6a. Múltiples cupos liberados simultáneamente: 6a1. Sistema notifica a varios usuarios según posición 6a2. Asigna cupos en orden de llegada a la fila 6a3. Actualiza estado de aforo en tiempo real |
+| **Requisitos Relacionados** | RF-004 (Sistema de Fila Virtual)
+RF-010 (Sistema de Notificaciones)
+RNFR-001 (Tiempos de respuesta críticos) |
 
----
 
-### Descripción
-Este caso de uso describe el proceso mediante el cual un usuario del gimnasio FitCampus puede consultar el horario de clases grupales, verificar su disponibilidad (cupo) y asegurar su plaza mediante una reserva. El sistema debe gestionar el límite de cupo y, si es necesario, una lista de espera.
 
----
 
-### Flujo principal
-1. El Usuario inicia sesión en la aplicación o portal web de FitCampus.
-2. El Usuario selecciona la opción para Consultar Horario de Clases .
-3. El Sistema verifica la membresía del usuario (UC-07) para asegurar que esté activa y con acceso a la clase deseada.
-4. El Sistema muestra el listado de clases disponibles, indicando el Cupo Actual/Máximo y el horario.
-5. El Usuario selecciona la clase que desea reservar.
-6. El Sistema realiza una verificación final del cupo disponible.
-7. Si hay cupo, el sistema registra la reserva del usuario para esa clase y reduce el cupo disponible en uno.
-8. El Sistema notifica al usuario la confirmación de la reserva (correo, notificación).
-9. La reserva se registra como una Entrada Pendiente que se validará automáticamente al ingresar al gimnasio a la hora de la clase (relación con UC-2).
+## CU-005: Gestionar Fila Virtual
 
----
+```mermaid
+graph TD
+    A[Aforo completo] --> B[Ofrecer fila virtual]
+    B --> C[Usuario ingresa a fila]
+    C --> D[Asignar posición]
+    D --> E{Verificar cupos}
+    E -->|Disponible| F[Notificar usuario]
+    E -->|No disponible| G[Actualizar posición]
+    F --> H[Reservar cupo 10min]
+    G --> I[Notificar cada 15min]
+    H --> J{Usuario ingresa?}
+    J -->|Sí| K[Registrar acceso]
+    J -->|No| L[Pasar siguiente]
+```
 
-### Flujo alternativo
-FA-1: Clase sin Cupo (Lista de Espera) :
-Si el sistema detecta que el cupo está en su límite máximo, pregunte al usuario si desea inscribirse en la lista de espera .
-Si el usuario acepta, el sistema lo agrega a la fila virtual (relación con UC-6).
-Si otro usuario cancela su reserva, el sistema asigna automáticamente la plaza al primer usuario en la lista de espera y ejecuta el Director de Flujo desde el paso 7.
 
-FA-2: Membresía Inválida :
-Si la verificación en el paso 3 indica que la membresía está caducada o no incluye acceso a clases, el sistema bloquea la reserva y notifica al usuario la razón.
 
----
-
-### Postcondición
-El usuario tiene una plaza reservada y confirmada para la clase grupal seleccionada, o ha sido agregado a la lista de espera correspondiente. El cupo disponible para la clase se mantiene actualizado en tiempo real.
-
----
-
-### Relaciones con otros casos de uso
-| Caso relacionado | Relación | Descripción |
-|------------------|-----------|--------------|
-| **UC-07** | <<depends>> | El sistema depende de la gestión de membresías para validar el acceso a la reserva. |
-| **UC-06** | <<extends>> | Se utiliza la lógica de gestión de fila virtual para la lista de espera de las clases. |
-| **UC-2** | <<depends>> | La reserva es un requisito para que el UC-2 (Registrar entrada) valide el ingreso del usuario a la zona de clases a la hora reservada. |
-
----
-
-## Caso de Uso: Generar Reportes 
-
-### Identificación
 | Campo | Descripción |
-|--------|--------------|
-| **ID** | UC-09 |
-| **Nombre** | Generar Reportes de Uso y Aforo |
-| **Actor principal** | Administrador |
-| **Actores secundarios** | Sistema automatico |
-| **Tipo** | De soporte/Secundario |
-| **Prioridad** | Medios de comunicacion |
+|-------|-------------|
+| **ID** | CU-006 |
+| **Nombre** | Generar Reportes de Impacto |
+| **Actores** | Administrador (primario), Sistema Automático (secundario) |
+| **Descripción** | Genera reportes automáticos para dirección sobre uso del gimnasio e impacto en salud. |
+| **Precondiciones** | 1. Administrador autenticado con permisos 2. Datos históricos disponibles en el sistema 3. Período de reporte definido |
+| **Postcondiciones** |1. Reporte generado y disponible para descarga 2. Datos consolidados para presentación a rectoría 3. Base para toma de decisiones estratégicas |
+| **Flujo Principal** | 1. Administrador selecciona tipo de reporte y período 2. Sistema consolida datos de múltiples fuentes 3. Genera métricas clave: usuarios activos, frecuencia, retención 4. Calcula indicadores de salud agregados (evolución IMC promedio) 5. Genera visualizaciones gráficas y tablas 6. Exporta en formatos PDF/Excel 7. Programa reportes recurrentes automáticos |
+| **Flujos Alternativos** | 2a. Datos insuficientes para período: 2a1. Sistema sugiere período alternativo con datos completos 2a2. Genera reporte parcial con advertencia 2a3. Ofrece opción de incluir datos estimados |
+| **Flujos de Excepción** | 5a. Error en generación de gráficos: 5a1. Sistema genera reporte en formato tabla simple 5a2. Notifica error al administrador 5a3. Registra incidencia para corrección técnica |
+| **Requisitos Relacionados** | RF-006 (Dashboard Analítico) RNFS-008 (Protección de datos personales) RNFM-005 (Logs para diagnóstico) |
 
----
 
-### Descripción
-Este caso de uso describe cómo el sistema FitCampus procesa los datos históricos recopilados de los ingresos (UC-2), salidas (UC-3) y el control de aforo (UC-1) para generar informes analíticos. Estos informes son esenciales para que el Administrador pueda identificar patrones de máxima concurrencia, horas valle, y la asistencia a clases, lo cual es crucial para la optimización de recursos y la toma de decisiones operativas.
+## CU-006: Generar Reportes de Impacto
 
----
+```mermaid
+graph TD
+    A[Admin selecciona reporte] --> B{Definir parámetros}
+    B --> C[Consolidar datos]
+    C --> D[Calcular métricas]
+    D --> E[Usuarios activos]
+    D --> F[Frecuencia asistencia]
+    D --> G[Indicadores salud]
+    E --> H[Generar visualizaciones]
+    F --> H
+    G --> H
+    H --> I[Exportar formatos]
+    I --> J[Programar reportes]
+```
 
-### Flujo principal
-1. El Administrador inicia sesión en el portal de gestión.
-2. El Administrador selecciona la opción "Generar Informes" .
-3. El Administrador especifica los parámetros del reporte (rango de fechas, tipo de reporte —ej: Aforo, Asistencia a Clases, Movimiento de Membresías—, y formato de salida —ej: PDF, CSV—).
-4. El Sistema accede a los registros históricos (UC-1, UC-2, UC-3, UC-8).
-5. El Sistema automático procesa los datos para calcular las métricas clave (ej: aforo promedio por hora, pico de afluencia, tasa de ocupación de clases).
-6. El Sistema genera el informe en el formato solicitado, incluyendo gráficos y tablas.
-7. El Sistema presenta el informe en pantalla o lo envía al correo electrónico del Administrador.
+CU-007: Validar Acceso de Usuario
 
----
-
-### Flujo alternativo
-FA-1: Datos Insuficientes :
-Si el Administrador selecciona un rango de fechas para el cual no existen registros completos (ej: el sistema no estaba operativo), el sistema emite una advertencia e informa que el reporte se generará solo con los datos disponibles, o solicitar un nuevo rango.
-
-FA-2: Informe de Generación Lenta :
-Si el rango de datos es muy extenso (ej: un año completo), el sistema notifica al Administrador que el reporte se generará en el segundo plano y le enviará una notificación o correo cuando esté listo para su descarga.
-
----
-
-### Postcondición
-El Administrador tiene en su poder un informe analítico que refleja el uso y el aforo del gimnasio durante el período especificado, lo cual le permite tomar decisiones informadas sobre horarios y recursos.
-
----
-
-### Relaciones con otros casos de uso
-| Caso relacionado | Relación | Descripción |
-|------------------|-----------|--------------|
-| **UC-1** | <<depends>> | Utilice los registros de aforo en tiempo real para generar informes históricos de concurrencia. |
-| **UC-2** | <<depends>> | Utilice los registros de entrada y salida para calcular la afluencia total y los picos de uso por hora. |
-| **UC-3** | <<depends>> | Utilice los registros de entrada y salida para calcular la afluencia total y los picos de uso por hora. |
-| **UC-8** | <<depends>> | Utiliza los datos de reservas para reportar la tasa de ocupación y la popularidad de las clases grupales. |
-| **UC-7** | <<depends>> | Puede generar informes de nuevas altas, bajas y renovaciones de membresías. |
-
----
-
-## Caso de Uso: Sincronizar Horario de Disponibilidad de Maquinas
-
-### Identificación
 | Campo | Descripción |
-|--------|--------------|
-| **ID** | UC-10 |
-| **Nombre** | Sincronizar Horario de Disponibilidad de Maquinas |
-| **Actor principal** | Sistema automatico |
-| **Actores secundarios** | Personal de Mantenimiento, Usuario |
-| **Tipo** | De soporte/Secundario |
-| **Prioridad** | Medios de comunicacion |
+|-------|-------------|
+| **ID** | CU-007 |
+| **Nombre** | Validar Acceso de Usuario |
+| **Actores** | Sistema Automático (primario), Usuario (secundario), Recepcionista (secundario) |
+| **Descripción** | Valida el acceso de usuarios mediante escaneo de carnet y verificación de membresía. |
+| **Precondiciones** | 	1. Sistema operativo y conectado 2. Lector de códigos de barras funcionando 3. Base de datos de usuarios accesible |
+| **Postcondiciones** | 1. Acceso permitido o denegado según validación 2. Registro de intento de acceso almacenado 3. Usuario notificado del resultado |
+| **Flujo Principal** | 1. Usuario presenta carnet universitario en torniquete 2. Sistema escanea código de barras 3. Valida formato del código 4. Consulta estado de membresía en base de datos 5. Verifica que no tenga restricciones de acceso 6. Permite acceso y registra entrada
+7. Actualiza contador de aforo|
+| **Flujos Alternativos** | 	4a. Membresía vencida: 4a1. Sistema bloquea acceso 4a2. Muestra mensaje "Membresía vencida" 4a3. Deriva a recepción para renovación |
+| **Flujos de Excepción** | 	2a. Código de barras ilegible: 2a1. Sistema solicita reintento de escaneo 2a2. Si persiste el error, deriva a recepción para validación manual |
+| **Requisitos Relacionados** | RF-001, RF-002, RNFS-004 |
+
+
+##CU-007: Validar Acceso de Usuario
+
+```mermaid
+graph TD
+    A[Usuario escanea carnet] --> B{Validar formato}
+    B -->|Válido| C[Consultar base datos]
+    B -->|Inválido| D[Bloquear acceso]
+    C --> E{Membresía activa?}
+    E -->|Sí| F{Sin restricciones?}
+    E -->|No| G[Bloquear acceso]
+    F -->|Sí| H[Permitir acceso]
+    F -->|No| I[Mostrar motivo bloqueo]
+    H --> J[Registrar entrada]
+
+```
+
+
+
+CU-008: Gestionar Membresías
+
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | CU-008 |
+| **Nombre** | Gestionar Membresías |
+| **Actores** |Administrador (primario), Sistema Automático (secundario), Usuario (secundario) |
+| **Descripción** |Permite la gestión integral de membresías de usuarios del gimnasio. |
+| **Precondiciones** | 1. Administrador autenticado con permisos 2. Sistema integrado con base de datos universitaria 3. Usuario existe en sistema universitario |
+| **Postcondiciones** |1. Estado de membresía actualizado 2. Historial de cambios registrado 3. Usuario notificado de cambios relevantes |
+| **Flujo Principal** |1. Administrador busca usuario por código o nombre 2. Sistema muestra información actual de membresía 3. Administrador selecciona acción (activar, suspender, renovar) 4. Sistema valida que la acción sea permitida 5. Ejecuta cambio de estado de membresía 6. Registra cambio en historial con timestamp 7. Notifica al usuario si corresponde 8. Actualiza base de datos |
+| **Flujos Alternativos** | 3a. Renovación de membresía: 3a1. Sistema calcula nueva fecha de vencimiento 3a2. Actualiza estado a "Activa" 3a3. Envía confirmación de renovación |
+| **Flujos de Excepción** |4a. Acción no permitida: 4a1. Sistema muestra motivo de restricción 4a2. Sugiere acción alternativa 4a3. Cancela operación actual] |
+| **Requisitos Relacionados** | RF-001, RNFS-005, RNFS-006 |
+
+
+CU-008: Gestionar Membresías
+
+
+```mermaid
+
+graph TD
+    A[Admin selecciona usuario] --> B{Ver estado membresía}
+    B -->|Activa| C[Mostrar detalles]
+    B -->|Vencida| D[Ofrecer renovación]
+    B -->|Suspendida| E[Mostrar motivo]
+    C --> F[Opciones: renovar/modificar]
+    D --> G[Proceso de renovación]
+    E --> H[Proceso de reactivación]
+    F --> I[Actualizar base datos]
+    G --> I
+    H --> I
+    I --> J[Notificar usuario]
+
+```
+
+
+
+
+
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | CU-009 |
+| **Nombre** | Programar Horario de Clases |
+| **Actores** | Coordinador (primario), Sistema Automático (secundario), Instructor (secundario)|
+| **Descripción** |Permite programar y gestionar el horario semanal de clases grupales. |
+| **Precondiciones** | 1. Coordinador autenticado con permisos 2. Instructores registrados en el sistema 3. Salones y equipos disponibles en inventario |
+| **Postcondiciones** | 1. Horario semanal publicado y visible 2. Instructores asignados a clases 3. Capacidades y restricciones configuradas |
+| **Flujo Principal** | 1. Coordinador accede a módulo de programación 2. Sistema muestra horario actual y disponibilidad 3. Coordinador selecciona fecha, hora y tipo de clase 4. Asigna instructor disponible 5. Define capacidad máxima del salón 6. Configura restricciones específicas 7. Sistema valida que no haya conflictos 8. Publica clase en horario semanal 9. Notifica a instructor asignado |
+| **Flujos Alternativos** | 7a. Conflicto de horario detectado: 7a1. Sistema muestra conflicto específico 7a2. Sugiere horarios alternativos disponibles 7a3. Coordinador ajusta horario o instructor |
+| **Flujos de Excepción** | 4a. Instructor no disponible: 4a1. Sistema muestra instructores disponibles 4a2. Coordinador selecciona instructor alternativo 4a3. Sistema reasigna clase |
+| **Requisitos Relacionados** | RF-005, RNFF-003, RNFM-003 |
+
+
+##CU-009: Programar Horario de Clases
+
+```mermaid
+graph TD
+    A[Coordinador accede programación] --> B[Mostrar horario actual]
+    B --> C[Seleccionar fecha/hora/clase]
+    C --> D[Asignar instructor]
+    D --> E[Definir capacidad]
+    E --> F[Configurar restricciones]
+    F --> G{Validar conflictos?}
+    G -->|Sin conflictos| H[Publicar horario]
+    G -->|Con conflictos| I[Sugerir alternativas]
+    H --> J[Notificar instructor]
+    I --> C
+
+
+```
+
+
+| Campo | Descripción |
+|-------|-------------|
+| **ID** | CU-010 |
+| **Nombre** | Tomar Asistencia a Clases |
+| **Actores** | Instructor (primario), Sistema Automático (secundario), Usuario (secundario) |
+| **Descripción** | Registra la asistencia real de usuarios a clases grupales y controla el acceso al salón. |
+| **Precondiciones** | 1. Instructor autenticado en el sistema 2. Clase programada en horario 3. Lista de reservas disponible 4. Tablet operativa con conexión |
+| **Postcondiciones** | 1. Asistencia registrada para todos los participantes 2. Control de acceso al salón ejecutado 3. Reporte de ausentismo generado 4. Historial de asistencia actualizado|
+| **Flujo Principal** | 1. 1. Instructor accede a lista de clase en tablet 2. Sistema muestra lista de usuarios con reserva 3. Usuario presenta carnet para registro 4. Instructor escanea código o selecciona manualmente 5. Sistema marca asistencia y registra timestamp 6. Controla que no se exceda capacidad del salón 7. Genera reporte de asistencia al finalizar clase 8. Actualiza historial de frecuencia de usuarios |
+| **Flujos Alternativos** | 3a. Usuario sin reserva intenta ingresar: 3a1. Sistema verifica si hay cupos disponibles 3a2. Si hay cupo, permite ingreso y registra como "walk-in" 3a3. Si no hay cupo, niega el acceso |
+| **Flujos de Excepción** | 4a. Error de conexión en tablet: 4a1. Sistema permite modo offline temporal 4a2. Instructor registra asistencia localmente 4a3. Tablet sincroniza datos al recuperar conexión |
+| **Requisitos Relacionados** | RF-005, RF-006, RNFD-005 |
+
+
+## CU-010: Tomar Asistencia a Clase
+
+
+```mermaid
+
+graph TD
+    A[Instructor accede lista] --> B[Mostrar reservas]
+    B --> C[Usuario presenta carnet]
+    C --> D{Escaneo exitoso?}
+    D -->|Sí| E[Registrar asistencia]
+    D -->|No| F[Búsqueda manual]
+    E --> G[Actualizar lista]
+    F --> H[Seleccionar usuario manual]
+    H --> E
+    G --> I{Clase finalizada?}
+    I -->|Sí| J[Generar reporte asistencia]
+    I -->|No| C
+
+```
 
 ---
-
-### Descripción
-Este caso de uso describe el proceso mediante el cual el sistema FitCampus mantiene actualizado el estado de disponibilidad de las máquinas de ejercicio clave. El objetivo es informar a los usuarios y al personal sobre qué máquinas están operativas, en uso, o fuera de servicio por mantenimiento, limpieza o avería, evitando frustraciones y optimizando el flujo de trabajo.
-
----
-
-### Flujo principal
-1. El Sistema automático o un Personal de Mantenimiento inicia el proceso de actualización del estado de una máquina específica.
-2. El Sistema identifica la máquina (Ej: Cinta 3, Elíptica 1).
-3. El Personal de Mantenimiento (si es manual) o el Sistema Automático (si hay sensores) ingresa/detecta el nuevo estado de la máquina:
--Operativa (Disponible)
--En Uso (se puede ligar con UC-2/UC-3 o balizas de proximidad).
--Fuera de Servicio (Mantenimiento/Avería) .
-4. El Sistema actualiza el registro de disponibilidad para la máquina con el nuevo estado y la hora de la actualización.
-5. El Sistema genera una notificación interna al Administrador sobre cualquier máquina marcada como "Fuera de Servicio" .
-6. El Sistema actualiza la interfaz de usuario para que la información se refleje en tiempo real para los Usuarios (ej: en la aplicación de FitCampus).
-
----
-
-### Flujo alternativo
-FA-1: Mantenimiento Planificado :
-El Personal de Mantenimiento puede registrar un horario de inactividad futuro para la máquina (Ej: "Fuera de Servicio por Limpieza, Martes de 10:00 a 11:00").
-El Sistema muestra un mensaje de "Mantenimiento Programado" y el horario a los usuarios.
-Al llegar la hora, el sistema cambia el estado automáticamente y lo revierte al finalizar el horario.
-
-FA-2: Avería Reportada por Usuario :
-El Usuario tiene la opción en la aplicación de reportar un problema con una máquina.
-El Sistema registra la incidencia y cambia temporalmente el estado de la máquina a "Inspección Pendiente" hasta que el personal la verifique.
-
----
-
-### Postcondición
-El sistema mantiene un registro preciso y en tiempo real del estado de disponibilidad de cada máquina clave del gimnasio, permitiendo al Administrador la gestión del mantenimiento y ofreciendo información clara a los Usuarios.
-
----
-
-### Relaciones con otros casos de uso
-| Caso relacionado | Relación | Descripción |
-|------------------|-----------|--------------|
-| **UC-2** | <<depends>> | El estado "En Uso" puede depender de los registros de entrada y salida del usuario en la zona de máquinas, si se implementa un control de presencia granular. |
-| **UC-3** | <<depends>> | El estado "En Uso" puede depender de los registros de entrada y salida del usuario en la zona de máquinas, si se implementa un control de presencia granular.|
-| **UC-9** | <<depends>> | El sistema utiliza los registros de inactividad de las máquinas para generar informes de "Tiempo Fuera de Servicio" y evaluar la eficiencia del mantenimiento. |
-| **UC-01** | <<extends>> | Podría extenderse para controlar el "aforo por zona" (Ej: Zona de Cardio vs. Zona de Pesas), usando la disponibilidad de máquinas como métrica. |
-
-
----
-
-
-
-
-
-
-
-
 
 
 
