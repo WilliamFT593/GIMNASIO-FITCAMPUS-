@@ -144,6 +144,16 @@ Coordinador: programa horarios de clases, asigna instructores y genera reportes 
 | **JWT** | JSON Web Token, usado para autenticación segura. |
 | **HTTPS** | Protocolo de comunicación segura entre el cliente y el servidor. |
 | **FitControl** | Nombre del sistema de control de aforo del gimnasio. |
+| **UDS** | Universidad del Sur, institución cliente del sistema.|
+| **MVP** | Producto Mínimo Viable, versión inicial con funcionalidades críticas. |
+| **ACS** | Sistema de Control de Aforo, módulo principal del FitCampus. |
+| **API** | Application Programming Interface, para integración entre sistemas. |
+| **RFID** | Identificación por Radiofrecuencia, tecnología para control de acceso |
+| **NFC	** | Near Field Communication, comunicación de corto alcance para carnets. |
+| **IMC	** | Índice de Masa Corporal, métrica de valoración física. |
+| **KPI** | Key Performance Indicator, indicador clave de rendimiento. |
+| **EPS	** | Entidad Promotora de Salud, aliado externo del programa de salud. |
+
 
 ---
 
