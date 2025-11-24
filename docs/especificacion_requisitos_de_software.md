@@ -482,6 +482,513 @@ Las funciones principales del sistema están organizadas en los siguientes módu
 | **Dependencias** | RF-001, RF-003, RF-005 |
 | **Comentarios** | Componente clave para mejorar experiencia de usuario. |
 
+## 3.2 REQUISITOS DE INTERFAZ EXTERNA
+
+## 3.2.1 INTERFAZ DE USUARIO
+
+RUI-001: Estándar de Interfaz Web Responsiva
+
+El sistema DEBE proporcionar una interfaz web responsiva basada en HTML5, CSS3 y JavaScript. La interfaz DEBE adaptarse automáticamente a:
+
+Escritorio (Administración): 1024x768 hasta 1920x1080 píxeles
+
+Tablets (Recepcionistas/Instructores): 768x1024 hasta 1024x1366 píxeles
+
+Móvil (Usuarios): 320x568 hasta 428x926 píxeles
+
+La interfaz DEBE seguir principios de Material Design con componentes optimizados para cada dispositivo:
+
+Tablets recepción: Botones táctiles grandes (>44px), navegación simplificada
+
+App móvil: Menú hamburguesa, gestos de deslizamiento, priorización de funciones frecuentes
+
+RUI-002: Compatibilidad de Navegadores
+
+El sistema DEBE funcionar en:
+
+Google Chrome 90+ (primario)
+
+Mozilla Firefox 88+
+
+Microsoft Edge 90+
+
+Safari 14+ (iOS/macOS)
+
+RUI-003: Accesibilidad (WCAG 2.1 Nivel AA)
+
+La interfaz DEBE cumplir con:
+
+Contraste 4.5:1 para texto
+
+Navegación completa por teclado
+
+Compatibilidad con lectores de pantalla (NVDA, VoiceOver)
+
+Tamaño de texto escalable hasta 200%
+
+##RUI-004: ESTRUCTURA DE NAVEGACION POR ROL
+
+| ROL | Navegación Principal |
+|-------|-------------|
+| **ID** | RF-010 |
+| **Usuario** | Aforo actual, Reservar clase, Mi progreso, Reportar equipo|
+| **Recepcionista** |Control acceso, Consultas, Excepciones, Aforo tiempo real |
+| **Instructor** | Mis clases, Asistencia, Observaciones, Horario|
+| **Coordinador** | Dashboard, Programación, Reportes, Configuración |
+
+##RUI-005: MENSAJES DE ERRROR CONTEXTUALES
+
+Ejemplos específicos para FitCampus:
+
+. "Cupo completo: La clase de Spinning de 6:00 PM está llena. ¿Desea unirse a la lista de espera?"
+
+. "Membresía vencida: Su acceso al gimnasio requiere renovación. Contacte recepción."
+
+. "Aforo completo: Gimnasio al 100% de capacidad. ¿Desea ingresar a la fila virtual?"
+
+##3.2.2 INTERFAZ DE HADWARE
+
+RHW-001: Integración con Torniquetes
+
+El sistema DEBE integrarse con torniquetes existentes mediante APIs REST para:
+
+Control remoto (bloqueo/desbloqueo)
+
+Lectura de eventos de entrada/salida
+
+Estados de operación (en línea/fallando)
+
+RHW-002: Tablets para Operaciones
+
+El sistema DEBE soportar tablets con:
+
+Android 9.0+ para recepcionistas e instructores
+
+Pantalla mínima 8 pulgadas, resistencia a caídas
+
+Fundas protectoras con soporte para mesón
+
+Autonomía mínima 8 horas de uso continuo
+
+RHW-003: Báscula Digital Bluetooth
+
+El sistema DEBE integrarse con báscula digital que soporte:
+
+Protocolo Bluetooth 4.0+ para transmisión inalámbrica
+
+Precisión de ±100g para mediciones de peso
+
+Autonomía mínima 1 mes con uso diario
+
+Compatibilidad con iOS y Android
+
+RHW-004: Especificaciones de Servidores
+
+El sistema DEBE operar en infraestructura AWS universitaria con:
+
+CPU: 4 vCPUs mínimas, 8 recomendadas
+
+RAM: 8 GB mínimo, 16 GB recomendado
+
+Almacenamiento: 100 GB SSD (crecimiento estimado 10 GB/mes)
+
+Ancho de banda: 100 Mbps dedicados
+
+RHW-005: Red y Conectividad
+
+WiFi: Cobertura total en gimnasio, mínimo 50 dispositivos concurrentes
+
+Cableado: Conexión Ethernet para torniquetes y tablets base
+
+Redundancia: Internet redundante para operación continua
+
+Seguridad: VLAN segregada para dispositivos IoT del gimnasio
+
+RHW-006: Requisitos de Dispositivos Móviles
+
+Para usuarios con aplicación web:
+
+iOS: iPhone 6S o superior, iOS 13+
+
+Android: Android 8.0+ con 2GB RAM mínimo
+
+Navegador: Chrome 90+ o Safari 14+
+
+RHW-007: Sistema de Respaldo
+
+UPS: Protección eléctrica para servidores críticos (30 min autonomía)
+
+Backup: Respaldos automáticos diarios con retención de 30 días
+
+Contingencia: Tablets deben funcionar 4 horas en modo offline para operaciones básicas
+
+##3.2.3 INTERFAZ DE SOFTWARE
+
+RSW-001: Integración con Sistema de Carnets Universitarios
+
+El sistema DEBE integrarse con la API REST del Sistema de Carnets Universitarios UDS versión 3.0:
+
+Endpoint: GET https://api.uds.edu.co/carnets/v3/validar/{codigo_barras}
+Autenticación: API Key en header X-API-Key + JWT
+Respuesta esperada:
+{
+  "valido": true,
+  "usuario": {
+    "codigo": "20220345",
+    "nombres": "Camila Rodríguez",
+    "apellidos": "Torres",
+    "tipo": "estudiante",
+    "facultad": "Administración",
+    "estado": "activo",
+    "fecha_vencimiento": "2026-06-30"
+  }
+}
+
+Manejo de errores:
+
+Timeout: 3 segundos máximo
+
+Error 404: Carnet no encontrado o inválido
+
+Error 403: Carnet sin privilegios para gimnasio
+
+Sin conectividad: Modo offline con caché de 24 horas
+
+RSW-002: Servicio de Notificaciones Multi-canal
+
+El sistema DEBE integrarse con:
+
+Correo Institucional (SMTP):
+
+Servidor: mail.uds.edu.co
+
+Puerto: 587 (STARTTLS)
+
+Remitente: fitcampus@uds.edu.co
+
+Servicio de SMS:
+
+Proveedor: Twilio API o equivalente local
+
+Plantillas pre-aprobadas para recordatorios de clases
+
+Notificaciones Push:
+
+Firebase Cloud Messaging para notificaciones móviles
+
+Web Push API para notificaciones de navegador
+
+Tipos de notificaciones:
+
+Confirmación de reserva de clase (2 horas antes)
+
+Alerta de aforo al 90% (para coordinadores)
+
+Recordatorio de valoración física mensual
+
+Notificación de turno en fila virtual
+
+Alerta de equipo reparado
+
+RSW-003: Base de Datos PostgreSQL
+
+El sistema DEBE utilizar PostgreSQL 14+ con:
+
+Esquema de base de datos:
+
+Codificación: UTF-8
+
+Timezone: America/Bogota
+
+Extensions: pgcrypto (cifrado), pg_stat_statements
+
+Requisitos de rendimiento:
+
+Tiempo de respuesta consultas simples: < 100ms
+
+Tiempo de respuesta consultas complejas: < 500ms
+
+Soporte para 500 conexiones concurrentes
+
+RSW-004: Servicios de AWS Universitarios
+
+El sistema DEBE operar en infraestructura AWS de la UDS:
+
+Servicios requeridos:
+
+EC2: Instancias para aplicación web
+
+RDS: PostgreSQL managed
+
+S3: Almacenamiento de backups y logs
+
+CloudWatch: Monitoreo y alertas
+
+ELB: Balanceador de carga
+
+Configuración:
+
+Región: us-east-1 (N. Virginia)
+
+VPC: Red privada universitaria
+
+Security Groups: Reglas específicas para gimnasio
+
+RSW-005: API de Torniquetes
+
+El sistema DEBE integrarse con API de torniquetes existentes:
+
+Endpoint: POST https://toriquetes.uds.edu.co/api/v1/acceso
+Content-Type: application/json
+Body: {
+  "accion": "entrada|salida",
+  "codigo_barras": "20220345",
+  "timestamp": "2025-01-15T17:30:00Z"
+}
+
+Control de torniquetes:
+
+Bloqueo/desbloqueo remoto
+
+Estado de operación en tiempo real
+
+Logs de eventos de acceso
+
+RSW-006: Servicio de Backup y Recuperación
+
+El sistema DEBE integrar con servicio de backup AWS:
+
+Backup automático diario de base de datos
+
+Retención: 30 días para backups incrementales
+
+Retención: 12 meses para backups mensuales
+
+Punto de recuperación objetivo (RPO): 1 hora
+
+Tiempo de recuperación objetivo (RTO): 4 horas
+
+RSW-007: Framework de Desarrollo
+
+El sistema DEBE desarrollarse utilizando:
+
+Backend: Node.js 18+ con Express.js
+
+Frontend: React 18+ con TypeScript
+
+Base de datos: PostgreSQL 14+
+
+Contenedores: Docker con Docker Compose
+
+Justificación: Estándar tecnológico de la Dirección de Sistemas UDS para facilitar mantenimiento y escalabilidad.
+
+RSW-008: Monitoreo y Logs
+
+El sistema DEBE integrar con:
+
+ELK Stack: Para logs centralizados
+
+Prometheus: Para métricas de rendimiento
+
+Grafana: Para dashboards de monitoreo
+
+Alertas: Configuración de thresholds para métricas críticas
+
+Métricas críticas a monitorear:
+
+Tiempo de respuesta API < 500ms
+
+Aforo en tiempo real con precisión 100%
+
+Disponibilidad del sistema > 99.5%
+
+Errores de integración con torniquetes < 1%
+
+##3.2.4 INTERFAZ DE COMUNICACION
+
+RCOM-001: Protocolo de Comunicación Segura
+
+El sistema DEBE utilizar HTTPS/TLS 1.3 para todas las comunicaciones:
+
+Certificado SSL: Certificado válido para *.uds.edu.co
+
+Cipher Suites: ECDHE-RSA-AES256-GCM-SHA384 o superior
+
+HSTS: Habilitado con max-age=31536000
+
+Redirección: HTTP → HTTPS automática
+
+RCOM-002: Requisitos de Ancho de Banda
+
+El sistema DEBE funcionar con la infraestructura de red del gimnasio:
+
+Conexión principal: 100 Mbps simétrica (WiFi gimnasio)
+
+Usuarios simultáneos: Soporte para 300+ dispositivos conectados
+
+Optimizaciones:
+
+Compresión Brotli para recursos estáticos
+
+Lazy loading para imágenes de dashboard
+
+WebSockets para actualizaciones en tiempo real de aforo
+
+Cache agresivo para recursos estáticos (1 semana)
+
+### Identificación
+| Servicio | Puerto | | Protocolo | Acceso |
+|--------|--------------|
+| **Servidor Web** | 443|  | HTTPS | Público (usuarios) |
+| **API Backend	** | 443|  | HTTPS | Público (app móvil) |
+| **PostgreSQL** | 5432|  | TCP | Privado (solo servidores app) |
+| **Redis Cache** || 6379|  | TCP | Privado (solo servidores app) |
+| **SMTP** | 587|  | STARTTLS | Saliente (notificaciones) |
+
+RCOM-004: Comunicación con APIs Externas
+
+Integración Carnets Universitarios:
+
+Rate limiting: 50 requests/minuto
+
+Timeout: 3 segundos
+
+Retry: 2 intentos con backoff exponencial
+
+Circuit breaker: Abrir tras 5 fallos consecutivos
+
+Integración Torniquetes:
+
+Protocolo: WebSocket para comunicación bidireccional
+
+Heartbeat: 30 segundos para detección de caídas
+
+Reconexión automática: Tras 5 segundos de desconexión
+
+RCOM-005: Comunicación en Tiempo Real
+
+El sistema DEBE implementar WebSockets para:
+
+Actualización aforo: Broadcast cada 2 segundos a todos los clientes
+
+Notificaciones push: Alertas inmediatas a usuarios específicos
+
+Estado torniquetes: Monitoreo en tiempo real del hardware
+
+RCOM-006: Comunicación Dispositivos Móviles
+
+App Web Progressive (PWA):
+
+Service Workers para funcionamiento offline parcial
+
+Sync API para enviar datos cuando recupera conexión
+
+Push API para notificaciones nativas
+
+Tablets Operativas:
+
+Conexión persistente WebSocket para estado en tiempo real
+
+Modo offline: 4 horas de operación básica (caché local)
+
+Sincronización automática al recuperar conexión
+
+RCOM-007: Seguridad Comunicaciones
+
+Protección de Datos Sensibles:
+
+Cifrado end-to-end para datos de valoración física
+
+Tokens JWT con expiración de 1 hora para sesiones
+
+Refresh tokens con expiración de 7 días
+
+Revocación inmediata en caso de pérdida/robo
+
+RCOM-008: Monitoreo de Comunicaciones
+
+El sistema DEBE monitorear:
+
+Latencia: < 100ms para operaciones críticas (control acceso)
+
+Disponibilidad: > 99.5% para servicios esenciales
+
+Ancho de banda: Alertas al usar > 80% de capacidad
+
+Errores: < 1% de requests fallidos
+
+RCOM-009: API Interna para Futuras Integraciones
+
+Endpoints críticos para expansión futura:
+
+GET /api/v1/aforo/actual          # Estado actual del gimnasio
+GET /api/v1/clases/disponibles    # Clases con cupos
+POST /api/v1/reservas             # Crear reserva
+GET /api/v1/usuarios/{id}/progreso # Historial de valoraciones
+
+Autenticación API:
+
+OAuth 2.0 Client Credentials para integraciones sistema-sistema
+
+JWT para autenticación usuario-based
+
+Rate limiting por IP y por cliente
+
+RCOM-010: Comunicación con Dispositivos IoT
+
+Báscula Bluetooth:
+
+Protocolo: Bluetooth Low Energy (BLE)
+
+Frecuencia: Sincronización cada 30 segundos durante uso
+
+Seguridad: Pairing con PIN único por sesión
+
+Sensores Ambientales (futuro):
+
+Protocolo: MQTT over WebSockets
+
+QoS: Nivel 1 (al menos una vez)
+
+Topics: /gimnasio/temperatura, /gimnasio/humedad
+
+##3.3 REQUISITOS NO FUNCIONALES
+
+RNFR-001: Tiempos de Respuesta Críticos
+
+El sistema DEBE cumplir los siguientes tiempos de respuesta:
+
+
+
+| Operación | Tiempo Máximo	 | | Condiciones 
+|--------|--------------|
+| **Control de acceso (entrada/salida)** | 500 ms|  | 99° percentil, hora pico |
+| **Consulta de aforo en tiempo real** | 200 ms	|  | Actualización cada 2 segundos | Público (app móvil) |
+| **Reserva de clase grupal** |  | 2 segundos | Incluye validación de cupos|
+| **Consulta de disponibilidad** || 1 segundo|  | TCP | 50+ usuarios concurrentes |
+| **Carga dashboard coordinador** | 3 segundos|  | | Datos en tiempo real) |
+
+RNFR-002: Capacidad de Usuarios Concurrentes
+
+Usuarios normales: 300+ simultáneos (app + web)
+
+Operaciones críticas: 50 accesos/minuto en torniquetes
+
+Hora pico: Soporte para 650+ consultas de aforo/hora
+
+Tablets operativas: 12 dispositivos simultáneos (recepcionistas + instructores)
+
+RNFR-003: Capacidad de Almacenamiento:
+
+
+Dato	                  Volumen	          Crecimiento
+Usuarios registrados	3,400 iniciales    +2,000/año
+Registros de acceso	   500,000/año	    Retención: 2 años
+Valoraciones físicas	 40,000/año	     Retención: permanente
+Reservas de clases	   200,000/año    	Retención: 1 año
+Logs del sistema	      10 GB/mes    	Retención: 90 días
+
+
 ---
 
 
