@@ -270,22 +270,30 @@ Las funciones principales del sistema están organizadas en los siguientes módu
 | **Tipo de Restricción** | **Descripción** |
 |--------------------------|-----------------|
 | Técnica | El sistema requiere conexión a Internet y servidor disponible las 24 horas. |
-| Seguridad | Todas las contraseñas deben almacenarse cifradas (bcrypt o SHA-256). |
-| Integración | Debe conectarse con sensores automáticos de acceso. |
-| Legal | Cumplimiento con las normas de protección de datos personales. |
-| Comunicación | Uso obligatorio del protocolo HTTPS para transmisión segura. |
-
+| Seguridad | Todas las contraseñas deben almacenarse cifradas (bcrypt) y los datos sensibles de salud protegidos según Ley 1581 de 2012. |
+| Integración | Debe conectarse con torniquetes existentes mediante APIs y con sistema de carnets universitarios para validación de membresías. |
+| Legal | Cumplimiento estricto con normas de aforo máximo (180 personas) y protección de datos personales sensibles (peso, medidas, historial de salud). |
+| Comunicación |Uso obligatorio del protocolo HTTPS para transmisión segura de datos y JWT para autenticación de usuarios. |
+| Presupuesto | Desarrollo limitado a $30,000,000 COP con hardware adicional por $10,000,000 COP (tablets, báscula digital). |
+| Tiempo |MVP debe estar operativo en 4 meses, coincidiendo con inicio del programa "Universidad Saludable 2026". |
+| Capacitación |Sistema debe permitir adopción gradual con capacitación máxima de 8 horas para personal operativo. |
 ---
 
 ## 2.5 Suposiciones y Dependencias
 
 | **Suposición / Dependencia** | **Descripción** |
 |-------------------------------|-----------------|
-| Infraestructura | El gimnasio cuenta con red Wi-Fi estable y sensores instalados. |
-| Base de Datos | Se usará un motor relacional (MySQL o PostgreSQL). |
-| Autenticación | El sistema depende del módulo de inicio de sesión (RF-001). |
-| Hardware | Los sensores deben enviar información precisa al servidor. |
-| Personal | El administrador debe estar capacitado para usar el sistema. |
+| Infraestructura | La UDS mantendrá servidores AWS, red WiFi estable en el gimnasio y torniquetes operativos durante el horario de funcionamiento. |
+| Base de Datos | Se utilizará PostgreSQL como motor de base de datos relacional, alojado en los servidores AWS de la universidad. |
+| Integración con Sistemas Existentes	 | El sistema de carnets universitarios mantendrá su actual formato de código de barras y estará disponible para consultas en tiempo real. |
+| Hardware | Los torniquetes existentes son compatibles con control remoto vía API y mantendrán su funcionalidad actual. |
+| Personal | Recepcionistas, instructores y coordinadores dispondrán de tiempo para capacitación durante horario laboral. |
+| Adopción por Usuarios | Al menos el 70% de los usuarios actuales adoptarán el sistema digital durante los primeros 2 meses de implementación. |
+| Datos de Usuarios | La base de datos estudiantil estará disponible para sincronización inicial de 3,400 usuarios registrados. |
+| Soporte Técnico | La universidad proporcionará soporte técnico básico para hardware y conectividad después de la implementación. |
+| Estabilidad Eléctrica	 | El gimnasio contará con suministro eléctrico estable y planes de contingencia para cortes de energía.|
+| Mantenimiento Preventivo	 | El personal técnico del gimnasio ejecutará el mantenimiento preventivo de equipos según la programación establecida. |
+
 
 ---
 
@@ -293,10 +301,16 @@ Las funciones principales del sistema están organizadas en los siguientes módu
 
 | **Código** | **Requisito Futuro** | **Descripción** |
 |-------------|----------------------|-----------------|
-| RF-F01 | Sistema de pagos en línea | Permitir renovar membresías mediante pagos digitales. |
-| RF-F02 | Aplicación móvil | Crear una app para ver el aforo y estado de membresía en tiempo real. |
-| RF-F03 | Reportes estadísticos | Generar informes automáticos del uso del gimnasio. |
-| RF-F04 | Notificaciones push | Enviar alertas al celular del usuario cuando haya cupo disponible. |
+| RF-F01 | Aplicación móvil nativa | Desarrollo de app nativa para iOS y Android con todas las funcionalidades del sistema. |
+| RF-F02 | Sistema de rutinas personalizadas con IA | Generación automática de rutinas de entrenamiento según objetivos, condición física y progreso del usuario. |
+| RF-F03 | Integración con wearables | Sincronización con smartwatches y bandas de fitness para seguimiento automático de actividad. |
+| RF-F04 | Sistema de gamificación| Implementación de puntos, badges y retos para aumentar engagement y fidelización de usuarios. |
+| RF-F05 | Módulo avanzado de nutrición | Planes de alimentación personalizados y seguimiento nutricional integrado con valoraciones físicas. |
+| RF-F06 |Video-tutoriales interactivos | Contenido multimedia con QR en equipos para demostrar uso correcto y prevenir lesiones. |
+| RF-F07 | Reserva de entrenamiento personalizado |Sistema de agendamiento y pago de sesiones individuales con entrenadores certificados.|
+| RF-F08 |Análisis predictivo | IA para predecir horas pico, demanda de clases y necesidades de mantenimiento preventivo. |
+| RF-F09 | Comunidad virtual| Red social interna para que usuarios compartan logros, formen grupos y participen en desafíos. |
+| RF-F010 | Integración con EPS| Intercambio seguro de datos de salud con entidades promotoras de salud para programas preventivos. |
 
 <br>
 
