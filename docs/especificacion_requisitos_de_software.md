@@ -839,10 +839,10 @@ Cache agresivo para recursos estáticos (1 semana)
 ### Identificación
 | Servicio | Puerto | | Protocolo | Acceso |
 |--------|--------------|
-| **Servidor Web** | 443|  | HTTPS | Público (usuarios) |
-| **API Backend	** | 443|  | HTTPS | Público (app móvil) |
-| **PostgreSQL** | 5432|  | TCP | Privado (solo servidores app) |
-| **Redis Cache** || 6379|  | TCP | Privado (solo servidores app) |
+| **Servidor Web** | 443| HTTPS | Público (usuarios) |
+| **API Backend	** | 443| HTTPS | Público (app móvil) |
+| **PostgreSQL** | 5432| TCP | Privado (solo servidores app) |
+| **Redis Cache** || 6379| TCP | Privado (solo servidores app) |
 | **SMTP** | 587|  | STARTTLS | Saliente (notificaciones) |
 
 RCOM-004: Comunicación con APIs Externas
