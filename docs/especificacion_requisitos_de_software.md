@@ -103,10 +103,9 @@ La siguiente tabla resume cómo cada actor utilizará este documento:
 
 ## 1.2 Alcance
 
-El sistema FitCampus gestionará de forma integral el aforo en tiempo real del gimnasio universitario, registrando automáticamente la entrada y salida de los usuarios mediante sensores instalados en los accesos.
-Además de controlar la ocupación, el sistema permitirá administrar membresías, monitorear el estado del gimnasio, generar alertas, gestionar una fila virtual y ofrecer información al instante para mejorar la experiencia del usuario y la seguridad del campus.
+El sistema FitCampus gestionará de forma integral el aforo en tiempo real del gimnasio universitario. Para lograrlo, registrará automáticamente la entrada y salida de los usuarios por medio de sensores instalados en los torniquetes de acceso, el cual actualiza de inmediato el conteo de personas dentro del gimnasio.
 
-El sistema ofrecerá funcionalidades diferenciadas para los siguientes actores:
+Además del control de aforo, el sistema permitirá:
 
 Administrador: supervisa el estado del gimnasio, gestiona membresías, consulta reportes, y configura límites de aforo.
 
