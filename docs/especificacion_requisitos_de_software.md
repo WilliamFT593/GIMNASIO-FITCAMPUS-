@@ -169,6 +169,46 @@ El propósito de esta estructura es mantener la documentación organizada, compr
 
 ---
 
+## 2.1 perspectiva del producto
+
+Contexto del Sistema FitCampus
+El Sistema FitCampus es una solución de software integral diseñada para transformar la gestión operativa del Gimnasio Universitario de la UDS. Se conceptualiza como un ecosistema digital centralizador que reemplaza los procesos manuales actuales basados en papel, proporcionando automatización, control en tiempo real y análisis de datos para toda la operación del gimnasio.
+
+┌─────────────────────────────────────────────────────────────────┐
+│                    SISTEMA FITCAMPUS                            │
+│                                                                 │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
+│  │   MÓDULO    │  │   MÓDULO    │  │   MÓDULO    │             │
+│  │ CONTROL DE  │  │  GESTIÓN DE │  │   REPORTE   │             │
+│  │   ACCESO    │  │   CLASES    │  │ MANTENIMIENT│             │
+│  │             │  │             │  │             │             │
+│  └─────────────┘  └─────────────┘  └─────────────┘             │
+│          │               │               │                     │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
+│  │   MÓDULO    │  │   MÓDULO    │  │   MÓDULO    │             │
+│  │ VALORACIÓN  │  │  RESERVA    │  │  DASHBOARD  │             │
+│  │   FÍSICA    │  │  CANCHAS    │  │ ANALÍTICO   │             │
+│  │             │  │             │  │             │             │
+│  └─────────────┘  └─────────────┘  └─────────────┘             │
+└─────────────────┬─────────────────┬─────────────────────────────┘
+                  │                 │
+                  │                 │
+┌─────────────────▼─────────────────▼─────────────────────────────┐
+│                      INTERFACES EXTERNAS                        │
+│                                                                 │
+│ ┌────────────┐  ┌────────────┐  ┌────────────┐  ┌────────────┐ │
+│ │ TORNIQUETES│  │  TABLETS   │  │  BÁSCULA   │  │ SISTEMA    │ │
+│ │   ACCESO   │  │RECEPCIÓN & │  │  DIGITAL   │  │UNIVERSITARIO│ │
+│ │ (RFID/QR)  │  │INSTRUCTORES│  │ (BLUETOOTH)│  │(CARNÉS)    │ │
+│ └────────────┘  └────────────┘  └────────────┘  └────────────┘ │
+│                                                                 │
+│ ┌────────────┐  ┌────────────┐  ┌────────────┐  ┌────────────┐ │
+│ │  APLICACIÓN│  │   PORTAL   │  │  SISTEMA   │  │  CORREO    │ │
+│ │   MÓVIL    │  │   WEB      │  │  MENSAJERÍA│  │ELECTRÓNICO │ │
+│ │ (USUARIOS) │  │(ADMIN)     │  │ (SMS/PUSH) │  │            │ │
+│ └────────────┘  └────────────┘  └────────────┘  └────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+
 ## 2.2 Funciones del Producto
 
 Las funciones principales del sistema están organizadas en los siguientes grupos:
