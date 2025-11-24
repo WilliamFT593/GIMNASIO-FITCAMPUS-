@@ -86,16 +86,18 @@
 
 ## 1.1 Propósito
 
-El propósito de este documento es definir de manera clara, completa y verificable los requisitos del Sistema de Gestión de Gimnasio “FitControl”, una solución tecnológica.
+El propósito de este documento es definir de manera clara, completa y verificable los requisitos del Sistema de Gestión para el Gimnasio Universitario “FitCampus”,
 
-Este documento establece qué debe hacer el sistema, cómo se espera que funcione, quiénes serán sus usuarios y cuáles son los objetivos operativos y estratégicos que debe cumplir. Su finalidad es garantizar que todas las partes involucradas —desde el cliente hasta el equipo de desarrollo— trabajen bajo un entendimiento común del alcance del proyecto.
+Este documento describe qué debe hacer el sistema, cómo debe comportarse, quiénes lo utilizarán y cuáles son los objetivos funcionales y estratégicos que debe cumplirCon falcance, las funcionalidades y las restricciones del proyecto.
+
+La siguiente tabla resume cómo cada actor utilizará este documento:
 
 | **Actor** | **Uso del Documento** |
 |------------|----------------------|
-| Desarrolladores | Implementan las funcionalidades de las fases posteriores siguiendo los requisitos funcionales y no funcionales establecidos. |
-| Analistas | Validan que los requisitos respondan a los problemas detectados en el gimnasio y cumplan las necesidades del cliente |
-| Cliente (Dirección de Bienestar y Deportes) | Verifica que el sistema FitControl cubrirá los problemas críticos actuales: aforo, reservas, mantenimiento, reportes, valorización física y experiencia del usuario. |
-| Equipo QA | Crea casos de prueba basados en los requisitos y verifica que el sistema desarrollado cumpla los criterios de aceptación definidos. |
+| Desarrolladores | mplementan las funcionalidades definidas, asegurando que el sistema cumpla con los requisitos funcionales y no funcionales. |
+| Analistas | Validan que los requisitos respondan efectivamente a los problemas actuales del gimnasio y a las necesidades del cliente. |
+| Cliente (Dirección de Bienestar y Deportes) | Verifica que el sistema FitCampus solucione los problemas críticos: control de aforo, accesos, mantenimiento, reportes, fila virtual, valorización física y experiencia del usuario. |
+| Equipo QA | Diseño |
 
 ---
 
