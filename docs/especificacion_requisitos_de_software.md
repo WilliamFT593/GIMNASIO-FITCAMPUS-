@@ -332,11 +332,7 @@ Las funciones principales del sistema están organizadas en los siguientes módu
 | **Prioridad** | Crítica |
 | **Estabilidad** | Alta |
 | **Fuente** | Problema actual: 3,400 usuarios registrados manualmente sin integración con sistema universitario |
-| **Criterios de aceptación** | 1. Integración automática con base de datos estudiantil para validación de carnets
-2. Registro inicial de 3,400 usuarios existentes
-3. Clasificación por tipo: estudiante (87%), docente (10%), administrativo (3%)
-4. Estados: activo, vencido, suspendido, bloqueado
-5. Bloqueo automático de acceso para membresías vencidas |
+| **Criterios de aceptación** | 1. Integración automática con base de datos estudiantil para validación de carnets 2. Registro inicial de 3,400 usuarios existentes 3. Clasificación por tipo: estudiante (87%), docente (10%), administrativo (3%) 4. Estados: activo, vencido, suspendido, bloqueado 5. Bloqueo automático de acceso para membresías vencidas |
 | **Dependencias** | RF-002 (Control de Acceso), RF-003 (Sistema de Alertas) |
 | **Comentarios** | Debe cumplir con Ley 1581 de 2012 para protección de datos personales. Registro inicial requiere migración desde cuadernos físicos. |
 
