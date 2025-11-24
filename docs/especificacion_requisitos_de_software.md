@@ -420,163 +420,69 @@ Las funciones principales del sistema están organizadas en los siguientes módu
 
 ---
 
-## 3.1.7 Módulo de Gestión de Rutinas Personalizadas
+## 3.1.7 Módulo de Valoración Física
 
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | RF-007 |
-| **Nombre** | Gestión de rutinas personalizadas |
-| **Descripción** | Permite a los entrenadores crear, asignar y modificar rutinas según objetivos del usuario. |
-| **Prioridad** | Alta |
-| **Estabilidad** | Media |
-| **Fuente** | Área de entrenamiento y bienestar |
-| **Criterios de aceptación** | 1. Crear rutina.<br>2. Usuario visualiza rutina.<br>3. Modificar o eliminar.<br>4. Guardar en BD. |
-| **Dependencias** | RF-012 |
-| **Comentarios** | Mejora la personalización del entrenamiento. |
+| **Nombre** | Registro Digital de Valoraciones Físicas |
+| **Descripción** | Digitalización del proceso de valoración física con historial de progreso, gráficos de evolución y almacenamiento seguro de datos sensibles. |
+| **Prioridad** | Media |
+| **Estabilidad** | Alta|
+| **Fuente** |Problema actual: solo 10% de usuarios con valoración física registrada |
+| **Criterios de aceptación** | 1. Captura de peso, altura, IMC, % grasa, perímetros 2. Integración con báscula digital Bluetooth 3. Historial gráfico de evolución 4. Alertas para valoraciones mensuales pendientes 5. Consentimiento explícito para datos sensibles |
+| **Dependencias** | RF-001 (Gestión de Usuarios) |
+| **Comentarios** | Cumplir Ley 1581 de 2012 para datos sensibles de salud |
 
 ---
 
-## 3.1.8 Módulo de Control de Asistencia Automatizado
+## 3.1.8 Módulo de Mantenimiento
 
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | RF-008 |
-| **Nombre** | Control de asistencia automatizado |
-| **Descripción** | El sistema registra asistencia mediante código QR o biometría. |
+| **Nombre** | Reporte Digital de Equipos Dañados |
+| **Descripción** | Sistema para reporte, seguimiento y gestión de reparación de equipos dañados, con notificaciones a técnicos y seguimiento hasta solución. |
 | **Prioridad** | Alta |
-| **Estabilidad** | Alta |
-| **Fuente** | Gestión administrativa |
-| **Criterios de aceptación** | 1. Registrar con QR/huella.<br>2. Registrar hora/fecha.<br>3. Historial de asistencias.<br>4. Actualización en tiempo real. |
-| **Dependencias** | RF-006 |
-| **Comentarios** | Facilita control de aforo y estadísticas. |
+| **Estabilidad** | Media |
+| **Fuente** | Problema actual: 18 días promedio para reparación de equipos |
+| **Criterios de aceptación** |	1. Reporte por usuarios vía app o recepción 2. Notificación inmediata a técnicos 3. Seguimiento de estado: reportado, en reparación, reparado 4. Tiempo promedio de reparación < 3 días 5. Historial de mantenimiento por equipo |
+| **Dependencias** | RF-010 (Sistema de Notificaciones) |
+| **Comentarios** | Meta: reducir tiempo de reparación de 18 a 3 días |
 
 ---
 
-## 3.1.9 Módulo de Gestión de Fila Virtual
+## 3.1.9 Módulo de Reservas de Canchas
 
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | RF-009 |
-| **Nombre** | Gestión de fila virtual |
-| **Descripción** | Crea una fila virtual cuando el aforo está completo y notifica turnos. |
-| **Prioridad** | Alta |
-| **Estabilidad** | Media |
-| **Fuente** | Sistema automático de aforo |
-| **Criterios de aceptación** | 1. Crea fila.<br>2. Usuario ve posición.<br>3. Notificaciones automáticas.<br>4. Actualización en tiempo real. |
-| **Dependencias** | RF-005, RF-008 |
-| **Comentarios** | Reduce aglomeraciones. |
+| **Nombre** |Sistema de Reserva de Canchas Deportivas |
+| **Descripción** | Plataforma para reserva anticipada de canchas deportivas con control de disponibilidad y políticas de uso. |
+| **Prioridad** | 	Media |
+| **Estabilidad** | Alta |
+| **Fuente** |Problema actual: reservas presenciales por orden de llegada |
+| **Criterios de aceptación** | 1. Reserva hasta 72 horas antes 2. Límite de 2 reservas semanales por usuario 3. Cancelación hasta 4 horas antes 4. Bloqueo por no-presentación 5. Visualización de disponibilidad en tiempo real |
+| **Dependencias** | RF-001 (Gestión de Usuarios) |
+| **Comentarios** | Optimiza uso de canchas y reduce conflictos por disponibilidad.|
 
 ---
 
-## 3.1.10 Módulo de Gestión de Reservas de Equipos
+## 3.1.10Módulo de Comunicaciones
 
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | RF-010 |
-| **Nombre** | Reservas de máquinas y áreas |
-| **Descripción** | Permite reservar máquinas, equipos o zonas con horarios específicos. |
-| **Prioridad** | Media |
-| **Estabilidad** | Media |
-| **Fuente** | Solicitud de usuarios y administración |
-| **Criterios de aceptación** | 1. Selección de equipo.<br>2. Ver disponibilidad.<br>3. Registrar reserva.<br>4. Evitar duplicación. |
-| **Dependencias** | RF-012, RF-003 |
-| **Comentarios** | Mejora gestión del espacio. |
-
----
-
-## 3.1.11 Módulo de Reportes de Aforo y Asistencia
-
-| Campo | Descripción |
-|-------|-------------|
-| **ID** | RF-011 |
-| **Nombre** | Reportes de aforo y asistencia |
-| **Descripción** | Genera reportes diarios, semanales y mensuales exportables. |
-| **Prioridad** | Alta |
+| **Nombre** | Sistema de Notificaciones y Alertas|
+| **Descripción** | Plataforma centralizada de envío de notificaciones, recordatorios y alertas por múltiples canales (email, SMS, push). |
+| **Prioridad** | Alta|
 | **Estabilidad** | Alta |
-| **Fuente** | Requerimiento institucional |
-| **Criterios de aceptación** | 1. Filtrar por fecha.<br>2. Incluir métricas.<br>3. Descargar PDF/Excel.<br>4. Información precisa. |
-| **Dependencias** | RF-006, RF-008 |
-| **Comentarios** | Apoya toma de decisiones. |
+| **Fuente** | Necesidad de reducir ausentismo y mejorar comunicación |
+| **Criterios de aceptación** | 1. Recordatorio de clases 2 horas antes 2. Alertas de aforo a coordinadores 3. Notificaciones de fila virtual 4. Recordatorios de valoraciones pendientes 5. Configuración de canales por usuario |
+| **Dependencias** | RF-001, RF-003, RF-005 |
+| **Comentarios** | Componente clave para mejorar experiencia de usuario. |
 
 ---
-
-## 3.1.12 Módulo de Gestión de Perfil del Usuario
-
-| Campo | Descripción |
-|-------|-------------|
-| **ID** | RF-012 |
-| **Nombre** | Gestión del perfil del usuario |
-| **Descripción** | Permite actualizar datos personales, objetivos y preferencias. |
-| **Prioridad** | Media |
-| **Estabilidad** | Alta |
-| **Fuente** | Bienestar estudiantil |
-| **Criterios de aceptación** | 1. Actualizar datos.<br>2. Validación.<br>3. Guardado correcto.<br>4. Entrenadores pueden consultar. |
-| **Dependencias** | RF-002 |
-| **Comentarios** | Mejora personalización del servicio. |
-
----
-
-## 3.1.13 Módulo de Inventario de Equipos
-
-| Campo | Descripción |
-|-------|-------------|
-| **ID** | RF-013 |
-| **Nombre** | Gestión de inventario |
-| **Descripción** | Registra, actualiza y consulta el inventario de máquinas, equipos y accesorios del gimnasio. |
-| **Prioridad** | Media |
-| **Estabilidad** | Media |
-| **Fuente** | Administración y mantenimiento |
-| **Criterios de aceptación** | 1. Registro de equipos.<br>2. Actualización de estado.<br>3. Consulta por categoría.<br>4. Almacenamiento correcto. |
-| **Dependencias** | RF-011 (Reservas) |
-| **Comentarios** | Control del estado físico del gimnasio. |
-
----
-
-## 3.1.14 Módulo de Mantenimiento Preventivo
-
-| Campo | Descripción |
-|-------|-------------|
-| **ID** | RF-014 |
-| **Nombre** | Mantenimiento preventivo |
-| **Descripción** | Programa y registra mantenimientos preventivos, generando alertas previas a la fecha de intervención. |
-| **Prioridad** | Media |
-| **Estabilidad** | Media |
-| **Fuente** | Área de mantenimiento |
-| **Criterios de aceptación** | 1. Programación por equipo.<br>2. Alertas previas.<br>3. Historial de mantenimientos.<br>4. Registro en base de datos. |
-| **Dependencias** | RF-014 |
-| **Comentarios** | Aumenta la vida útil de los equipos. |
-
----
-
-## 3.1.15 Módulo de Roles y Permisos
-
-| Campo | Descripción |
-|-------|-------------|
-| **ID** | RF-015 |
-| **Nombre** | Gestión de roles |
-| **Descripción** | Permite crear roles personalizados y asignar permisos específicos a cada tipo de usuario. |
-| **Prioridad** | Alta |
-| **Estabilidad** | Alta |
-| **Fuente** | Política institucional |
-| **Criterios de aceptación** | 1. Creación de roles.<br>2. Asignación de permisos.<br>3. Acceso restringido según rol.<br>4. Actualización en tiempo real. |
-| **Dependencias** | RF-002 |
-| **Comentarios** | Mejora la seguridad general del sistema. |
-
----
-
-## 3.1.16 Módulo de Pagos en Línea
-
-| Campo | Descripción |
-|-------|-------------|
-| **ID** | RF-016 |
-| **Nombre** | Pagos en línea |
-| **Descripción** | Permite realizar pagos online para membresías, reservas o servicios adicionales mediante pasarelas seguras. |
-| **Prioridad** | Alta |
-| **Estabilidad** | Media |
-| **Fuente** | Área financiera |
-| **Criterios de aceptación** | 1. Pago con tarjeta o billetera digital.<br>2. Confirmación en tiempo real.<br>3. Comprobante automático.<br>4. Actualización de servicios tras el pago. |
-| **Dependencias** | RF-001 (Membresías), RF-009 (Notificaciones) |
-| **Comentarios** | Facilita la autogestión del usuario. |
 
 
 # 4. CASOS DE USO
