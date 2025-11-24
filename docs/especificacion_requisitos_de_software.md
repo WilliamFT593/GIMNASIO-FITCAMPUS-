@@ -1382,284 +1382,45 @@ Backups en formato estándar PostgreSQL
 
 ## 4.1 Caso de Uso: Controlar Aforo en Tiempo Real
 
-### Identificación
+Lista de Casos de Uso del Sistema FitCampus:
+CU-001: Controlar Aforo en Tiempo Real
+CU-002: Gestionar Reserva de Clases Grupales
+CU-003: Registrar Valoración Física
+CU-004: Reportar Equipo Dañado
+CU-005: Gestionar Fila Virtual
+CU-006: Generar Reportes de Impacto
+CU-007: Validar Acceso de Usuario
+CU-008: Gestionar Membresías
+CU-009: Programar Horario de Clases
+CU-010: Tomar Asistencia a Clases
+
+
 | Campo | Descripción |
-|--------|--------------|
-| **ID** | UC-01 |
-| **Nombre** | Controlar aforo en tiempo real |
-| **Actor principal** | Sistema Automático |
-| **Actores secundarios** | Administrador, Usuarios |
-| **Tipo** | Primario |
-| **Prioridad** | Alta |
-| **Fuente** | Requisito RF-003 |
+|-------|-------------|
+| **ID** | CU-001 |
+| **Nombre** | Controlar Aforo en Tiempo Real |
+| **Actores** | Sistema Automático (primario), Recepcionista (secundario), Coordinador (secundario)|
+| **Descripción** | Permite al sistema monitorear y controlar automáticamente el número de personas dentro del gimnasio, garantizando que nunca se supere el límite máximo de 180 personas. |
+| **Precondiciones** | 1. Sistema operativo y conectado a internet 2. Torniquetes funcionando correctamente 3. Base de datos de usuarios sincronizada 4. Aforo inicial correctamente calibrado |
+| **Postcondiciones** | 1. Contador de aforo actualizado con precisión 2. Alertas generadas según protocolo establecido 3. Historial de accesos registrado en base de datos 4. Usuarios informados sobre estado de capacidad |
+| **Flujo Principal** | 1. Usuario escanea carnet en torniquete de entrada 2. Sistema valida membresía activa en base de datos 3. Sistema registra entrada y incrementa contador de aforo 4. Sistema actualiza dashboard en tiempo real (< 2 segundos) 5. Sistema verifica niveles de alerta (80%, 90%, 100%) 6. Sistema notifica actores según protocolo establecido 7. Usuario completa ingreso, torniquete se libera |
+| **Flujos Alternativos** | a. Alcanzar 80% de capacidad (144 personas): 4a1. Sistema activa alerta amarilla en dashboard 4a2. Notifica a recepcionistas y coordinador 4a3. Muestra indicador visual en recepción 4b. Alcanzar 90% de capacidad (162 personas): 4b1. Sistema activa alerta naranja en dashboard 4b2. Notifica por push a administrador y coordinador 4b3. Activa sonido intermitente en recepción |
+| **Flujos de Excepción** | 3a. Error en detección de entrada/salida: 3a1. Sistema genera registro de evento de error 3a2. Notifica a recepcionista para validación manual 3a3. Recepcionista corrige aforo manualmente si es necesario 6a. Sistema de torniquetes offline: 6a1. Sistema activa modo contingencia manual 6a2. Recepcionista registra accesos manualmente en tablet 6a3. Sistema sincroniza datos cuando se restablece conexión |
+| **Requisitos Relacionados** | RF-001 (Gestión de Usuarios) RF-002 (Control de Acceso) RF-003 (Monitoreo de Aforo) RNF-004 (Integridad transaccional) RNFR-001 (Tiempo de respuesta) |
+
+
+graph TD
+    A[Usuario escanea carnet] --> B{Validar membresía}
+    B -->|Válida| C[Registrar entrada]
+    B -->|Inválida| D[Bloquear acceso]
+    C --> E[Incrementar aforo]
+    E --> F{Verificar capacidad}
+    F -->|≤80%| G[Acceso normal]
+    F -->|81-90%| H[Alerta preventiva]
+    F -->|91-99%| I[Alerta alta]
+    F -->|100%| J[Bloquear ingreso]
+    J --> K[Activar fila virtual]
 
----
-
-##Descripción
-Este caso de uso describe el proceso mediante el cual el sistema FitCampus controla de forma automática el número de personas dentro del gimnasio, actualizando el conteo en tiempo real con cada entrada y salida, generando alertas progresivas y bloqueando el acceso al alcanzar el límite máximo de 180 personas.
-
----
-
-##Flujo Principal
-
-1. Detección de Ingreso de Usuario
-
-El sistema detecta el escaneo del carnet universitario en el torniquete
-
-Valida formato del código de barras según estándar UDS
-
-Verifica conexión con sistema de carnets en tiempo real
-
-2. Registro de Entrada en el Sistema (UC-2)
-
-Registra timestamp exacto de entrada
-
-Valida estado de membresía (activa/vencida/suspendida)
-
-Verifica que usuario no tenga acceso restringido
-
-Almacena registro en base de datos con ubicación "entrada"
-
-3. Actualización del Contador de Aforo
-
-Incrementa contador interno en +1
-
-Actualiza dashboard en tiempo real (< 2 segundos)
-
-Recalcula porcentaje de ocupación (actual/máximo 180)
-
-Registra métrica para análisis histórico
-
-4. Verificación de Límite de Aforo
-
-Si aforo < 144 (80%): Mantiene acceso normal, indicador verde
-
-Si aforo 144-162 (80-90%): Indicador amarillo, notificación preventiva
-
-Si aforo 162-179 (90-99%): Indicador naranja, alerta a coordinador
-
-Si aforo = 180 (100%): Procede al paso 7
-
-5. Detección de Salida de Usuario (UC-3)
-
-Sistema detecta escaneo de salida en torniquete
-
-Registra timestamp exacto de salida
-
-Decrementa contador de aforo en -1
-
-Actualiza dashboard inmediatamente
-
-Calcula tiempo total de permanencia del usuario
-
-6. Gestión de Aforo Máximo (UC-4) - CUANDO SE ALCANZA LÍMITE
-
-Activa alerta visual roja en todos los dashboards
-
-Envía notificación push a administrador y coordinador
-
-Registra evento crítico en log del sistema
-
-Muestra mensaje "Aforo Completo" en pantallas públicas
-
-7. Bloqueo de Acceso (UC-5) - AFORO COMPLETO
-
-Comanda cierre físico de torniquetes
-
-Muestra luz roja en dispositivos de acceso
-
-Presenta mensaje "Gimnasio Lleno - Fila Virtual Disponible"
-
-Impide nuevos escaneos hasta que se liberen cupos
-
-8. Gestión de Fila Virtual (UC-6) - SI HAY USUARIOS EN ESPERA
-
-Ofrece opción "Unirse a Fila Virtual" en app y pantallas
-
-Asigna posición en cola con tiempo estimado
-
-Notifica por SMS/app cuando cupo está disponible
-
-Reserva cupo por 10 minutos para usuario notificado
-
----
-
-### Flujo alternativo
-A. Detección de Entrada No Registrada
-
-Sistema detecta inconsistencia entre conteo físico y registros digitales
-
-Verificación automática mediante múltiples fuentes:
-
-Cámaras de seguridad en zona de torniquetes
-
-Sensor de movimiento en área de acceso
-
-Comparación con patrones históricos de uso
-
-Genera alerta de posible entrada no registrada
-
-Notifica a recepcionista para validación manual
-
-B. Salida No Detectada
-
-Sistema identifica usuario con entrada registrada pero sin salida
-
-Período de tolerancia: 15 minutos antes de generar alerta
-
-Verificaciones automáticas:
-
-Última actividad registrada (acceso a locker, uso de máquina)
-
-Consulta a sensores de presencia en vestuarios
-
-Revisión de cámaras en áreas comunes
-
-Escalado de alertas:
-
-Nivel 1 (30 min): Notificación a recepcionista
-
-Nivel 2 (60 min): Alerta a coordinador
-
-Nivel 3 (90 min): Notificación a seguridad
-
-C. Registro de Evento de Error
-{
-  "tipo_error": "entrada_no_registrada|salida_no_detectada",
-  "timestamp": "2025-01-15T18:30:00Z",
-  "ubicacion": "torniquete_entrada_principal",
-  "usuario_afectado": "20220345",
-  "sensores_activos": ["camara_1", "sensor_movimiento"],
-  "acciones_tomadas": ["notificacion_recepcion", "registro_incidencia"],
-  "estado": "pendiente_revision"
-}
-
-D. Proceso de Revisión Manual
-
-Recepcionista recibe notificación en tablet con detalles del evento
-
-Verificación visual mediante sistema de cámaras
-
-Confirmación o descarte del evento:
-
-Si confirma entrada no registrada: Registro manual + ajuste aforo
-
-Si confirma salida no detectada: Registro manual + ajuste aforo
-
-Si es falso positivo: Marcar como resuelto sin acción
-
-Ajuste del contador de aforo si corresponde
-
-Registro de resolución en bitácora del sistema
-
-E. Métricas de Calidad de Detección
-
-Tasa de falsos positivos: < 5% (objetivo)
-
-Tiempo de respuesta a alertas: < 10 minutos
-
-Precisión en correcciones manuales: 100%
-
-Frecuencia de eventos: < 2 por día (meta)
-
-F. Prevención de Recurrencia
-
-Análisis de patrones de eventos de error
-
-Calibración de sensores basada en incidentes
-
-Actualización de algoritmos de detección
-
-Capacitación a usuarios sobre uso correcto de torniquetes
-
-G. Comunicación al Usuario Afectado
-
-Si se confirma error del sistema: Notificación discreta vía app
-
-Si es error del usuario: Educación sobre procedimiento correcto
-
-En casos recurrentes: Revisión de carnet o entrenamiento personalizado
-
-
-
-
-
----
-
-Postcondiciones
-A. Estado del Sistema
-
-Contador de aforo actualizado con precisión del 100%
-
-Dashboard en tiempo real refleja el número exacto de personas
-
-Historial de accesos completo y auditado
-
-Métricas de ocupación calculadas y almacenadas
-
-B. Control de Capacidad
-
-Aforo máximo garantizado: Nunca supera las 180 personas
-
-Sistema de bloqueo activo cuando se alcanza capacidad máxima
-
-Registro de intentos de acceso denegados por capacidad
-
-Cumplimiento normativo con certificación de bomberos
-
-C. Comunicación y Alertas
-
-Notificaciones enviadas según protocolo establecido:
-
-Recepcionistas: Alertas visuales y sonoras
-
-Coordinador: Notificaciones push en móvil
-
-Administración: Reporte de eventos críticos
-
-Señalización actualizada en pantallas públicas
-
-Estado visible en aplicación móvil para usuarios
-
-D. Gestión de Excepciones
-
-Eventos de error registrados y categorizados
-
-Correcciones aplicadas mediante procesos validados
-
-Auditoría completa de modificaciones manuales
-
-Métricas de calidad del sistema de detección
-
-E. Datos para Análisis
-
-Histórico de ocupación por franjas horarias
-
-Tendencias de uso identificadas y almacenadas
-
-Reportes automáticos generados para dirección
-
-Base para optimización de recursos y horarios
-
-F. Cumplimiento de Objetivos Críticos
-
-✅ Seguridad jurídica: Cero violaciones de aforo máximo
-
-✅ Precisión operativa: Margen de error 0% en conteo
-
-✅ Transparencia: Información accesible en tiempo real
-
-✅ Escalabilidad: Preparado para crecimiento de usuarios
-
-G. Estado de Componentes
-
-Torniquetes en modo operación normal o bloqueado según capacidad
-
-Sistema de notificaciones en estado de espera para próximo evento
-
-Base de datos sincronizada con últimos movimientos
-
-Logs de auditoría actualizados con timestamp preciso
 
 
 ---
