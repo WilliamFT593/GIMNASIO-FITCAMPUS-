@@ -1409,6 +1409,11 @@ CU-010: Tomar Asistencia a Clases
 | **Requisitos Relacionados** | RF-001 (Gestión de Usuarios) RF-002 (Control de Acceso) RF-003 (Monitoreo de Aforo) RNF-004 (Integridad transaccional) RNFR-001 (Tiempo de respuesta) |
 
 
+# Diagramas de Casos de Uso - FitCampus
+
+## CU-001: Controlar Aforo en Tiempo Real
+
+```mermaid
 graph TD
     A[Usuario escanea carnet] --> B{Validar membresía}
     B -->|Válida| C[Registrar entrada]
@@ -1420,7 +1425,7 @@ graph TD
     F -->|91-99%| I[Alerta alta]
     F -->|100%| J[Bloquear ingreso]
     J --> K[Activar fila virtual]
-
+```
 
 
 ---
