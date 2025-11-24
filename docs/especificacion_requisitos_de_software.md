@@ -86,9 +86,9 @@
 
 ## 1.1 Propósito
 
-El propósito de este documento es definir de manera clara, completa y verificable los requisitos del Sistema de Gestión para el Gimnasio Universitario “FitCampus”,
+Este documento constituye la Especificación de Requisitos de Software (SRS) para el Sistema de Gestión del Gimnasio Universitario "FitCampus", desarrollado según el estándar IEEE 830-1998.
 
-Este documento describe qué debe hacer el sistema, cómo debe comportarse, quiénes lo utilizarán y cuáles son los objetivos funcionales y estratégicos que debe cumplirCon falcance, las funcionalidades y las restricciones del proyecto.
+El propósito fundamental es establecer una definición clara, completa y verificable de los requisitos que debe cumplir el sistema para resolver los problemas críticos identificados en la operación actual del gimnasio de la Universidad del Sur (UDS)
 
 La siguiente tabla resume cómo cada actor utilizará este documento:
 
@@ -212,16 +212,22 @@ graph TB
 
 ## 2.2 Funciones del Producto
 
-Las funciones principales del sistema están organizadas en los siguientes grupos:
+Las funciones principales del sistema están organizadas en los siguientes módulos:
 
 | **Módulo** | **Función Principal** | **Descripción Breve** |
 |-------------|----------------------|------------------------|
-| Control de Aforo | Monitoreo en tiempo real | Muestra el número de personas dentro del gimnasio y actualiza los datos automáticamente. |
-| Registro de Accesos | Entrada y salida de usuarios | Registra cuándo entra y sale cada usuario mediante el sistema automático. |
-| Notificaciones | Aforo máximo alcanzado | Envía alertas cuando se llega al límite establecido de personas. |
-| Bloqueo de Acceso | Prevención de ingreso | Impide que nuevos usuarios entren si el gimnasio está lleno. |
-| Fila Virtual | Espera de usuarios | Gestiona el orden de ingreso cuando el aforo está completo. |
-| Membresías | Administración de usuarios | Permite al administrador registrar, actualizar y renovar membresías. |
+| Control de Aforo | Monitoreo en tiempo real | Control automático del número de personas mediante registro de entrada/salida en torniquetes. |
+| Registro de Accesos | Entrada y salida de usuarios | Registro automático mediante escaneo de carnet universitario con validación de membresía activa. |
+| Sistema de Alertas	 | Notificaciones automáticas	 | Alertas cuando se alcanza el 80%, 90% y 100% del aforo máximo (180 personas) |
+| Control de Ingreso | Bloqueo automático | mpide nuevo acceso al alcanzar el límite máximo, derivando usuarios a fila virtual |
+| Fila Virtual | Espera de usuarios | Sistema de turnos para usuarios cuando el gimnasio está lleno, con notificaciones por app/email |
+| Membresías | Administración de usuarios | Registro, renovación y validación automática de membresías integrado con sistema universitario |
+| Reserva de Clases | Gestión de cupos	 | Sistema de reservas online para clases grupales con confirmación y recordatorios automáticos |
+| Valoración Física | Registro de progreso | Digitalización de evaluaciones físicas con historial y gráficos de evolución para usuarios |
+| Reporte de Mantenimiento | Gestión de equipos |Sistema digital para reportar equipos dañados con seguimiento hasta su reparación |
+| Reserva de Canchas | Gestión de espacios | Reserva online de canchas deportivas con control de disponibilidad y horarios |
+| Dashboard Analítico | Reportes ejecutivos |Generación automática de reportes de uso, asistencia e impacto para dirección |
+| Sistema de Notificaciones | Comunicación integral | Envío automático de recordatorios, alertas y notificaciones por múltiples canales |
 
 ---
 
