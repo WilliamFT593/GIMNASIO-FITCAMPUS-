@@ -96,9 +96,10 @@ La siguiente tabla resume cómo cada actor utilizará este documento:
 |------------|----------------------|
 | Desarrolladores | mplementan las funcionalidades definidas, asegurando que el sistema cumpla con los requisitos funcionales y no funcionales. |
 | Analistas | Validan que los requisitos respondan efectivamente a los problemas actuales del gimnasio y a las necesidades del cliente. |
-| Cliente (Dirección de Bienestar y Deportes) | Verifica que el sistema FitCampus solucione los problemas críticos: control de aforo, accesos, mantenimiento, reportes, fila virtual, valorización física y experiencia del usuario. |
-| Equipo QA | Diseño |
-
+| Cliente (Dirección de Bienestar y Deportes) | Verifica que el sistema FitCampus solucione los problemas críticos: control de aforo, accesos, mantenimiento, reportes, fila virtual, valoración física y experiencia del usuario. |
+| Equipo QA | Diseña casos de prueba y planes de validación basados en los requisitos especificados. |
+| Coordinadores Gimnasio |Comprende los nuevos flujos operativos y prepara la capacitación del equipo |
+| Patrocinadores (Rectoría) |Evalúa el retorno de inversión y impacto estratégico del sistema |
 ---
 
 ## 1.2 Alcance
@@ -113,14 +114,23 @@ Sistema Automático: procesa los eventos de entrada/salida, actualiza el conteo 
 
 Usuario General: consulta su membresía, verifica el aforo en tiempo real y accede a la fila virtual cuando el gimnasio está lleno.
 
+Recepcionista: controla accesos manuales, gestiona excepciones y consulta información en tiempo real.
+
+Instructor: gestiona listas de clases, toma asistencia y consulta su horario semanal.
+
+Coordinador: programa horarios de clases, asigna instructores y genera reportes operativos.
+
 ### Objetivos principales
 | **Objetivo** | **Descripción** |
 |---------------|-----------------|
 | Control de Aforo | Evitar sobreocupación del gimnasio y garantizar seguridad. |
-| Automatización |Eliminar procesos manuales de registro y reducir errores por ingreso humano. |
+| Automatización |Eliminar procesos manuales de registro, reducir errores humanos y optimizar tiempos de atención. |
 | Gestión de Membresías | Llevar control automático de usuarios activos, vencidos y bloqueados. |
 | Monitoreo en Tiempo Real | Proveer información instantánea sobre aforo, estado del acceso y alertas. |
 | Fila Virtual Inteligente | Permitir que los usuarios esperen su turno sin aglomeraciones físicas en la entrada. |
+| Gestión de Clases Grupales | Controlar cupos, reducir ausentismo y eliminar sobre-cupo mediante sistema de reservas digital. |
+| Seguimiento de Progreso Físico| Digitalizar valoraciones físicas y proporcionar historial de evolución a los usuarios. |
+| Mantenimiento de Equipos | Agilizar reporte y reparación de equipos dañados mediante sistema digital con seguimiento. |
 
 ---
 
