@@ -327,14 +327,18 @@ Las funciones principales del sistema están organizadas en los siguientes módu
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | RF-001 |
-| **Nombre** | Administración de membresías |
-| **Descripción** | El sistema debe permitir al administrador registrar, actualizar, suspender o eliminar las membresías de los usuarios, manteniendo un historial de sus estados y fechas de renovación. |
-| **Prioridad** | Alta |
+| **Nombre** | Gestión Integral de Usuarios y Membresías |
+| **Descripción** | El sistema debe permitir el registro, validación y gestión del estado de membresías de estudiantes, docentes y administrativos, integrado con el sistema de carnets universitario para verificación automática de vigencia. |
+| **Prioridad** | Crítica |
 | **Estabilidad** | Alta |
-| **Fuente** | Requerimiento del área administrativa del gimnasio |
-| **Criterios de aceptación** | 1. El administrador puede crear, editar y eliminar membresías.<br>2. Se registran fechas de inicio y vencimiento.<br>3. El sistema genera alertas de vencimiento próximas.<br>4. Los cambios se reflejan en tiempo real en la base de datos. |
-| **Dependencias** | RF-005 (Control de aforo), RF-006 (Registro de accesos) |
-| **Comentarios** | Las membresías vencidas deben impedir el acceso al gimnasio automáticamente. |
+| **Fuente** | Problema actual: 3,400 usuarios registrados manualmente sin integración con sistema universitario |
+| **Criterios de aceptación** | 1. Integración automática con base de datos estudiantil para validación de carnets
+2. Registro inicial de 3,400 usuarios existentes
+3. Clasificación por tipo: estudiante (87%), docente (10%), administrativo (3%)
+4. Estados: activo, vencido, suspendido, bloqueado
+5. Bloqueo automático de acceso para membresías vencidas |
+| **Dependencias** | RF-002 (Control de Acceso), RF-003 (Sistema de Alertas) |
+| **Comentarios** | Debe cumplir con Ley 1581 de 2012 para protección de datos personales. Registro inicial requiere migración desde cuadernos físicos. |
 
 ---
 
