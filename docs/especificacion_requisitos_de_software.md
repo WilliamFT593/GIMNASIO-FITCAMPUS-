@@ -255,13 +255,13 @@ Las funciones principales del sistema están organizadas en los siguientes módu
 
 | **Característica** | **Usuario Tipo 1: Administrador** | **Usuario Tipo 2: Sistema Automático** | **Usuario Tipo 3: Usuario General** |
 |----------------------|----------------------------------|----------------------------------------|------------------------------------|
-| **Descripción** | Personal encargado de la supervisión del gimnasio. | Módulo automatizado encargado de detectar y registrar accesos. | Personas que utilizan las instalaciones del gimnasio. |
-| **Responsabilidades** | Gestionar aforo, membresías y alertas. | Registrar entradas/salidas y mantener el conteo. | Acceder al gimnasio, consultar membresías. |
-| **Nivel Técnico** | Medio | Alto | Bajo |
-| **Experiencia en el Dominio** | Intermedio | Experto | Novato |
-| **Frecuencia de Uso** | Diaria | Continua | Diaria |
-| **Funciones Principales** | Ver reportes, actualizar membresías, recibir alertas. | Enviar datos al sistema, actualizar aforo. | Entrar, salir y ver su estado de membresía. |
-| **Necesidades Especiales** | Panel de control claro y rápido. | Conexión constante a la red. | Interfaz sencilla y accesible desde móvil. |
+| **Descripción** | Personal encargado de la supervisión del gimnasio. | Personal de control de acceso y atención al usuario. | Estudiantes, docentes y administrativos que usan el gimnasio. |
+| **Responsabilidades** | Configurar límites de aforo, gestionar reportes estratégicos, supervisar operación. | Controlar acceso manual, gestionar excepciones, atender consultas en recepción. | Reservar clases y canchas, consultar aforo, reportar equipos dañados. |
+| **Nivel Técnico** | Medio | Medio-Bajo| Bajo |
+| **Experiencia en el Dominio** | Avanzado |Intermedio| Novato |
+| **Frecuencia de Uso** | Diaria | Continua | Semanal |
+| **Funciones Principales** | Dashboard ejecutivo, reportes estratégicos, configuración del sistema. | Control de acceso excepciones, consulta de información en tiempo real. | Reservas, consulta de aforo, fila virtual, progreso físico.|
+| **Necesidades Especiales** | Acceso remoto, reportes exportables, alertas estratégicas. | nterfaz táctil simple, respuestas rápidas, manejo de multitudes. | App móvil responsive, notificaciones push, proceso sencillo. |
 
 ---
 
