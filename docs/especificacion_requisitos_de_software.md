@@ -338,83 +338,85 @@ Las funciones principales del sistema están organizadas en los siguientes módu
 
 ---
 
-## 3.1.2 Módulo de Autenticación y Control de Acceso
+## 3.1.2Control de Acceso y Registro de Aforo
 
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | RF-002 |
-| **Nombre** | Inicio de sesión y autenticación segura |
-| **Descripción** | El sistema debe permitir el acceso mediante credenciales únicas (usuario y contraseña) y usar autenticación JWT para sesiones seguras. |
-| **Prioridad** | Alta |
+| **Nombre** | Control de Acceso y Registro de Aforo |
+| **Descripción** |Sistema automático de registro de entrada/salida mediante torniquetes con código de barras, con conteo en tiempo real del aforo actual y bloqueo automático al alcanzar 180 personas. |
+| **Prioridad** | Crítica |
 | **Estabilidad** | Alta |
-| **Fuente** | Requerimiento de seguridad del sistema |
-| **Criterios de aceptación** | 1. Login con usuario/contraseña.<br>2. Emisión y validación de tokens JWT.<br>3. Manejo seguro de contraseñas (hashing). |
-| **Dependencias** | — |
-| **Comentarios** | Soporta autenticación de usuarios y administración de sesiones. |
+| **Fuente** | Incidente crítico: sobre-aforo sistemático (45 días/semestre) con riesgo legal |
+| **Criterios de aceptación** | 1. Registro entrada/salida en < 5 segundos por usuario 2. Conteo exacto en tiempo real con margen de error 0% 3. Bloqueo automático de torniquetes al alcanzar 180 personas 4. Historial completo de accesos por usuario 5. Alertas visuales y sonoras en recepción |
+| **Dependencias** | RF-001 (Gestión de Usuarios), Integración con torniquetes existentes |
+| **Comentarios** | Protocolo de contingencia para fallos del sistema: registro manual tempora |
 
 ---
 
-## 3.1.3 Módulo de Notificaciones y Alertas
+## 3.1.3  Módulo de Control de Aforo y Accesos
 
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | RF-003 |
-| **Nombre** | Envío de notificaciones automáticas |
-| **Descripción** | El sistema debe enviar notificaciones automáticas al administrador y a los usuarios cuando se produzcan eventos importantes, como aforo máximo, membresía vencida o turno disponible. |
-| **Prioridad** | Media |
-| **Estabilidad** | Media |
-| **Fuente** | Requerimiento de experiencia de usuario |
-| **Criterios de aceptación** | 1. El sistema envía notificaciones por correo o dentro de la app.<br>2. Se generan alertas al alcanzar el límite de aforo.<br>3. Se notifica al usuario 3 días antes del vencimiento de su membresía. |
-| **Dependencias** | RF-001, RF-005 |
-| **Comentarios** | En una versión futura se integrarán notificaciones push móviles. |
+| **Nombre** | Monitoreo de Aforo en Tiempo Reals |
+| **Descripción** | Dashboard interactivo que muestra el número exacto de personas dentro del gimnasio, con actualización automática y alertas progresivas de capacidad. |
+| **Prioridad** | Crítica |
+| **Estabilidad** | Alta |
+| **Fuente** | Necesidad de cumplir aforo máximo de 180 personas (normativa bomberos) |
+| **Criterios de aceptación** | 1. Actualización en tiempo real (< 2 segundos) 2. Alertas al 80% (144), 90% (162) y 100% (180) de capacidad 3. Visualización en pantallas de recepción y app 4. Histórico de aforo por hora y día 5. Alertas a coordinador y administradores |
+| **Dependencias** | RF-002 (Control de Acceso) |
+| **Comentarios** | Componente crítico para mitigar riesgo legal por sobre-aforo |
 
 ---
 
-## 3.1.4 Módulo de Reportes y Estadísticas
+## 3.1.4 Sistema de Fila Virtual
 
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | RF-004 |
-| **Nombre** | Generación de reportes de uso |
-| **Descripción** | El sistema debe permitir al administrador generar reportes sobre el uso del gimnasio, incluyendo aforo diario, membresías activas, ingresos y salidas. |
-| **Prioridad** | Media |
+| **Nombre** | Sistema de Fila Virtual |
+| **Descripción** | Gestión automatizada de turnos de espera cuando el gimnasio alcanza capacidad máxima, con notificaciones a usuarios sobre su posición y tiempo estimado. |
+| **Prioridad** | Alta |
 | **Estabilidad** | Alta |
-| **Fuente** | Solicitud del área de administración |
-| **Criterios de aceptación** | 1. El sistema genera reportes filtrados por fecha o tipo de usuario.<br>2. Los reportes pueden exportarse a PDF o Excel.<br>3. La información se obtiene de los registros en la base de datos. |
-| **Dependencias** | RF-001, RF-005, RF-006 |
-| **Comentarios** | Los reportes deben incluir métricas de uso y asistencia. |
+| **Fuente** | Problema actual: aglomeraciones físicas en entrada durante horas pico |
+| **Criterios de aceptación** | 1. Registro en fila mediante app o recepción 2. Notificaciones cada 15 minutos sobre posición 3. Alerta con 10 minutos de anticipación para ingreso 4. Abandono automático después de 15 min de inacción 5. Máximo 30 personas en fila virtual |
+| **Dependencias** | RF-003 (Monitoreo Aforo), RF-010 (Sistema de Notificaciones) |
+| **Comentarios** | Reduce aglomeraciones físicas y mejora experiencia de usuario
+ |
 
 ---
 
-## 3.1.5 Módulo de Control de Aforo
+## 3.1.5 Sistema de Reservas de Clases
 
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | RF-005 |
-| **Nombre** | Control de aforo en tiempo real |
-| **Descripción** | El sistema debe monitorear automáticamente el número de usuarios dentro del gimnasio, actualizando el aforo en tiempo real y bloqueando el acceso al alcanzar el límite. |
-| **Prioridad** | Alta |
+| **Nombre** | Módulo de Gestión de Clases Grupales |
+| **Descripción** | Plataforma digital para reserva de cupos en clases grupales con control estricto de capacidad y confirmación de asistencia. |
+| **Prioridad** | Crítica |
 | **Estabilidad** | Alta |
-| **Fuente** | Requerimiento funcional derivado del sistema automático FitCampus |
-| **Criterios de aceptación** | 1. El sistema registra entrada y salida de usuarios.<br>2. Actualiza aforo en tiempo real.<br>3. Bloquea accesos al alcanzar el límite.<br>4. Notifica al administrador.<br>5. Gestiona una fila virtual. |
-| **Dependencias** | RF-006 |
-| **Comentarios** | Se integra con sensores del gimnasio. |
+| **Fuente** | Problema actual: 42% de ausentismo y sobre-cupo en clases (51 personas en salón de 40) |
+| **Criterios de aceptación** | 1. Reserva hasta 24 horas antes de la clase 2. Límite de 3 reservas simultáneas por usuario 3. Cancelación hasta 2 horas antes sin penalización 4. Lista de espera automática para clases llenas 5. Bloqueo por 7 días tras 3 cancelaciones de última hora |
+| **Dependencias** | RF-001 (Gestión de Usuarios), RF-010 (Sistema de Notificaciones) |
+| **Comentarios** | Meta: reducir ausentismo del 42% al 15% |
 
 ---
 
-## 3.1.6 Módulo de Registro de Entradas y Salidas
+## 3.1.6 Gestión de Asistencia a Clases
 
 | Campo | Descripción |
 |-------|-------------|
 | **ID** | RF-006 |
-| **Nombre** | Registro automático de entradas y salidas |
-| **Descripción** | Registra la entrada y salida de cada usuario mediante sensores o lectores de identificación. |
+| **Nombre** | Gestión de Asistencia a Clases |
+| **Descripción** |Sistema digital para registro de asistencia real en clases por parte de instructores, con validación contra reservas y control de sobre-cupo. |
 | **Prioridad** | Alta |
-| **Estabilidad** | Media |
-| **Fuente** | Área de control y acceso del gimnasio |
-| **Criterios de aceptación** | 1. Registra entrada.<br>2. Registra salida.<br>3. Actualiza aforo.<br>4. Guarda datos en BD.<br>5. Garantiza integridad. |
-| **Dependencias** | RF-005 |
-| **Comentarios** | Sirve para estadísticas y reportes. |
+| **Estabilidad** | Alta |
+| **Fuente** | Problema actual: listas de papel y sobre-cupo no controlado |
+| **Criterios de aceptación** | 1. Registro de asistencia en tablet de instructor 2. Validación contra lista de reservas 3. Bloqueo de ingreso si clase está llena 4. Registro de observaciones por alumno 5. Reporte automático de ausentismo |
+| **Dependencias** | RF-005 (Reservas de Clases)|
+| **Comentarios** | Elimina listas de papel y controla efectivamente capacidad
+ |
 
 ---
 
